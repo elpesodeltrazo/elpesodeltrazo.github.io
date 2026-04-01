@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Reseñas y ensayos sobre cómic europeo y de autor. Una mirada crítica y literaria al noveno arte desde una biblioteca de más de 300 títulos.">
+<title>El Peso del Trazo — Crítica de cómic europeo y de autor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fondo:       #f5f0e8;
+    --fondo-alt:   #ede8de;
+    --fondo-oscuro:#2d2a25;
+    --crema:       #faf7f2;
+    --texto:       #2d2a25;
+    --texto-suave: #6b6560;
+    --acento:      #c17f4a;
+    --acento-claro:#e8c49a;
+    --acento-palido:#f2e0c8;
+    --azul-polvo:  #8aa4b8;
+    --azul-claro:  #d4e4f0;
+    --azul-palido: #eaf2f8;
+    --verde-salvia:#8fa896;
+    --verde-claro: #d4e4d8;
+    --borde:       #ddd8ce;
+    --borde-fuerte:#c8c0b4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--crema);
+    border-bottom: 1px solid var(--borde);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 58px;
+  }
+
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--texto);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--acento); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--acento); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--fondo-alt);
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    padding-top: 58px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--azul-palido);
+    z-index: 0;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--acento);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(48px, 5.5vw, 82px);
+    font-weight: 900;
+    line-height: 1.02;
+    color: var(--texto);
+    margin-bottom: 10px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--acento);
+  }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(17px, 2vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--texto-suave);
+    margin-bottom: 44px;
+  }
+
+  .hero-tagline {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    color: var(--texto-suave);
+    max-width: 420px;
+    line-height: 1.85;
+    border-left: 2px solid var(--acento-claro);
+    padding-left: 20px;
+    margin-bottom: 52px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--acento);
+    color: var(--crema);
+    padding: 14px 28px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: #a86c38;
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--texto-suave);
+    padding: 14px 28px;
+    text-decoration: none;
+    border: 1px solid var(--borde-fuerte);
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--acento);
+    color: var(--acento);
+  }
+
+  /* Panel decorativo hero derecho */
+  .hero-right {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+  }
+
+  .comic-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 4px;
+    width: 100%;
+    height: 100%;
+    max-height: 520px;
+  }
+
+  .panel {
+    background: var(--crema);
+    border: 1px solid var(--borde);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 18px;
+  }
+
+  .panel:nth-child(1) {
+    grid-row: span 2;
+    background: var(--azul-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .panel:nth-child(2) { background: var(--acento-palido); }
+  .panel:nth-child(3) { background: var(--verde-claro); }
+  .panel:nth-child(4) {
+    grid-column: span 2;
+    background: var(--acento);
+  }
+
+  .panel-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    position: relative;
+    z-index: 1;
+  }
+
+  .panel-quote {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--crema);
+    position: relative;
+    z-index: 1;
+    line-height: 1.5;
+  }
+
+  .cover-mockup {
+    width: 160px;
+    height: 230px;
+    background: var(--crema);
+    border: 1px solid var(--borde-fuerte);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 8px 8px 24px rgba(45,42,37,0.12), -2px 0 6px rgba(45,42,37,0.06);
+    transform: rotate(-2deg);
+  }
+
+  .cover-mockup::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: linear-gradient(to right, var(--borde-fuerte), transparent);
+  }
+
+  .cover-title-mock {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--texto);
+    text-align: center;
+    padding: 16px;
+    line-height: 1.2;
+  }
+
+  .cover-author-mock {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-top: 6px;
+  }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--acento);
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-flex;
+    animation: ticker 28s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--crema);
+    padding: 0 40px;
+    opacity: 0.92;
+  }
+
+  .ticker-sep { color: rgba(255,255,255,0.45); padding: 0 6px; }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── SECCIONES ── */
+  section { padding: 96px 80px; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 52px;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 18px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--texto);
+  }
+
+  .section-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--acento);
+    letter-spacing: 0.1em;
+  }
+
+  .section-ver-todo {
+    margin-left: auto;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .section-ver-todo:hover { color: var(--acento); }
+
+  /* ── ARTÍCULO DESTACADO ── */
+  .featured { background: var(--crema); }
+
+  .featured-article {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 0;
+    border: 1px solid var(--borde);
+  }
+
+  .featured-image {
+    background: var(--azul-palido);
+    min-height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--borde);
+  }
+
+  .featured-content {
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .article-category {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .article-category::before {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: var(--acento-claro);
+  }
+
+  .article-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--texto);
+    margin-bottom: 20px;
+  }
+
+  .article-title em { font-style: italic; }
+
+  .article-excerpt {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    color: var(--texto-suave);
+    margin-bottom: 32px;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 24px;
+    border-top: 1px solid var(--borde);
+  }
+
+  .article-meta-author {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+  }
+
+  .article-meta-date {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--texto-suave);
+  }
+
+  .read-link {
+    margin-left: auto;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--texto);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s, color 0.2s;
+  }
+
+  .read-link:hover { gap: 14px; color: var(--acento); }
+  .read-link::after { content: '→'; }
+
+  /* ── GRID RESEÑAS ── */
+  .resenas { background: var(--fondo); padding-top: 0; }
+
+  .resenas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .resena-card {
+    background: var(--crema);
+    padding: 36px 32px;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border: 1px solid var(--borde);
+  }
+
+  .resena-card:hover { background: var(--azul-palido); }
+
+  .resena-card::after {
+    content: '→';
+    position: absolute;
+    top: 36px; right: 32px;
+    font-size: 18px;
+    color: var(--acento);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    transform: translateX(-4px);
+  }
+
+  .resena-card:hover::after { opacity: 1; transform: translateX(0); }
+
+  .resena-pais {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    margin-bottom: 12px;
+  }
+
+  .resena-titulo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--texto);
+    margin-bottom: 8px;
+  }
+
+  .resena-autor {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--acento);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .resena-extracto {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--texto-suave);
+    margin-bottom: 24px;
+  }
+
+  .resena-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid var(--borde);
+  }
+
+  .resena-valoracion {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+  }
+
+  .resena-stars { color: var(--acento); font-size: 13px; letter-spacing: 2px; }
+
+  /* ── ENSAYOS ── */
+  .ensayos { background: var(--fondo-oscuro); }
+  .ensayos .section-title { color: var(--fondo); }
+  .ensayos .section-number { color: var(--acento-claro); }
+  .ensayos .section-header { border-color: #3d3a35; }
+  .ensayos .section-ver-todo { color: #7a7268; }
+  .ensayos .section-ver-todo:hover { color: var(--acento-claro); }
+
+  .ensayos-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .ensayo-item {
+    padding-bottom: 40px;
+    border-bottom: 1px solid #3d3a35;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .ensayo-item:hover { border-color: var(--acento-claro); }
+
+  .ensayo-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 44px;
+    font-weight: 700;
+    color: #3a3730;
+    line-height: 1;
+    margin-bottom: 16px;
+    user-select: none;
+  }
+
+  .ensayo-titulo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--fondo);
+    margin-bottom: 12px;
+  }
+
+  .ensayo-subtitulo {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #9a9288;
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .ensayo-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--acento-claro);
+    padding: 5px 10px;
+    border: 1px solid #5a4a38;
+    display: inline-block;
+  }
+
+  /* ── BIBLIOTECA ── */
+  .biblioteca { background: var(--fondo-alt); }
+
+  .biblioteca-intro {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-bottom: 56px;
+  }
+
+  .biblioteca-texto {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 20px;
+    line-height: 1.9;
+    color: var(--texto-suave);
+  }
+
+  .biblioteca-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .stat-box {
+    background: var(--crema);
+    border: 1px solid var(--borde);
+    padding: 32px 28px;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--texto);
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+  }
+
+  .stat-box:nth-child(3) {
+    background: var(--acento);
+    border-color: var(--acento);
+  }
+
+  .stat-box:nth-child(3) .stat-num,
+  .stat-box:nth-child(3) .stat-label {
+    color: var(--crema);
+  }
+
+  .paises-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  .pais-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid var(--borde-fuerte);
+    color: var(--texto-suave);
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--crema);
+  }
+
+  .pais-tag:hover,
+  .pais-tag.active {
+    background: var(--acento);
+    color: var(--crema);
+    border-color: var(--acento);
+  }
+
+  /* ── NEWSLETTER ── */
+  .newsletter {
+    background: var(--azul-claro);
+    padding: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 80px;
+    border-top: 1px solid var(--borde);
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .newsletter-text h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 40px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--texto);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .newsletter-text p {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    color: var(--texto-suave);
+    line-height: 1.75;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .newsletter-form input {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    padding: 15px 20px;
+    background: var(--crema);
+    border: 1px solid var(--borde-fuerte);
+    color: var(--texto);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .newsletter-form input::placeholder { color: var(--texto-suave); }
+  .newsletter-form input:focus { border-color: var(--azul-polvo); }
+
+  .newsletter-form button {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 15px;
+    background: var(--acento);
+    color: var(--crema);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .newsletter-form button:hover { background: #a86c38; }
+
+  .newsletter-nota {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--texto-suave);
+    margin-top: 4px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--fondo-oscuro);
+    padding: 64px 80px 40px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 64px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid #3a3730;
+    margin-bottom: 40px;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--fondo);
+    margin-bottom: 16px;
+  }
+
+  .footer-logo span { color: var(--acento-claro); }
+
+  .footer-desc {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #7a7268;
+    max-width: 260px;
+  }
+
+  .footer-col h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fondo-alt);
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .footer-col a {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    color: #7a7268;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--acento-claro); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: #4a4740;
+    text-transform: uppercase;
+  }
+
+  .footer-redes { display: flex; gap: 20px; }
+
+  .footer-redes a {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #4a4740;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-redes a:hover { color: var(--acento-claro); }
+
+  /* ── ANIMACIONES ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    animation: fadeUp 0.7s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.22s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.36s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.5s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.64s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero::after { display: none; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 24px; }
+    section { padding: 64px 24px; }
+    .featured-article { grid-template-columns: 1fr; }
+    .resenas-grid { grid-template-columns: 1fr; }
+    .ensayos-list { grid-template-columns: 1fr; }
+    .biblioteca-intro { grid-template-columns: 1fr; }
+    .newsletter { grid-template-columns: 1fr; padding: 48px 24px; gap: 40px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">El <span>Peso</span> del Trazo</a>
+  <ul class="nav-links">
+    <li><a href="#resenas">Reseñas</a></li>
+    <li><a href="#ensayos">Ensayos</a></li>
+    <li><a href="#biblioteca">Biblioteca</a></li>
+    <li><a href="#newsletter">Newsletter</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-left:0; padding-right:0;">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Crítica de cómic europeo y de autor</div>
+    <h1 class="hero-title">El Peso<br>del <em>Trazo</em></h1>
+    <p class="hero-subtitle">Leer con los ojos abiertos</p>
+    <p class="hero-tagline">
+      Una publicación que trata el cómic como lo que es:
+      literatura dibujada. Reseñas, ensayos y una biblioteca
+      de más de 300 títulos curados con criterio.
+    </p>
+    <div class="hero-cta">
+      <a href="#resenas" class="btn-primary">Últimas reseñas</a>
+      <a href="#biblioteca" class="btn-secondary">Ver la biblioteca</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="comic-grid">
+      <div class="panel">
+        <div class="cover-mockup">
+          <div class="cover-title-mock">El paseo</div>
+          <div class="cover-author-mock">Taniguchi</div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-label">Japón · 1990</div>
+      </div>
+      <div class="panel">
+        <div class="panel-label">Reseña destacada</div>
+      </div>
+      <div class="panel">
+        <div class="panel-quote">"El dibujo no ilustra el texto. El dibujo es el texto."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Reseñas <span class="ticker-sep">·</span> Cómic europeo</span>
+    <span class="ticker-item">Ensayos <span class="ticker-sep">·</span> Autores de referencia</span>
+    <span class="ticker-item">Taniguchi <span class="ticker-sep">·</span> Satrapi <span class="ticker-sep">·</span> Roca <span class="ticker-sep">·</span> Ware <span class="ticker-sep">·</span> Moebius</span>
+    <span class="ticker-item">La biblioteca curada <span class="ticker-sep">·</span> +300 títulos</span>
+    <span class="ticker-item">Reseñas <span class="ticker-sep">·</span> Cómic europeo</span>
+    <span class="ticker-item">Ensayos <span class="ticker-sep">·</span> Autores de referencia</span>
+    <span class="ticker-item">Taniguchi <span class="ticker-sep">·</span> Satrapi <span class="ticker-sep">·</span> Roca <span class="ticker-sep">·</span> Ware <span class="ticker-sep">·</span> Moebius</span>
+    <span class="ticker-item">La biblioteca curada <span class="ticker-sep">·</span> +300 títulos</span>
+  </div>
+</div>
+
+<!-- ARTÍCULO DESTACADO -->
+<section class="featured" id="resenas">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2 class="section-title">Reseña destacada</h2>
+    <a href="#" class="section-ver-todo">Ver todas →</a>
+  </div>
+  <div class="featured-article">
+    <div class="featured-image">
+      <div class="cover-mockup" style="width:180px; height:255px; transform:rotate(-1.5deg)">
+        <div class="cover-title-mock">Arrugas</div>
+        <div class="cover-author-mock">Paco Roca</div>
+      </div>
+    </div>
+    <div class="featured-content">
+      <div class="article-category">Reseña — España</div>
+      <h2 class="article-title"><em>Arrugas</em>, de Paco Roca:<br>la dignidad del olvido</h2>
+      <p class="article-excerpt">
+        Hay cómics que no se leen: se padecen. <em>Arrugas</em> es uno de ellos.
+        Paco Roca construye con un trazo aparentemente sencillo una de las miradas
+        más lúcidas y compasivas sobre el Alzheimer que ha dado el cómic español.
+        El dibujo no ilustra la pérdida: la encarna.
+      </p>
+      <div class="article-meta">
+        <span class="article-meta-author">Por MK</span>
+        <span class="article-meta-date">Marzo 2025</span>
+        <a href="#" class="read-link">Leer reseña</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRID RESEÑAS -->
+<section class="resenas">
+  <div class="resenas-grid">
+    <a href="#" class="resena-card">
+      <div class="resena-pais">Japón · 1990</div>
+      <h3 class="resena-titulo">El almanaque de mi padre</h3>
+      <div class="resena-autor">Jiro Taniguchi</div>
+      <p class="resena-extracto">El tiempo como materia narrativa. Taniguchi convierte la memoria familiar en una meditación sobre lo que heredamos sin saberlo.</p>
+      <div class="resena-footer">
+        <span class="resena-valoracion">Valoración</span>
+        <span class="resena-stars">★★★★★</span>
+      </div>
+    </a>
+    <a href="#" class="resena-card">
+      <div class="resena-pais">Irán / Francia · 2000</div>
+      <h3 class="resena-titulo">Persépolis</h3>
+      <div class="resena-autor">Marjane Satrapi</div>
+      <p class="resena-extracto">El blanco y negro como posición política. La autobiografía de Satrapi demuestra que el cómic puede ser el medio más honesto para contar la historia de un país.</p>
+      <div class="resena-footer">
+        <span class="resena-valoracion">Valoración</span>
+        <span class="resena-stars">★★★★★</span>
+      </div>
+    </a>
+    <a href="#" class="resena-card">
+      <div class="resena-pais">España · 2013</div>
+      <h3 class="resena-titulo">Los surcos del azar</h3>
+      <div class="resena-autor">Paco Roca</div>
+      <p class="resena-extracto">Un ejercicio de memoria histórica que funciona simultáneamente como thriller, road movie y elegía. Roca en su momento más ambicioso.</p>
+      <div class="resena-footer">
+        <span class="resena-valoracion">Valoración</span>
+        <span class="resena-stars">★★★★★</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ENSAYOS -->
+<section class="ensayos" id="ensayos">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Ensayos</h2>
+    <a href="#" class="section-ver-todo">Ver todos →</a>
+  </div>
+  <div class="ensayos-list">
+    <div class="ensayo-item">
+      <div class="ensayo-num">01</div>
+      <h3 class="ensayo-titulo">El silencio entre viñetas: Taniguchi y la narrativa del espacio vacío</h3>
+      <p class="ensayo-subtitulo">Cómo el maestro japonés convirtió los momentos de pausa en el verdadero motor de sus historias.</p>
+      <span class="ensayo-tag">Análisis de autor</span>
+    </div>
+    <div class="ensayo-item">
+      <div class="ensayo-num">02</div>
+      <h3 class="ensayo-titulo">Por qué el cómic de autor es la gran literatura del siglo XXI</h3>
+      <p class="ensayo-subtitulo">Un manifiesto. La imagen dibujada hace lo que la prosa no puede: narrar desde dentro de la percepción.</p>
+      <span class="ensayo-tag">Manifiesto</span>
+    </div>
+    <div class="ensayo-item">
+      <div class="ensayo-num">03</div>
+      <h3 class="ensayo-titulo">Astiberri y la construcción de un catálogo con criterio</h3>
+      <p class="ensayo-subtitulo">La editorial vasca que cambió el panorama del cómic adulto en España. Un recorrido por sus veinte años.</p>
+      <span class="ensayo-tag">Industria</span>
+    </div>
+    <div class="ensayo-item">
+      <div class="ensayo-num">04</div>
+      <h3 class="ensayo-titulo">La línea clara no es solo un estilo: es una ética narrativa</h3>
+      <p class="ensayo-subtitulo">De Hergé a Joost Swarte: lo que la escuela belga enseña sobre la honestidad del dibujo.</p>
+      <span class="ensayo-tag">Historia del cómic</span>
+    </div>
+  </div>
+</section>
+
+<!-- BIBLIOTECA -->
+<section class="biblioteca" id="biblioteca">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2 class="section-title">La Biblioteca</h2>
+    <a href="#" class="section-ver-todo">Explorar →</a>
+  </div>
+  <div class="biblioteca-intro">
+    <div>
+      <p class="biblioteca-texto">
+        Una colección personal de más de 300 títulos catalogados, leídos
+        y anotados a lo largo de años. No es una base de datos: es un mapa
+        de un lector. Cada título tiene contexto, cada elección tiene razón.
+      </p>
+      <div class="paises-list">
+        <span class="pais-tag active">Todos</span>
+        <span class="pais-tag">España</span>
+        <span class="pais-tag">Francia / Bélgica</span>
+        <span class="pais-tag">Japón</span>
+        <span class="pais-tag">EEUU</span>
+        <span class="pais-tag">Italia</span>
+        <span class="pais-tag">Otros</span>
+      </div>
+    </div>
+    <div class="biblioteca-stats">
+      <div class="stat-box">
+        <div class="stat-num">300+</div>
+        <div class="stat-label">Títulos</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Países</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">★★★★★</div>
+        <div class="stat-label">Los imprescindibles</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Autores</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter" id="newsletter">
+  <div class="newsletter-text">
+    <h2>Una reseña. Un ensayo. Sin ruido.</h2>
+    <p>El Peso del Trazo en tu correo, cuando hay algo que vale la pena decir. Sin periodicidad forzada. Sin algoritmos.</p>
+  </div>
+  <div class="newsletter-form">
+    <input type="email" placeholder="tu@correo.com">
+    <button type="submit">Suscribirme</button>
+    <span class="newsletter-nota">Sin spam. Solo cómic que importa.</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">El <span>Peso</span> del Trazo</div>
+      <p class="footer-desc">Crítica de cómic europeo y de autor. Leer con los ojos abiertos desde Cantabria.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Secciones</h4>
+      <ul>
+        <li><a href="#">Reseñas</a></li>
+        <li><a href="#">Ensayos</a></li>
+        <li><a href="#">La Biblioteca</a></li>
+        <li><a href="#">Archivo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Autores</h4>
+      <ul>
+        <li><a href="#">Taniguchi</a></li>
+        <li><a href="#">Paco Roca</a></li>
+        <li><a href="#">Satrapi</a></li>
+        <li><a href="#">Moebius</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Redes</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Bluesky</a></li>
+        <li><a href="#">Newsletter</a></li>
+        <li><a href="#">Sobre el proyecto</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span>
+    <div class="footer-redes">
+      <a href="#">@elpesodeltrazo</a>
+      <a href="#">elpesodeltrazo.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.pais-tag').forEach(tag => {
+    tag.addEventListener('click', () => {
+      document.querySelectorAll('.pais-tag').forEach(t => t.classList.remove('active'));
+      tag.classList.add('active');
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.resena-card, .ensayo-item, .stat-box').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(14px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
