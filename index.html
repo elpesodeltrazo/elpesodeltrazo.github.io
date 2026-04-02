@@ -3,215 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Reseñas y ensayos sobre cómic europeo y de autor. Una mirada crítica y literaria al noveno arte desde una biblioteca de más de 300 títulos.">
+<meta name="description" content="Reseñas y ensayos sobre cómic europeo y de autor.">
 <title>El Peso del Trazo — Crítica de cómic europeo y de autor</title>
 <link rel="stylesheet" href="base.css">
 <style>
-
-  .hero {
-    min-height: 100vh;
-    background: var(--fondo-alt);
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    padding-top: 64px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 50%;
-    height: 100%;
-    background: var(--azul-palido);
-    z-index: 0;
-  }
-
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 64px 80px 80px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-logo { max-width: 460px; width: 90%; margin-bottom: 40px; display: block; }
-
-  .hero-tagline {
-    font-family: 'EB Garamond', Georgia, serif;
-    font-size: 20px;
-    color: var(--texto-suave);
-    max-width: 420px;
-    line-height: 1.85;
-    border-left: 2px solid var(--acento-claro);
-    padding-left: 20px;
-    margin-bottom: 48px;
-  }
-
-  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
-
-  .hero-right {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 40px;
-  }
-
-  .comic-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 4px;
-    width: 100%;
-    height: 100%;
-    max-height: 520px;
-  }
-
-  .panel {
-    background: var(--crema);
-    border: 1px solid var(--borde);
-    display: flex;
-    align-items: flex-end;
-    padding: 18px;
-    overflow: hidden;
-  }
-
-  .panel:nth-child(1) { grid-row: span 2; background: var(--azul-claro); display: flex; align-items: center; justify-content: center; }
-  .panel:nth-child(2) { background: #f2e0c8; }
-  .panel:nth-child(3) { background: #d4e4d8; }
-  .panel:nth-child(4) { grid-column: span 2; background: var(--acento); }
-
-  .panel-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-suave); }
-  .panel-quote { font-family: 'EB Garamond', serif; font-size: 15px; font-style: italic; color: var(--crema); line-height: 1.5; }
-
-  .cover-mockup {
-    width: 150px; height: 215px;
-    background: var(--crema);
-    border: 1px solid var(--borde-fuerte);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    box-shadow: 8px 8px 24px rgba(45,42,37,0.12);
-    transform: rotate(-2deg);
-  }
-
-  .cover-title-mock { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 900; font-style: italic; color: var(--texto); text-align: center; padding: 12px; line-height: 1.2; }
-  .cover-author-mock { font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acento); }
-
-  .ticker { background: var(--acento); padding: 10px 0; overflow: hidden; white-space: nowrap; }
-  .ticker-inner { display: inline-flex; animation: ticker 30s linear infinite; }
-  .ticker-item { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--crema); padding: 0 40px; opacity: 0.92; }
-  .ticker-sep { color: rgba(255,255,255,0.45); padding: 0 6px; }
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-  .featured { background: var(--crema); padding: 80px; }
-
-  .section-header { display: flex; align-items: baseline; gap: 18px; margin-bottom: 48px; border-bottom: 1px solid var(--borde); padding-bottom: 16px; }
-  .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--texto); }
-  .section-number { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--acento); }
-  .section-ver-todo { margin-left: auto; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--texto-suave); text-decoration: none; transition: color 0.2s; }
-  .section-ver-todo:hover { color: var(--acento); }
-
-  .featured-article { display: grid; grid-template-columns: 1fr 1.1fr; border: 1px solid var(--borde); }
-  .featured-image { background: var(--azul-palido); min-height: 440px; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--borde); }
-  .featured-content { padding: 56px 48px; display: flex; flex-direction: column; justify-content: center; }
-
-  .article-category { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acento); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-  .article-category::before { content: ''; display: block; width: 22px; height: 1px; background: var(--acento-claro); }
-  .article-title { font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 700; line-height: 1.15; color: var(--texto); margin-bottom: 20px; }
-  .article-title em { font-style: italic; }
-  .article-excerpt { font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.85; color: var(--texto-suave); margin-bottom: 32px; }
-  .article-meta { display: flex; align-items: center; gap: 20px; padding-top: 24px; border-top: 1px solid var(--borde); }
-  .article-meta-author { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--texto-suave); }
-  .article-meta-date { font-family: 'EB Garamond', Georgia, serif; font-size: 15px; font-style: italic; color: var(--texto-suave); }
-  .read-link { margin-left: auto; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--texto); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: gap 0.2s, color 0.2s; }
-  .read-link:hover { gap: 14px; color: var(--acento); }
-  .read-link::after { content: '→'; }
-
-  .ultimas { background: var(--fondo); padding: 0 80px 80px; }
-
-  .resenas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-  .resena-card { background: var(--crema); padding: 36px 32px; text-decoration: none; color: inherit; display: block; border: 1px solid var(--borde); transition: background 0.2s; position: relative; }
-  .resena-card:hover { background: var(--azul-palido); }
-  .resena-card::after { content: '→'; position: absolute; top: 36px; right: 32px; font-size: 18px; color: var(--acento); opacity: 0; transition: opacity 0.2s, transform 0.2s; transform: translateX(-4px); }
-  .resena-card:hover::after { opacity: 1; transform: translateX(0); }
-  .resena-pais { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 12px; }
-  .resena-titulo { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 700; font-style: italic; line-height: 1.2; color: var(--texto); margin-bottom: 8px; }
-  .resena-autor { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--acento); text-transform: uppercase; margin-bottom: 16px; }
-  .resena-extracto { font-family: 'EB Garamond', Georgia, serif; font-size: 16px; line-height: 1.75; color: var(--texto-suave); margin-bottom: 24px; }
-  .resena-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--borde); }
-  .resena-valoracion { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-suave); }
-  .resena-stars { color: var(--acento); font-size: 13px; letter-spacing: 2px; }
-
-  .ensayos-home { background: var(--fondo-oscuro); padding: 80px; }
-  .ensayos-home .section-title { color: var(--fondo); }
-  .ensayos-home .section-number { color: var(--acento-claro); }
-  .ensayos-home .section-header { border-color: #3a3730; }
-  .ensayos-home .section-ver-todo { color: #6a6260; }
-  .ensayos-home .section-ver-todo:hover { color: var(--acento-claro); }
-  .ensayos-home-list { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-  .ensayo-home-item { padding-bottom: 40px; border-bottom: 1px solid #3a3730; text-decoration: none; display: block; transition: border-color 0.2s; }
-  .ensayo-home-item:hover { border-color: var(--acento-claro); }
-  .ensayo-home-num { font-family: 'Space Mono', monospace; font-size: 40px; font-weight: 700; color: #3a3730; line-height: 1; margin-bottom: 16px; }
-  .ensayo-home-titulo { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 700; line-height: 1.2; color: var(--fondo); margin-bottom: 12px; }
-  .ensayo-home-subtitulo { font-family: 'EB Garamond', Georgia, serif; font-size: 16px; font-style: italic; color: #9a9288; line-height: 1.65; margin-bottom: 16px; }
-  .ensayo-home-tag { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--acento-claro); padding: 5px 10px; border: 1px solid #5a4a38; display: inline-block; }
-
-  .biblioteca-home { background: var(--fondo-alt); padding: 80px; }
-  .biblioteca-home-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; }
-  .biblioteca-home-texto { font-size: 20px; line-height: 1.9; color: var(--texto-suave); margin-bottom: 32px; }
-  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-  .stat-box { background: var(--crema); border: 1px solid var(--borde); padding: 32px 28px; }
-  .stat-box.acento { background: var(--acento); border-color: var(--acento); }
-  .stat-num { font-family: 'Playfair Display', Georgia, serif; font-size: 48px; font-weight: 900; line-height: 1; color: var(--texto); margin-bottom: 8px; }
-  .stat-box.acento .stat-num { color: var(--crema); }
-  .stat-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-suave); }
-  .stat-box.acento .stat-label { color: rgba(255,255,255,0.7); }
-
-  .paises-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-  .pais-tag { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 16px; border: 1px solid var(--borde-fuerte); color: var(--texto-suave); background: var(--crema); text-decoration: none; transition: all 0.2s; }
-  .pais-tag:hover { background: var(--acento); color: var(--crema); border-color: var(--acento); }
-
-  .newsletter { background: var(--azul-claro); padding: 80px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; border-top: 1px solid var(--borde); }
-  .newsletter-text h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 38px; font-weight: 900; font-style: italic; color: var(--texto); line-height: 1.15; margin-bottom: 16px; }
-  .newsletter-text p { font-family: 'EB Garamond', Georgia, serif; font-size: 18px; color: var(--texto-suave); line-height: 1.75; }
-  .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
-  .newsletter-form input { font-family: 'EB Garamond', Georgia, serif; font-size: 17px; padding: 15px 20px; background: var(--crema); border: 1px solid var(--borde-fuerte); color: var(--texto); outline: none; transition: border-color 0.2s; }
-  .newsletter-form input::placeholder { color: var(--texto-suave); }
-  .newsletter-form input:focus { border-color: var(--acento); }
-  .newsletter-form button { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; padding: 15px; background: var(--acento); color: var(--crema); border: none; cursor: pointer; transition: background 0.2s; }
-  .newsletter-form button:hover { background: #a86c38; }
-  .newsletter-nota { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: var(--texto-suave); }
-
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  .hero-left > * { animation: fadeUp 0.7s ease forwards; opacity: 0; }
-  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
-  .hero-left > *:nth-child(2) { animation-delay: 0.3s; }
-  .hero-left > *:nth-child(3) { animation-delay: 0.5s; }
-
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero::after { display: none; }
-    .hero-right { display: none; }
-    .hero-left { padding: 60px 24px; }
-    .featured { padding: 48px 24px; }
-    .featured-article { grid-template-columns: 1fr; }
-    .ultimas { padding: 0 24px 64px; }
-    .resenas-grid { grid-template-columns: 1fr; }
-    .ensayos-home { padding: 64px 24px; }
-    .ensayos-home-list { grid-template-columns: 1fr; gap: 32px; }
-    .biblioteca-home { padding: 64px 24px; }
-    .biblioteca-home-grid { grid-template-columns: 1fr; gap: 40px; }
-    .newsletter { grid-template-columns: 1fr; padding: 48px 24px; gap: 40px; }
+  .hero { min-height:100vh; background:var(--fondo-alt); display:grid; grid-template-columns:1.1fr 1fr; padding-top:64px; position:relative; overflow:hidden; }
+  .hero::after { content:''; position:absolute; top:0; right:0; width:50%; height:100%; background:var(--azul-palido); z-index:0; }
+  .hero-left { display:flex; flex-direction:column; justify-content:center; padding:80px 64px 80px 80px; position:relative; z-index:2; }
+  .hero-logo { max-width:480px; width:90%; margin-bottom:40px; display:block; }
+  .hero-tagline { font-family:'EB Garamond',Georgia,serif; font-size:20px; color:var(--texto-suave); max-width:420px; line-height:1.85; border-left:2px solid var(--acento-claro); padding-left:20px; margin-bottom:48px; }
+  .hero-cta { display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-right { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; padding:60px 40px; }
+  .comic-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr 1fr; gap:4px; width:100%; height:100%; max-height:520px; }
+  .panel { background:var(--crema); border:1px solid var(--borde); display:flex; align-items:flex-end; padding:18px; overflow:hidden; }
+  .panel:nth-child(1) { grid-row:span 2; background:var(--azul-claro); display:flex; align-items:center; justify-content:center; }
+  .panel:nth-child(2) { background:#f2e0c8; }
+  .panel:nth-child(3) { background:#d4e4d8; }
+  .panel:nth-child(4) { grid-column:span 2; background:var(--acento); }
+  .panel-label { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--texto-suave); }
+  .panel-quote { font-family:'EB Garamond',serif; font-size:15px; font-style:italic; color:var(--crema); line-height:1.5; }
+  .cover-mockup { width:150px; height:215px; background:var(--crema); border:1px solid var(--borde-fuerte); display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:8px 8px 24px rgba(45,42,37,0.12); transform:rotate(-2deg); }
+  .cover-title-mock { font-family:'Playfair Display',serif; font-size:16px; font-weight:900; font-style:italic; color:var(--texto); text-align:center; padding:12px; line-height:1.2; }
+  .cover-author-mock { font-family:'Space Mono',monospace; font-size:8px; letter-spacing:0.2em; text-transform:uppercase; color:var(--acento); }
+  .ticker { background:var(--acento); padding:10px 0; overflow:hidden; white-space:nowrap; }
+  .ticker-inner { display:inline-flex; animation:ticker 30s linear infinite; }
+  .ticker-item { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--crema); padding:0 40px; opacity:0.92; }
+  .ticker-sep { color:rgba(255,255,255,0.45); padding:0 6px; }
+  @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .featured { background:var(--crema); padding:80px; }
+  .section-header { display:flex; align-items:baseline; gap:18px; margin-bottom:48px; border-bottom:1px solid var(--borde); padding-bottom:16px; }
+  .section-title { font-family:'Playfair Display',Georgia,serif; font-size:11px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--texto); }
+  .section-number { font-family:'Space Mono',monospace; font-size:10px; color:var(--acento); }
+  .section-ver-todo { margin-left:auto; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--texto-suave); text-decoration:none; transition:color 0.2s; }
+  .section-ver-todo:hover { color:var(--acento); }
+  .featured-article { display:grid; grid-template-columns:1fr 1.1fr; border:1px solid var(--borde); }
+  .featured-image { background:var(--azul-palido); min-height:440px; display:flex; align-items:center; justify-content:center; border-right:1px solid var(--borde); }
+  .featured-content { padding:56px 48px; display:flex; flex-direction:column; justify-content:center; }
+  .article-category { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--acento); margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+  .article-category::before { content:''; display:block; width:22px; height:1px; background:var(--acento-claro); }
+  .article-title { font-family:'Playfair Display',Georgia,serif; font-size:34px; font-weight:700; line-height:1.15; color:var(--texto); margin-bottom:20px; }
+  .article-title em { font-style:italic; }
+  .article-excerpt { font-family:'EB Garamond',Georgia,serif; font-size:18px; line-height:1.85; color:var(--texto-suave); margin-bottom:32px; }
+  .article-meta { display:flex; align-items:center; gap:20px; padding-top:24px; border-top:1px solid var(--borde); }
+  .article-meta-author { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--texto-suave); }
+  .article-meta-date { font-family:'EB Garamond',Georgia,serif; font-size:15px; font-style:italic; color:var(--texto-suave); }
+  .read-link { margin-left:auto; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--texto); text-decoration:none; display:flex; align-items:center; gap:8px; transition:gap 0.2s,color 0.2s; }
+  .read-link:hover { gap:14px; color:var(--acento); }
+  .read-link::after { content:'→'; }
+  .ultimas { background:var(--fondo); padding:0 80px 80px; }
+  .resenas-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+  .resena-card { background:var(--crema); padding:36px 32px; text-decoration:none; color:inherit; display:block; border:1px solid var(--borde); transition:background 0.2s; position:relative; }
+  .resena-card:hover { background:var(--azul-palido); }
+  .resena-card::after { content:'→'; position:absolute; top:36px; right:32px; font-size:18px; color:var(--acento); opacity:0; transition:opacity 0.2s,transform 0.2s; transform:translateX(-4px); }
+  .resena-card:hover::after { opacity:1; transform:translateX(0); }
+  .resena-pais { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--texto-suave); margin-bottom:12px; }
+  .resena-titulo { font-family:'Playfair Display',Georgia,serif; font-size:24px; font-weight:700; font-style:italic; line-height:1.2; color:var(--texto); margin-bottom:8px; }
+  .resena-autor { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; color:var(--acento); text-transform:uppercase; margin-bottom:16px; }
+  .resena-extracto { font-family:'EB Garamond',Georgia,serif; font-size:16px; line-height:1.75; color:var(--texto-suave); margin-bottom:24px; }
+  .resena-footer { display:flex; align-items:center; justify-content:space-between; padding-top:20px; border-top:1px solid var(--borde); }
+  .resena-valoracion { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--texto-suave); }
+  .resena-stars { color:var(--acento); font-size:13px; letter-spacing:2px; }
+  .ensayos-home { background:var(--fondo-oscuro); padding:80px; }
+  .ensayos-home .section-title { color:var(--fondo); }
+  .ensayos-home .section-number { color:var(--acento-claro); }
+  .ensayos-home .section-header { border-color:#3a3730; }
+  .ensayos-home .section-ver-todo { color:#6a6260; }
+  .ensayos-home .section-ver-todo:hover { color:var(--acento-claro); }
+  .ensayos-home-list { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+  .ensayo-home-item { padding-bottom:40px; border-bottom:1px solid #3a3730; text-decoration:none; display:block; transition:border-color 0.2s; }
+  .ensayo-home-item:hover { border-color:var(--acento-claro); }
+  .ensayo-home-num { font-family:'Space Mono',monospace; font-size:40px; font-weight:700; color:#3a3730; line-height:1; margin-bottom:16px; }
+  .ensayo-home-titulo { font-family:'Playfair Display',Georgia,serif; font-size:24px; font-weight:700; line-height:1.2; color:var(--fondo); margin-bottom:12px; }
+  .ensayo-home-subtitulo { font-family:'EB Garamond',Georgia,serif; font-size:16px; font-style:italic; color:#9a9288; line-height:1.65; margin-bottom:16px; }
+  .ensayo-home-tag { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:var(--acento-claro); padding:5px 10px; border:1px solid #5a4a38; display:inline-block; }
+  .biblioteca-home { background:var(--fondo-alt); padding:80px; }
+  .biblioteca-home-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:80px; align-items:start; }
+  .biblioteca-home-texto { font-size:20px; line-height:1.9; color:var(--texto-suave); margin-bottom:32px; }
+  .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+  .stat-box { background:var(--crema); border:1px solid var(--borde); padding:32px 28px; }
+  .stat-box.acento { background:var(--acento); border-color:var(--acento); }
+  .stat-num { font-family:'Playfair Display',Georgia,serif; font-size:48px; font-weight:900; line-height:1; color:var(--texto); margin-bottom:8px; }
+  .stat-box.acento .stat-num { color:var(--crema); }
+  .stat-label { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--texto-suave); }
+  .stat-box.acento .stat-label { color:rgba(255,255,255,0.7); }
+  .paises-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; }
+  .pais-tag { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:8px 16px; border:1px solid var(--borde-fuerte); color:var(--texto-suave); background:var(--crema); text-decoration:none; transition:all 0.2s; }
+  .pais-tag:hover { background:var(--acento); color:var(--crema); border-color:var(--acento); }
+  .newsletter { background:var(--azul-claro); padding:80px; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:80px; border-top:1px solid var(--borde); }
+  .newsletter-text h2 { font-family:'Playfair Display',Georgia,serif; font-size:38px; font-weight:900; font-style:italic; color:var(--texto); line-height:1.15; margin-bottom:16px; }
+  .newsletter-text p { font-family:'EB Garamond',Georgia,serif; font-size:18px; color:var(--texto-suave); line-height:1.75; }
+  .newsletter-form { display:flex; flex-direction:column; gap:10px; }
+  .newsletter-form input { font-family:'EB Garamond',Georgia,serif; font-size:17px; padding:15px 20px; background:var(--crema); border:1px solid var(--borde-fuerte); color:var(--texto); outline:none; transition:border-color 0.2s; }
+  .newsletter-form input::placeholder { color:var(--texto-suave); }
+  .newsletter-form input:focus { border-color:var(--acento); }
+  .newsletter-form button { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; padding:15px; background:var(--acento); color:var(--crema); border:none; cursor:pointer; transition:background 0.2s; }
+  .newsletter-form button:hover { background:#a86c38; }
+  .newsletter-nota { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.1em; color:var(--texto-suave); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .hero-left > * { animation:fadeUp 0.7s ease forwards; opacity:0; }
+  .hero-left > *:nth-child(1) { animation-delay:0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay:0.3s; }
+  .hero-left > *:nth-child(3) { animation-delay:0.5s; }
+  @media(max-width:900px) {
+    .hero{grid-template-columns:1fr} .hero::after{display:none} .hero-right{display:none}
+    .hero-left{padding:60px 24px} .featured{padding:48px 24px}
+    .featured-article{grid-template-columns:1fr} .ultimas{padding:0 24px 64px}
+    .resenas-grid{grid-template-columns:1fr} .ensayos-home{padding:64px 24px}
+    .ensayos-home-list{grid-template-columns:1fr;gap:32px} .biblioteca-home{padding:64px 24px}
+    .biblioteca-home-grid{grid-template-columns:1fr;gap:40px}
+    .newsletter{grid-template-columns:1fr;padding:48px 24px;gap:40px}
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><img src="Logo_sinfondo.png" alt="El Peso del Trazo"></a>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo"></a>
   <ul class="nav-links">
     <li><a href="resenas.html">Reseñas</a></li>
     <li><a href="ensayos.html">Ensayos</a></li>
@@ -224,12 +131,8 @@
 
 <section class="hero">
   <div class="hero-left">
-    <img src="Logo.png" alt="El Peso del Trazo" class="hero-logo">
-    <p class="hero-tagline">
-      Una publicación que trata el cómic como lo que es:
-      literatura dibujada. Reseñas, ensayos y una biblioteca
-      de más de 300 títulos curados con criterio.
-    </p>
+    <img src="logo.png" alt="El Peso del Trazo" class="hero-logo">
+    <p class="hero-tagline">Una publicación que trata el cómic como lo que es: literatura dibujada. Reseñas, ensayos y una biblioteca de más de 300 títulos curados con criterio.</p>
     <div class="hero-cta">
       <a href="resenas.html" class="btn-primary">Últimas reseñas</a>
       <a href="biblioteca.html" class="btn-secondary">Ver la biblioteca</a>
@@ -237,18 +140,18 @@
   </div>
   <div class="hero-right">
     <div class="comic-grid">
-      <div class="panel">
-        <div class="cover-mockup">
-          <div class="cover-title-mock">El paseo</div>
-          <div class="cover-author-mock">Taniguchi</div>
-        </div>
-      </div>
+      <div class="panel"><div class="cover-mockup"><div class="cover-title-mock">El paseo</div><div class="cover-author-mock">Taniguchi</div></div></div>
       <div class="panel"><div class="panel-label">Japón · 1990</div></div>
       <div class="panel"><div class="panel-label">Reseña destacada</div></div>
       <div class="panel"><div class="panel-quote">"El dibujo no ilustra el texto. El dibujo es el texto."</div></div>
     </div>
   </div>
 </section>
+
+<!-- BANNER PANORÁMICO -->
+<div class="site-banner">
+  <img src="banner.png" alt="El Peso del Trazo — Cómic europeo y de autor">
+</div>
 
 <div class="ticker">
   <div class="ticker-inner">
@@ -271,7 +174,7 @@
   </div>
   <div class="featured-article">
     <div class="featured-image">
-      <div class="cover-mockup" style="width:180px; height:255px; transform:rotate(-1.5deg)">
+      <div class="cover-mockup" style="width:180px;height:255px;transform:rotate(-1.5deg)">
         <div class="cover-title-mock">Arrugas</div>
         <div class="cover-author-mock">Paco Roca</div>
       </div>
@@ -279,12 +182,7 @@
     <div class="featured-content">
       <div class="article-category">Reseña — España · 2007</div>
       <h2 class="article-title"><em>Arrugas</em>, de Paco Roca:<br>la dignidad del olvido</h2>
-      <p class="article-excerpt">
-        Hay cómics que no se leen: se padecen. <em>Arrugas</em> es uno de ellos.
-        Paco Roca construye con un trazo aparentemente sencillo una de las miradas
-        más lúcidas y compasivas sobre el Alzheimer que ha dado el cómic español.
-        El dibujo no ilustra la pérdida: la encarna.
-      </p>
+      <p class="article-excerpt">Hay cómics que no se leen: se padecen. <em>Arrugas</em> es uno de ellos. Paco Roca construye con un trazo aparentemente sencillo una de las miradas más lúcidas y compasivas sobre el Alzheimer que ha dado el cómic español. El dibujo no ilustra la pérdida: la encarna.</p>
       <div class="article-meta">
         <span class="article-meta-author">Por MK</span>
         <span class="article-meta-date">Marzo 2025</span>
@@ -306,30 +204,21 @@
       <h3 class="resena-titulo">El almanaque de mi padre</h3>
       <div class="resena-autor">Jiro Taniguchi</div>
       <p class="resena-extracto">El tiempo como materia narrativa. Taniguchi convierte la memoria familiar en una meditación sobre lo que heredamos sin saberlo.</p>
-      <div class="resena-footer">
-        <span class="resena-valoracion">Valoración</span>
-        <span class="resena-stars">★★★★★</span>
-      </div>
+      <div class="resena-footer"><span class="resena-valoracion">Valoración</span><span class="resena-stars">★★★★★</span></div>
     </a>
     <a href="resenas.html" class="resena-card">
       <div class="resena-pais">Irán / Francia · 2000</div>
       <h3 class="resena-titulo">Persépolis</h3>
       <div class="resena-autor">Marjane Satrapi</div>
       <p class="resena-extracto">El blanco y negro como posición política. La autobiografía de Satrapi demuestra que el cómic puede ser el medio más honesto para contar la historia de un país.</p>
-      <div class="resena-footer">
-        <span class="resena-valoracion">Valoración</span>
-        <span class="resena-stars">★★★★★</span>
-      </div>
+      <div class="resena-footer"><span class="resena-valoracion">Valoración</span><span class="resena-stars">★★★★★</span></div>
     </a>
     <a href="resenas.html" class="resena-card">
       <div class="resena-pais">España · 2013</div>
       <h3 class="resena-titulo">Los surcos del azar</h3>
       <div class="resena-autor">Paco Roca</div>
       <p class="resena-extracto">Un ejercicio de memoria histórica que funciona como thriller, road movie y elegía a la vez. Roca en su momento más ambicioso.</p>
-      <div class="resena-footer">
-        <span class="resena-valoracion">Valoración</span>
-        <span class="resena-stars">★★★★★</span>
-      </div>
+      <div class="resena-footer"><span class="resena-valoracion">Valoración</span><span class="resena-stars">★★★★★</span></div>
     </a>
   </div>
 </section>
@@ -376,11 +265,7 @@
   </div>
   <div class="biblioteca-home-grid">
     <div>
-      <p class="biblioteca-home-texto">
-        Una colección personal de más de 300 títulos catalogados, leídos
-        y anotados a lo largo de años. No es una base de datos: es un mapa
-        de un lector. Cada título tiene contexto, cada elección tiene razón.
-      </p>
+      <p class="biblioteca-home-texto">Una colección personal de más de 300 títulos catalogados, leídos y anotados a lo largo de años. No es una base de datos: es un mapa de un lector. Cada título tiene contexto, cada elección tiene razón.</p>
       <div class="paises-list">
         <a href="biblioteca.html" class="pais-tag">Todos</a>
         <a href="biblioteca.html" class="pais-tag">España</a>
@@ -451,22 +336,14 @@
 </footer>
 
 <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.resena-card, .ensayo-home-item, .stat-box').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(14px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';} });
+  }, {threshold:0.1});
+  document.querySelectorAll('.resena-card,.ensayo-home-item,.stat-box').forEach(el => {
+    el.style.opacity='0'; el.style.transform='translateY(14px)';
+    el.style.transition='opacity 0.5s ease,transform 0.5s ease';
+    obs.observe(el);
   });
 </script>
-
 </body>
 </html>
