@@ -72,24 +72,6 @@ nav {
 
 .nav-links a.nav-cta:hover { background: #a86c38; color: var(--crema); }
 
-/* ── BANNER GLOBAL ── */
-/* ── BANNER GLOBAL ── */
-.banner-global-OLD {
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-  position: relative;
-  display: block;
-}
-
-.banner-global img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  display: block;
-}
-
 /* ── BANNER PANORÁMICO ── */
 .site-banner {
   width: 100%;
@@ -122,6 +104,36 @@ nav {
 @media (max-width: 900px) {
   .site-banner { height: 130px; }
 }
+
+/* ── BANNER GLOBAL ── */
+  .banner-global {
+    width: 100%;
+    display: block;
+    line-height: 0;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .banner-global img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  body.has-banner {
+    padding-top: 0;
+  }
+
+  body.has-banner nav + .banner-global {
+    margin-top: 64px;
+  }
+
+  body.has-banner .page-header {
+    padding-top: 40px;
+  }
 
 /* ── PAGE HEADER ── */
 .page-header {
