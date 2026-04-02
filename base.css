@@ -1,0 +1,388 @@
+/* ── BASE.CSS — El Peso del Trazo ── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --fondo:        #f5f0e8;
+  --fondo-alt:    #ede8de;
+  --fondo-oscuro: #2d2a25;
+  --crema:        #faf7f2;
+  --texto:        #2d2a25;
+  --texto-suave:  #6b6560;
+  --acento:       #c17f4a;
+  --acento-claro: #e8c49a;
+  --azul-palido:  #eaf2f8;
+  --azul-claro:   #d4e4f0;
+  --borde:        #ddd8ce;
+  --borde-fuerte: #c8c0b4;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--crema);
+  border-bottom: 1px solid var(--borde);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 64px;
+}
+
+.nav-logo img { height: 40px; display: block; }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--acento); }
+
+.nav-links a.nav-cta {
+  background: var(--acento);
+  color: var(--crema);
+  padding: 8px 16px;
+  transition: background 0.2s;
+}
+
+.nav-links a.nav-cta:hover { background: #a86c38; color: var(--crema); }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  padding: 120px 80px 64px;
+  background: var(--fondo-alt);
+  border-bottom: 1px solid var(--borde);
+}
+
+.page-header-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--acento);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-header-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--acento);
+}
+
+.page-header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(42px, 5vw, 72px);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--texto);
+  margin-bottom: 16px;
+}
+
+.page-header h1 em { font-style: italic; color: var(--acento); }
+
+.page-header p {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 20px;
+  color: var(--texto-suave);
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+/* ── CONTENIDO PRINCIPAL ── */
+.main-content { padding: 80px; }
+
+/* ── SECCIÓN HEADER ── */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--borde);
+  padding-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.section-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--acento);
+}
+
+/* ── CARDS DE RESEÑAS ── */
+.resenas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 80px;
+}
+
+.resena-card {
+  background: var(--crema);
+  padding: 36px 32px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border: 1px solid var(--borde);
+  transition: background 0.2s;
+  position: relative;
+}
+
+.resena-card:hover { background: var(--azul-palido); }
+
+.resena-card::after {
+  content: '→';
+  position: absolute;
+  top: 36px; right: 32px;
+  font-size: 18px;
+  color: var(--acento);
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateX(-4px);
+}
+
+.resena-card:hover::after { opacity: 1; transform: translateX(0); }
+
+.resena-pais {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-bottom: 12px;
+}
+
+.resena-titulo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.2;
+  color: var(--texto);
+  margin-bottom: 8px;
+}
+
+.resena-autor {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--acento);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.resena-extracto {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--texto-suave);
+  margin-bottom: 24px;
+}
+
+.resena-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  border-top: 1px solid var(--borde);
+}
+
+.resena-stars { color: var(--acento); font-size: 13px; letter-spacing: 2px; }
+
+.resena-valoracion {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+/* ── BOTONES ── */
+.btn-primary {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--acento);
+  color: var(--crema);
+  padding: 14px 28px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-primary:hover { background: #a86c38; transform: translateY(-1px); }
+
+.btn-secondary {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--texto-suave);
+  padding: 14px 28px;
+  text-decoration: none;
+  border: 1px solid var(--borde-fuerte);
+  display: inline-block;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover { border-color: var(--acento); color: var(--acento); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--fondo-oscuro);
+  padding: 64px 80px 40px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 64px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #3a3730;
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--fondo);
+  margin-bottom: 16px;
+}
+
+.footer-logo span { color: var(--acento-claro); }
+
+.footer-desc {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #7a7268;
+  max-width: 260px;
+}
+
+.footer-col h4 {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fondo-alt);
+  margin-bottom: 20px;
+}
+
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.footer-col a {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 16px;
+  color: #7a7268;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--acento-claro); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: #4a4740;
+  text-transform: uppercase;
+}
+
+.footer-redes { display: flex; gap: 20px; }
+
+.footer-redes a {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #4a4740;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-redes a:hover { color: var(--acento-claro); }
+
+/* ── FILTROS ── */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 48px;
+}
+
+.filtro-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 1px solid var(--borde-fuerte);
+  color: var(--texto-suave);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--crema);
+}
+
+.filtro-tag:hover,
+.filtro-tag.active {
+  background: var(--acento);
+  color: var(--crema);
+  border-color: var(--acento);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .page-header { padding: 100px 24px 48px; }
+  .main-content { padding: 48px 24px; }
+  .resenas-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
