@@ -11,45 +11,71 @@
     grid-template-columns: 1.2fr 1fr;
     gap: 80px;
     align-items: start;
-    margin-bottom: 64px;
+    margin-bottom: 56px;
   }
-  .biblioteca-texto {
-    font-size: 20px;
-    line-height: 1.9;
-    color: var(--texto-suave);
-  }
-  .stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-  .stat-box {
-    background: var(--crema);
-    border: 1px solid var(--borde);
-    padding: 32px 28px;
-  }
+  .biblioteca-texto { font-size: 20px; line-height: 1.9; color: var(--texto-suave); }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .stat-box { background: var(--crema); border: 1px solid var(--borde); padding: 32px 28px; }
   .stat-box.acento { background: var(--acento); border-color: var(--acento); }
-  .stat-num {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 48px;
-    font-weight: 900;
-    line-height: 1;
-    color: var(--texto);
-    margin-bottom: 8px;
-  }
+  .stat-num { font-family: 'Playfair Display', Georgia, serif; font-size: 48px; font-weight: 900; line-height: 1; color: var(--texto); margin-bottom: 8px; }
   .stat-box.acento .stat-num { color: var(--crema); }
-  .stat-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--texto-suave);
-  }
+  .stat-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-suave); }
   .stat-box.acento .stat-label { color: rgba(255,255,255,0.7); }
+
+  .controles {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .buscar-input {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    padding: 10px 18px;
+    background: var(--crema);
+    border: 1px solid var(--borde-fuerte);
+    color: var(--texto);
+    outline: none;
+    transition: border-color 0.2s;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .buscar-input:focus { border-color: var(--acento); }
+  .buscar-input::placeholder { color: var(--texto-suave); }
+
+  .filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .filtro-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid var(--borde-fuerte);
+    color: var(--texto-suave);
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--crema);
+  }
+
+  .filtro-tag:hover,
+  .filtro-tag.active { background: var(--acento); color: var(--crema); border-color: var(--acento); }
+
+  .tabla-wrap { overflow-x: auto; }
+
   .tabla-biblioteca {
     width: 100%;
     border-collapse: collapse;
   }
+
   .tabla-biblioteca th {
     font-family: 'Space Mono', monospace;
     font-size: 9px;
@@ -58,22 +84,54 @@
     color: var(--texto-suave);
     text-align: left;
     padding: 12px 16px;
-    border-bottom: 1px solid var(--borde);
+    border-bottom: 2px solid var(--borde);
     background: var(--crema);
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
   }
+
+  .tabla-biblioteca th:hover { color: var(--acento); }
+
   .tabla-biblioteca td {
     font-family: 'EB Garamond', Georgia, serif;
     font-size: 17px;
-    padding: 16px;
+    padding: 14px 16px;
     border-bottom: 1px solid var(--borde);
     color: var(--texto);
+    vertical-align: middle;
   }
+
   .tabla-biblioteca tr:hover td { background: var(--azul-palido); }
-  .tabla-biblioteca .titulo-col { font-style: italic; font-weight: 500; }
-  .stars-small { color: var(--acento); font-size: 11px; letter-spacing: 1px; }
+
+  .titulo-col { font-style: italic; font-weight: 500; }
+
+  .goodreads-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--texto-suave);
+  }
+
+  .pais-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    white-space: nowrap;
+  }
+
+  .contador {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--texto-suave);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+
   @media(max-width:900px){
     .biblioteca-intro { grid-template-columns: 1fr; gap: 40px; }
-    .tabla-biblioteca { font-size: 14px; }
+    .tabla-biblioteca td, .tabla-biblioteca th { padding: 10px 12px; font-size: 14px; }
   }
 </style>
 </head>
@@ -91,9 +149,9 @@
   </ul>
 </nav>
 
-  <!-- BANNER -->
+<!-- BANNER -->
 <div class="banner-global">
-  <img src="banner_v2.png" alt="El Peso del Trazo">
+  <img src="banner.png" alt="El Peso del Trazo">
 </div>
 
 <div class="page-header">
@@ -106,137 +164,156 @@
 
   <div class="biblioteca-intro">
     <p class="biblioteca-texto">
-      Esta biblioteca es el resultado de años de lectura sistemática de cómic europeo y de autor. Cada título tiene su razón de estar aquí. Cada elección es un argumento. Los filtros permiten navegar por país, formato y valoración.
+      Esta biblioteca es el resultado de años de lectura sistemática de cómic europeo y de autor.
+      Cada título tiene su razón de estar aquí. Cada elección es un argumento.
+      Usa los filtros y el buscador para navegar por la colección.
     </p>
     <div class="stats-grid">
-      <div class="stat-box">
-        <div class="stat-num">300+</div>
-        <div class="stat-label">Títulos</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">12</div>
-        <div class="stat-label">Países</div>
-      </div>
-      <div class="stat-box acento">
-        <div class="stat-num">★★★★★</div>
-        <div class="stat-label">Imprescindibles</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">40+</div>
-        <div class="stat-label">Autores</div>
-      </div>
+      <div class="stat-box"><div class="stat-num">300+</div><div class="stat-label">Títulos</div></div>
+      <div class="stat-box"><div class="stat-num">12</div><div class="stat-label">Países</div></div>
+      <div class="stat-box acento"><div class="stat-num">★★★★★</div><div class="stat-label">Imprescindibles</div></div>
+      <div class="stat-box"><div class="stat-num">40+</div><div class="stat-label">Autores</div></div>
     </div>
   </div>
 
-  <!-- Filtros -->
-  <div class="filtros">
-    <span class="filtro-tag active">Todos</span>
-    <span class="filtro-tag">España</span>
-    <span class="filtro-tag">Francia / Bélgica</span>
-    <span class="filtro-tag">Japón</span>
-    <span class="filtro-tag">EEUU</span>
-    <span class="filtro-tag">⭐⭐⭐⭐⭐ solo</span>
+  <!-- Buscador -->
+  <div class="controles">
+    <input type="text" class="buscar-input" id="buscador" placeholder="Buscar por título, autor, editorial...">
   </div>
 
-  <!-- Tabla -->
-  <table class="tabla-biblioteca">
-    <thead>
-      <tr>
-        <th>Título</th>
-        <th>Autor/es</th>
-        <th>País</th>
-        <th>Año</th>
-        <th>Editorial</th>
-        <th>Valoración</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="titulo-col">Arrugas</td>
-        <td>Paco Roca</td>
-        <td>España</td>
-        <td>2007</td>
-        <td>Astiberri</td>
-        <td><span class="stars-small">★★★★★</span></td>
-      </tr>
-      <tr>
-        <td class="titulo-col">Los surcos del azar</td>
-        <td>Paco Roca</td>
-        <td>España</td>
-        <td>2013</td>
-        <td>Astiberri</td>
-        <td><span class="stars-small">★★★★★</span></td>
-      </tr>
-      <tr>
-        <td class="titulo-col">Persépolis</td>
-        <td>Marjane Satrapi</td>
-        <td>Irán / Francia</td>
-        <td>2000</td>
-        <td>Norma</td>
-        <td><span class="stars-small">★★★★★</span></td>
-      </tr>
-      <tr>
-        <td class="titulo-col">El almanaque de mi padre</td>
-        <td>Jiro Taniguchi</td>
-        <td>Japón</td>
-        <td>1994</td>
-        <td>Ponent Mon</td>
-        <td><span class="stars-small">★★★★★</span></td>
-      </tr>
-      <tr>
-        <td class="titulo-col">Maus</td>
-        <td>Art Spiegelman</td>
-        <td>EEUU</td>
-        <td>1991</td>
-        <td>Planeta</td>
-        <td><span class="stars-small">★★★★★</span></td>
-      </tr>
-      <tr>
-        <td class="titulo-col">Blacksad</td>
-        <td>Díaz Canales / Guarnido</td>
-        <td>España</td>
-        <td>2000</td>
-        <td>Norma</td>
-        <td><span class="stars-small">★★★★★</span></td>
-      </tr>
-      <tr>
-        <td class="titulo-col">El arte de volar</td>
-        <td>Altarriba / Kim</td>
-        <td>España</td>
-        <td>2009</td>
-        <td>De Ponent</td>
-        <td><span class="stars-small">★★★★★</span></td>
-      </tr>
-      <tr>
-        <td class="titulo-col">From Hell</td>
-        <td>Moore / Campbell</td>
-        <td>EEUU</td>
-        <td>1999</td>
-        <td>Planeta</td>
-        <td><span class="stars-small">★★★★★</span></td>
-      </tr>
-      <tr>
-        <td class="titulo-col">Watchmen</td>
-        <td>Moore / Gibbons</td>
-        <td>EEUU</td>
-        <td>1987</td>
-        <td>Planeta</td>
-        <td><span class="stars-small">★★★★★</span></td>
-      </tr>
-      <tr>
-        <td class="titulo-col">Crónicas de Jerusalén</td>
-        <td>Guy Delisle</td>
-        <td>Canadá</td>
-        <td>2011</td>
-        <td>Astiberri</td>
-        <td><span class="stars-small">★★★★★</span></td>
-      </tr>
-    </tbody>
-  </table>
+  <!-- Filtros por país -->
+  <div class="filtros">
+    <span class="filtro-tag active" onclick="filtrar(this,'todos')">Todos</span>
+    <span class="filtro-tag" onclick="filtrar(this,'España')">España</span>
+    <span class="filtro-tag" onclick="filtrar(this,'Francia')">Francia / Bélgica</span>
+    <span class="filtro-tag" onclick="filtrar(this,'Japón')">Japón</span>
+    <span class="filtro-tag" onclick="filtrar(this,'EEUU')">EEUU</span>
+    <span class="filtro-tag" onclick="filtrar(this,'Italia')">Italia</span>
+  </div>
 
-  <p style="font-family:'Space Mono',monospace; font-size:10px; color:var(--texto-suave); margin-top:24px; letter-spacing:0.1em;">
-    Mostrando 10 de 300+ títulos. Catálogo completo próximamente.
-  </p>
+  <div class="contador" id="contador">Mostrando <span id="num-visible">0</span> títulos</div>
+
+  <div class="tabla-wrap">
+    <table class="tabla-biblioteca" id="tabla">
+      <thead>
+        <tr>
+          <th onclick="ordenar('titulo')">Título ↕</th>
+          <th onclick="ordenar('autor')">Autor/es ↕</th>
+          <th onclick="ordenar('pais')">País ↕</th>
+          <th onclick="ordenar('año')">Año ↕</th>
+          <th onclick="ordenar('editorial')">Editorial ↕</th>
+          <th onclick="ordenar('goodreads')">Goodreads ↕</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <tr data-pais="España"><td class="titulo-col">Arrugas</td><td>Paco Roca</td><td class="pais-badge">España</td><td>2007</td><td>Astiberri</td><td class="goodreads-badge">4.32/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Los surcos del azar</td><td>Paco Roca</td><td class="pais-badge">España</td><td>2013</td><td>Astiberri</td><td class="goodreads-badge">4.38/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">El invierno del dibujante</td><td>Paco Roca</td><td class="pais-badge">España</td><td>2010</td><td>Astiberri</td><td class="goodreads-badge">4.08/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">El abismo del olvido</td><td>Paco Roca / Rodrigo Terrasa</td><td class="pais-badge">España</td><td>2023</td><td>Astiberri</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Regreso al Edén</td><td>Paco Roca</td><td class="pais-badge">España</td><td>2020</td><td>Astiberri</td><td class="goodreads-badge">3.95/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">El tesoro del cisne negro</td><td>Paco Roca / Guillermo Corral</td><td class="pais-badge">España</td><td>2021</td><td>Astiberri</td><td class="goodreads-badge">3.88/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">El arte de volar</td><td>Antonio Altarriba / Kim</td><td class="pais-badge">España</td><td>2009</td><td>Edicions de Ponent</td><td class="goodreads-badge">4.25/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">El ala rota</td><td>Antonio Altarriba / Kim</td><td class="pais-badge">España</td><td>2016</td><td>Norma</td><td class="goodreads-badge">4.10/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Blacksad 1: Un lugar entre las sombras</td><td>Díaz Canales / Guarnido</td><td class="pais-badge">España</td><td>2000</td><td>Norma</td><td class="goodreads-badge">4.20/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Blacksad 2: Arctic-Nation</td><td>Díaz Canales / Guarnido</td><td class="pais-badge">España</td><td>2003</td><td>Norma</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">El infierno de Dante</td><td>Paco Roca</td><td class="pais-badge">España</td><td>2022</td><td>Astiberri</td><td class="goodreads-badge">3.90/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Andanzas de un hombre en pijama</td><td>Paco Roca</td><td class="pais-badge">España</td><td>2009</td><td>Astiberri</td><td class="goodreads-badge">3.85/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">La Conspiración</td><td>Paco Roca</td><td class="pais-badge">España</td><td>2023</td><td>Astiberri</td><td class="goodreads-badge">3.80/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Primavera para Madrid</td><td>Pedro Cifuentes</td><td class="pais-badge">España</td><td>2021</td><td>Astiberri</td><td class="goodreads-badge">3.95/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">La balada del norte (Tomo 1)</td><td>Alfonso Zapico</td><td class="pais-badge">España</td><td>2012</td><td>Astiberri</td><td class="goodreads-badge">4.30/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">La balada del norte (Tomo 2)</td><td>Alfonso Zapico</td><td class="pais-badge">España</td><td>2018</td><td>Astiberri</td><td class="goodreads-badge">4.35/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Contrapaso. Los hijos de los otros</td><td>Teresa Valero</td><td class="pais-badge">España</td><td>2020</td><td>Norma</td><td class="goodreads-badge">3.90/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Moribundo</td><td>Miguel Gallardo</td><td class="pais-badge">España</td><td>2010</td><td>Astiberri</td><td class="goodreads-badge">3.75/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Ronson</td><td>Paco Alcázar</td><td class="pais-badge">España</td><td>2022</td><td>Astiberri</td><td class="goodreads-badge">3.80/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Ligero de equipaje: Vida de Antonio Machado</td><td>Alfonso Zapico</td><td class="pais-badge">España</td><td>2019</td><td>Astiberri</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">El cuerpo de Cristo</td><td>Paco Roca</td><td class="pais-badge">España</td><td>2022</td><td>Astiberri</td><td class="goodreads-badge">3.85/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Soy la Malinche</td><td>Laura Pérez</td><td class="pais-badge">España</td><td>2021</td><td>Planeta Cómic</td><td class="goodreads-badge">3.90/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Como un pájaro en una pecera</td><td>Miguel Gallardo</td><td class="pais-badge">España</td><td>2008</td><td>Astiberri</td><td class="goodreads-badge">3.80/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">El almanaque de mi padre</td><td>Jiro Taniguchi</td><td class="pais-badge">Japón</td><td>1994</td><td>Planeta Cómic</td><td class="goodreads-badge">4.36/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">El caminante (Edición definitiva)</td><td>Jiro Taniguchi</td><td class="pais-badge">Japón</td><td>1990</td><td>Planeta Cómic</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Okinawa</td><td>Jiro Taniguchi</td><td class="pais-badge">Japón</td><td>1971</td><td>Planeta Cómic</td><td class="goodreads-badge">4.02/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Otro Japón</td><td>Jiro Taniguchi</td><td class="pais-badge">Japón</td><td>2004</td><td>Planeta Cómic</td><td class="goodreads-badge">4.05/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Comercios de Tokio</td><td>Jiro Taniguchi</td><td class="pais-badge">Japón</td><td>2004</td><td>Planeta Cómic</td><td class="goodreads-badge">4.10/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Los guardianes del Louvre</td><td>Jiro Taniguchi</td><td class="pais-badge">Japón</td><td>2014</td><td>Planeta Cómic</td><td class="goodreads-badge">4.12/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Solanin (edición integral)</td><td>Inio Asano</td><td class="pais-badge">Japón</td><td>2005</td><td>Norma</td><td class="goodreads-badge">4.12/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Una vida errante (Vol. 1)</td><td>Yoshihiro Tatsumi</td><td class="pais-badge">Japón</td><td>2008</td><td>Astiberri</td><td class="goodreads-badge">4.05/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Una vida errante (Vol. 2)</td><td>Yoshihiro Tatsumi</td><td class="pais-badge">Japón</td><td>2008</td><td>Astiberri</td><td class="goodreads-badge">4.08/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">El gourmet solitario</td><td>Jiro Taniguchi / Masayuki Kusumi</td><td class="pais-badge">Japón</td><td>1994</td><td>Planeta Cómic</td><td class="goodreads-badge">4.00/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Suzume (novela gráfica)</td><td>Makoto Shinkai</td><td class="pais-badge">Japón</td><td>2022</td><td>Norma</td><td class="goodreads-badge">3.85/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Manga Stories</td><td>Varios</td><td class="pais-badge">Japón</td><td>2010</td><td>Planeta Cómic</td><td class="goodreads-badge">3.90/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Historia de una geisha</td><td>Kazuo Kamimura</td><td class="pais-badge">Japón</td><td>1971</td><td>Ponent Mon</td><td class="goodreads-badge">3.95/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Adolf Vol. 1</td><td>Osamu Tezuka</td><td class="pais-badge">Japón</td><td>1983</td><td>Planeta Cómic</td><td class="goodreads-badge">4.20/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Adolf Vol. 2</td><td>Osamu Tezuka</td><td class="pais-badge">Japón</td><td>1983</td><td>Planeta Cómic</td><td class="goodreads-badge">4.22/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Buda - Libro 1</td><td>Osamu Tezuka</td><td class="pais-badge">Japón</td><td>1972</td><td>Planeta Cómic</td><td class="goodreads-badge">4.18/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Buda - Libro 2</td><td>Osamu Tezuka</td><td class="pais-badge">Japón</td><td>1972</td><td>Planeta Cómic</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Buda - Libro 3</td><td>Osamu Tezuka</td><td class="pais-badge">Japón</td><td>1972</td><td>Planeta Cómic</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Buda - Libro 4</td><td>Osamu Tezuka</td><td class="pais-badge">Japón</td><td>1972</td><td>Planeta Cómic</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Buda - Libro 5</td><td>Osamu Tezuka</td><td class="pais-badge">Japón</td><td>1972</td><td>Planeta Cómic</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Buda - Libro 6</td><td>Osamu Tezuka</td><td class="pais-badge">Japón</td><td>1972</td><td>Planeta Cómic</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Buda - Libro 7</td><td>Osamu Tezuka</td><td class="pais-badge">Japón</td><td>1972</td><td>Planeta Cómic</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Buda - Libro 8</td><td>Osamu Tezuka</td><td class="pais-badge">Japón</td><td>1972</td><td>Planeta Cómic</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Buda - Libro 9</td><td>Osamu Tezuka</td><td class="pais-badge">Japón</td><td>1972</td><td>Planeta Cómic</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">Buda - Libro 10</td><td>Osamu Tezuka</td><td class="pais-badge">Japón</td><td>1972</td><td>Planeta Cómic</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">País de Pesadillas Vol. 1</td><td>Junji Ito</td><td class="pais-badge">Japón</td><td>1998</td><td>Norma</td><td class="goodreads-badge">4.05/5</td></tr>
+        <tr data-pais="Japón"><td class="titulo-col">País de Pesadillas Vol. 2: La casa de cristal</td><td>Junji Ito</td><td class="pais-badge">Japón</td><td>1998</td><td>Norma</td><td class="goodreads-badge">4.08/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Persépolis</td><td>Marjane Satrapi</td><td class="pais-badge">Francia/Irán</td><td>2000</td><td>Reservoir Books</td><td class="goodreads-badge">4.32/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Bordados</td><td>Marjane Satrapi</td><td class="pais-badge">Francia/Irán</td><td>2003</td><td>Norma</td><td class="goodreads-badge">3.95/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Pollo con Ciruelas</td><td>Marjane Satrapi</td><td class="pais-badge">Francia/Irán</td><td>2004</td><td>Norma</td><td class="goodreads-badge">3.90/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Mujer Vida Libertad</td><td>Marjane Satrapi / Varios</td><td class="pais-badge">Francia/Irán</td><td>2023</td><td>Reservoir Books</td><td class="goodreads-badge">4.10/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Crónicas de Jerusalén</td><td>Guy Delisle</td><td class="pais-badge">Canadá/Francia</td><td>2011</td><td>Astiberri</td><td class="goodreads-badge">4.05/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Blast (Edición integral)</td><td>Manu Larcenet</td><td class="pais-badge">Francia</td><td>2009</td><td>Astiberri</td><td class="goodreads-badge">4.25/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">El escultor</td><td>Scott McCloud</td><td class="pais-badge">EEUU</td><td>2015</td><td>Astiberri</td><td class="goodreads-badge">3.95/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Polina</td><td>Bastien Vivès</td><td class="pais-badge">Francia</td><td>2011</td><td>Norma</td><td class="goodreads-badge">3.80/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">La levedad</td><td>Bastien Vivès</td><td class="pais-badge">Francia</td><td>2012</td><td>Astiberri</td><td class="goodreads-badge">3.75/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Carta blanca</td><td>Bastien Vivès / Balak / Sanlaville</td><td class="pais-badge">Francia</td><td>2010</td><td>Norma</td><td class="goodreads-badge">3.70/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Luz: Dos mujeres desnudas</td><td>Bastien Vivès</td><td class="pais-badge">Francia</td><td>2016</td><td>Norma</td><td class="goodreads-badge">3.65/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Malas ideas</td><td>Bastien Vivès</td><td class="pais-badge">Francia</td><td>2020</td><td>Norma</td><td class="goodreads-badge">3.60/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Balada para Sophie</td><td>Filipe Melo / Juan Cavia</td><td class="pais-badge">Portugal/Francia</td><td>2020</td><td>Astiberri</td><td class="goodreads-badge">4.05/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">La muerte de Tarek</td><td>Kid Toussaint / Virginie Grenier</td><td class="pais-badge">Francia</td><td>2018</td><td>Astiberri</td><td class="goodreads-badge">3.85/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Gertrude Stein y la generación perdida</td><td>Luca Bramucci</td><td class="pais-badge">Italia/Francia</td><td>2019</td><td>Astiberri</td><td class="goodreads-badge">3.80/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Beowulf. Edición especial décimo aniversario</td><td>Santiago García / David Rubín</td><td class="pais-badge">España</td><td>2013</td><td>Astiberri</td><td class="goodreads-badge">4.10/5</td></tr>
+        <tr data-pais="Francia"><td class="titulo-col">Nevermind: La biografía en cómic de Kurt Cobain</td><td>Olivier Bras / Nicolas Finet</td><td class="pais-badge">Francia</td><td>2019</td><td>Norma</td><td class="goodreads-badge">3.75/5</td></tr>
+        <tr data-pais="Italia"><td class="titulo-col">Feltrinelli</td><td>Carlo Feltrinelli / Zap Mangel</td><td class="pais-badge">Italia</td><td>2018</td><td>Anagrama</td><td class="goodreads-badge">3.85/5</td></tr>
+        <tr data-pais="Italia"><td class="titulo-col">Dublinés</td><td>Alfonso Zapico</td><td class="pais-badge">España</td><td>2011</td><td>Astiberri</td><td class="goodreads-badge">4.12/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Maus</td><td>Art Spiegelman</td><td class="pais-badge">EEUU</td><td>1991</td><td>Planeta Cómic</td><td class="goodreads-badge">4.55/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">From Hell</td><td>Alan Moore / Eddie Campbell</td><td class="pais-badge">EEUU</td><td>1999</td><td>Norma</td><td class="goodreads-badge">4.25/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Watchmen</td><td>Alan Moore / Dave Gibbons</td><td class="pais-badge">EEUU</td><td>1987</td><td>Planeta Cómic</td><td class="goodreads-badge">4.40/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Batman: La broma asesina</td><td>Alan Moore / Brian Bolland</td><td class="pais-badge">EEUU</td><td>1988</td><td>ECC Ediciones</td><td class="goodreads-badge">4.25/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman 1: Preludios y nocturnos</td><td>Neil Gaiman</td><td class="pais-badge">EEUU</td><td>1988</td><td>ECC Ediciones</td><td class="goodreads-badge">4.15/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman 2: La casa de muñecas</td><td>Neil Gaiman</td><td class="pais-badge">EEUU</td><td>1989</td><td>ECC Ediciones</td><td class="goodreads-badge">4.25/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman 3: País de sueños</td><td>Neil Gaiman</td><td class="pais-badge">EEUU</td><td>1990</td><td>ECC Ediciones</td><td class="goodreads-badge">4.20/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman 4: Estación de nieblas</td><td>Neil Gaiman</td><td class="pais-badge">EEUU</td><td>1990</td><td>ECC Ediciones</td><td class="goodreads-badge">4.35/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman 5: Juego a ser tú</td><td>Neil Gaiman</td><td class="pais-badge">EEUU</td><td>1991</td><td>ECC Ediciones</td><td class="goodreads-badge">4.20/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman 6: Fábulas y reflejos</td><td>Neil Gaiman</td><td class="pais-badge">EEUU</td><td>1991</td><td>ECC Ediciones</td><td class="goodreads-badge">4.25/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman 7: Vidas breves</td><td>Neil Gaiman</td><td class="pais-badge">EEUU</td><td>1992</td><td>ECC Ediciones</td><td class="goodreads-badge">4.40/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman 8: El fin de los mundos</td><td>Neil Gaiman</td><td class="pais-badge">EEUU</td><td>1992</td><td>ECC Ediciones</td><td class="goodreads-badge">4.20/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman 9: Las benévolas (Parte 1)</td><td>Neil Gaiman</td><td class="pais-badge">EEUU</td><td>1993</td><td>ECC Ediciones</td><td class="goodreads-badge">4.35/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman 10: Las benévolas (Parte 2)</td><td>Neil Gaiman</td><td class="pais-badge">EEUU</td><td>1993</td><td>ECC Ediciones</td><td class="goodreads-badge">4.35/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman 11: El velatorio</td><td>Neil Gaiman</td><td class="pais-badge">EEUU</td><td>1995</td><td>ECC Ediciones</td><td class="goodreads-badge">4.30/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman 12: Los cazadores de sueños</td><td>Neil Gaiman</td><td class="pais-badge">EEUU</td><td>1996</td><td>ECC Ediciones</td><td class="goodreads-badge">4.10/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman: Obertura</td><td>Neil Gaiman / J.H. Williams III</td><td class="pais-badge">EEUU</td><td>2013</td><td>ECC Ediciones</td><td class="goodreads-badge">4.30/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sandman: Muerte</td><td>Neil Gaiman / Chris Bachalo</td><td class="pais-badge">EEUU</td><td>1994</td><td>ECC Ediciones</td><td class="goodreads-badge">4.20/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">The Books of Magic Omnibus Vol. 1</td><td>Neil Gaiman / John Bolton</td><td class="pais-badge">EEUU</td><td>1990</td><td>ECC Ediciones</td><td class="goodreads-badge">4.00/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Palestina</td><td>Joe Sacco</td><td class="pais-badge">EEUU</td><td>1993</td><td>Planeta Cómic</td><td class="goodreads-badge">4.10/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Notas al pie de Gaza</td><td>Joe Sacco</td><td class="pais-badge">EEUU</td><td>2009</td><td>Norma</td><td class="goodreads-badge">4.20/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Patos: Dos años en las arenas petrolíferas</td><td>Kate Beaton</td><td class="pais-badge">Canadá</td><td>2022</td><td>Astiberri</td><td class="goodreads-badge">4.25/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">The Contract With God Trilogy</td><td>Will Eisner</td><td class="pais-badge">EEUU</td><td>1978</td><td>Norma</td><td class="goodreads-badge">4.05/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Una fracción de segundo</td><td>Thierry Groensteen</td><td class="pais-badge">Francia</td><td>2018</td><td>Astiberri</td><td class="goodreads-badge">3.90/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">El infinito en un junco (adapt. gráfica)</td><td>Irene Vallejo / Javi Rovira</td><td class="pais-badge">España</td><td>2022</td><td>Mondadori</td><td class="goodreads-badge">4.00/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Entender el cómic</td><td>Scott McCloud</td><td class="pais-badge">EEUU</td><td>1993</td><td>Astiberri</td><td class="goodreads-badge">4.20/5</td></tr>
+        <tr data-pais="EEUU"><td class="titulo-col">Sueños de tinta</td><td>Eddie Campbell</td><td class="pais-badge">Australia</td><td>2007</td><td>Astiberri</td><td class="goodreads-badge">3.85/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">El jugador de ajedrez</td><td>Aude Seigne / David B.</td><td class="pais-badge">Francia</td><td>2020</td><td>Norma</td><td class="goodreads-badge">3.80/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Las meninas</td><td>Santiago García / Javier Olivares</td><td class="pais-badge">España</td><td>2014</td><td>Astiberri</td><td class="goodreads-badge">4.05/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">El invierno del dibujante</td><td>Paco Roca</td><td class="pais-badge">España</td><td>2010</td><td>Astiberri</td><td class="goodreads-badge">4.08/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">No me olvides</td><td>Paco Roca</td><td class="pais-badge">España</td><td>2011</td><td>Astiberri</td><td class="goodreads-badge">3.90/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Piezas</td><td>Fermín Solís</td><td class="pais-badge">España</td><td>2020</td><td>Astiberri</td><td class="goodreads-badge">3.75/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Lo sabes aunque no te lo he dicho</td><td>Cristina Durán / Miguel Á. Giner</td><td class="pais-badge">España</td><td>2014</td><td>Astiberri</td><td class="goodreads-badge">4.00/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Los hijos del imperio (Vol. 1)</td><td>Luis Bustos</td><td class="pais-badge">España</td><td>2018</td><td>Norma</td><td class="goodreads-badge">3.85/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Historia de Jerusalén</td><td>Christophe Gaultier / Vincent Lemire</td><td class="pais-badge">Francia</td><td>2021</td><td>Norma</td><td class="goodreads-badge">3.90/5</td></tr>
+        <tr data-pais="España"><td class="titulo-col">Las muchas muertes de Laila Starr</td><td>Ram V / Filipe Andrade</td><td class="pais-badge">EEUU</td><td>2021</td><td>Planeta Cómic</td><td class="goodreads-badge">4.05/5</td></tr>
+      </tbody>
+    </table>
+  </div>
 
 </div>
 
@@ -278,5 +355,57 @@
     </div>
   </div>
 </footer>
+
+<script>
+  let filtroPais = 'todos';
+  let textoBusqueda = '';
+
+  function actualizar() {
+    const filas = document.querySelectorAll('#tbody tr');
+    let visible = 0;
+    filas.forEach(fila => {
+      const pais = fila.dataset.pais || '';
+      const texto = fila.textContent.toLowerCase();
+      const coincidePais = filtroPais === 'todos' || pais.includes(filtroPais);
+      const coincideTexto = texto.includes(textoBusqueda.toLowerCase());
+      if (coincidePais && coincideTexto) {
+        fila.style.display = '';
+        visible++;
+      } else {
+        fila.style.display = 'none';
+      }
+    });
+    document.getElementById('num-visible').textContent = visible;
+  }
+
+  function filtrar(el, pais) {
+    document.querySelectorAll('.filtro-tag').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    filtroPais = pais;
+    actualizar();
+  }
+
+  document.getElementById('buscador').addEventListener('input', function() {
+    textoBusqueda = this.value;
+    actualizar();
+  });
+
+  function ordenar(col) {
+    const tbody = document.getElementById('tbody');
+    const filas = Array.from(tbody.querySelectorAll('tr'));
+    const idx = { titulo: 0, autor: 1, pais: 2, año: 3, editorial: 4, goodreads: 5 }[col];
+    filas.sort((a, b) => {
+      const va = a.cells[idx].textContent.trim();
+      const vb = b.cells[idx].textContent.trim();
+      return col === 'año' || col === 'goodreads'
+        ? parseFloat(va) - parseFloat(vb)
+        : va.localeCompare(vb, 'es');
+    });
+    filas.forEach(f => tbody.appendChild(f));
+  }
+
+  // Inicializar contador
+  actualizar();
+</script>
 </body>
 </html>
