@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ensayos — El Peso del Trazo</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .ensayos-list { display: flex; flex-direction: column; gap: 2px; }
+  .ensayo-card {
+    background: var(--crema);
+    border: 1px solid var(--borde);
+    padding: 48px;
+    text-decoration: none;
+    color: inherit;
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 0 40px;
+    align-items: start;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .ensayo-card:hover { background: var(--azul-palido); }
+  .ensayo-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--borde-fuerte);
+    line-height: 1;
+  }
+  .ensayo-body {}
+  .ensayo-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--acento);
+    border: 1px solid var(--acento-claro);
+    padding: 5px 10px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .ensayo-titulo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--texto);
+    margin-bottom: 12px;
+  }
+  .ensayo-subtitulo {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--texto-suave);
+    line-height: 1.65;
+  }
+  .ensayo-arrow {
+    font-size: 24px;
+    color: var(--acento);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    transform: translateX(-8px);
+    align-self: center;
+  }
+  .ensayo-card:hover .ensayo-arrow { opacity: 1; transform: translateX(0); }
+  @media(max-width:900px){
+    .ensayo-card { grid-template-columns: 1fr; gap: 16px; }
+    .ensayo-num { font-size: 32px; }
+    .ensayo-arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo"></a>
+  <ul class="nav-links">
+    <li><a href="resenas.html">Reseñas</a></li>
+    <li><a href="ensayos.html" style="color:var(--acento)">Ensayos</a></li>
+    <li><a href="biblioteca.html">Biblioteca</a></li>
+    <li><a href="sobre.html">Sobre el proyecto</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-eyebrow">Artículos de fondo</div>
+  <h1>Ensayos</h1>
+  <p>Análisis de autores, corrientes estéticas e historia del cómic europeo. El cómic como forma artística seria.</p>
+</div>
+
+<div class="main-content">
+  <div class="ensayos-list">
+
+    <a href="#" class="ensayo-card">
+      <div class="ensayo-num">01</div>
+      <div class="ensayo-body">
+        <span class="ensayo-tag">Análisis de autor</span>
+        <h3 class="ensayo-titulo">El silencio entre viñetas: Taniguchi y la narrativa del espacio vacío</h3>
+        <p class="ensayo-subtitulo">Cómo el maestro japonés convirtió los momentos de pausa en el verdadero motor de sus historias. Una lectura de su obra a través de la teoría del intervalo.</p>
+      </div>
+      <div class="ensayo-arrow">→</div>
+    </a>
+
+    <a href="#" class="ensayo-card">
+      <div class="ensayo-num">02</div>
+      <div class="ensayo-body">
+        <span class="ensayo-tag">Manifiesto</span>
+        <h3 class="ensayo-titulo">Por qué el cómic de autor es la gran literatura del siglo XXI</h3>
+        <p class="ensayo-subtitulo">La imagen dibujada hace lo que la prosa no puede: narrar desde dentro de la percepción. Un argumento a favor del noveno arte como forma mayor.</p>
+      </div>
+      <div class="ensayo-arrow">→</div>
+    </a>
+
+    <a href="#" class="ensayo-card">
+      <div class="ensayo-num">03</div>
+      <div class="ensayo-body">
+        <span class="ensayo-tag">Industria</span>
+        <h3 class="ensayo-titulo">Astiberri y la construcción de un catálogo con criterio</h3>
+        <p class="ensayo-subtitulo">La editorial vasca que cambió el panorama del cómic adulto en España. Un recorrido por sus veinte años de apuestas inteligentes y necesarias.</p>
+      </div>
+      <div class="ensayo-arrow">→</div>
+    </a>
+
+    <a href="#" class="ensayo-card">
+      <div class="ensayo-num">04</div>
+      <div class="ensayo-body">
+        <span class="ensayo-tag">Historia del cómic</span>
+        <h3 class="ensayo-titulo">La línea clara no es solo un estilo: es una ética narrativa</h3>
+        <p class="ensayo-subtitulo">De Hergé a Joost Swarte: lo que la escuela belga enseña sobre la honestidad del dibujo y la responsabilidad del autor ante el lector.</p>
+      </div>
+      <div class="ensayo-arrow">→</div>
+    </a>
+
+    <a href="#" class="ensayo-card">
+      <div class="ensayo-num">05</div>
+      <div class="ensayo-body">
+        <span class="ensayo-tag">Comparativa</span>
+        <h3 class="ensayo-titulo">Satrapi y Spiegelman: dos formas de hacer memoria con viñetas</h3>
+        <p class="ensayo-subtitulo">Persépolis y Maus comparten la autobiografía y el trauma colectivo como materia. Lo que los diferencia revela dos concepciones del cómic como testimonio.</p>
+      </div>
+      <div class="ensayo-arrow">→</div>
+    </a>
+
+    <a href="#" class="ensayo-card">
+      <div class="ensayo-num">06</div>
+      <div class="ensayo-body">
+        <span class="ensayo-tag">Análisis formal</span>
+        <h3 class="ensayo-titulo">El color como narrador: Moebius y la paleta como personaje</h3>
+        <p class="ensayo-subtitulo">En los mejores trabajos de Moebius, el color no decora: informa, guía y anticipa. Un análisis de su uso del color en El Incal y El Garaje Hermético.</p>
+      </div>
+      <div class="ensayo-arrow">→</div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">El <span>Peso</span> del Trazo</div>
+      <p class="footer-desc">Crítica de cómic europeo y de autor. Leer con los ojos abiertos desde Cantabria.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Secciones</h4>
+      <ul>
+        <li><a href="resenas.html">Reseñas</a></li>
+        <li><a href="ensayos.html">Ensayos</a></li>
+        <li><a href="biblioteca.html">Biblioteca</a></li>
+        <li><a href="sobre.html">Sobre el proyecto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="contacto.html">Escribir</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Redes</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Bluesky</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span>
+    <div class="footer-redes">
+      <a href="#">@elpesodeltrazo</a>
+      <a href="#">elpesodeltrazo.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

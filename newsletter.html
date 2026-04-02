@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsletter — El Peso del Trazo</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .newsletter-contenido {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 0;
+  }
+  .newsletter-intro {
+    font-size: 20px;
+    line-height: 1.9;
+    color: var(--texto-suave);
+    margin-bottom: 56px;
+  }
+  .newsletter-promesas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 56px;
+  }
+  .promesa-box {
+    background: var(--crema);
+    border: 1px solid var(--borde);
+    padding: 32px;
+  }
+  .promesa-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--acento);
+    margin-bottom: 12px;
+  }
+  .promesa-titulo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--texto);
+    margin-bottom: 8px;
+  }
+  .promesa-desc {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--texto-suave);
+  }
+  .form-newsletter {
+    background: var(--fondo-oscuro);
+    padding: 48px;
+  }
+  .form-newsletter h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--fondo);
+    margin-bottom: 8px;
+  }
+  .form-newsletter p {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    color: #9a9288;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+  .form-newsletter input {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    padding: 15px 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid #3a3730;
+    color: var(--fondo);
+    outline: none;
+    width: 100%;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+  }
+  .form-newsletter input::placeholder { color: #6a6260; }
+  .form-newsletter input:focus { border-color: var(--acento); }
+  .form-newsletter button {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 15px;
+    background: var(--acento);
+    color: var(--crema);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+  }
+  .form-newsletter button:hover { background: #a86c38; }
+  .form-nota {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: #4a4740;
+    margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo"></a>
+  <ul class="nav-links">
+    <li><a href="resenas.html">Reseñas</a></li>
+    <li><a href="ensayos.html">Ensayos</a></li>
+    <li><a href="biblioteca.html">Biblioteca</a></li>
+    <li><a href="sobre.html">Sobre el proyecto</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="newsletter.html" class="nav-cta" style="background:#a86c38">Newsletter</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-eyebrow">Sin algoritmos</div>
+  <h1>Newsletter</h1>
+  <p>Una reseña. Un ensayo. Cuando hay algo que vale la pena decir.</p>
+</div>
+
+<div class="main-content">
+  <div class="newsletter-contenido">
+
+    <p class="newsletter-intro">
+      El Peso del Trazo en tu correo. Sin periodicidad forzada — cuando una lectura lo merezca. Sin resúmenes de novedades, sin listas de los más vendidos. Solo cómic que importa, explicado con el espacio que merece.
+    </p>
+
+    <div class="newsletter-promesas">
+      <div class="promesa-box">
+        <div class="promesa-num">01</div>
+        <div class="promesa-titulo">Sin spam</div>
+        <p class="promesa-desc">No hay calendario de publicación forzado. Cuando haya algo bueno que contar, llega. No antes.</p>
+      </div>
+      <div class="promesa-box">
+        <div class="promesa-num">02</div>
+        <div class="promesa-titulo">Sin algoritmos</div>
+        <p class="promesa-desc">El correo llega a tu bandeja de entrada, no a un feed curado por una plataforma.</p>
+      </div>
+      <div class="promesa-box">
+        <div class="promesa-num">03</div>
+        <div class="promesa-titulo">Contenido exclusivo</div>
+        <p class="promesa-desc">Algunas reseñas y ensayos llegarán antes o en exclusiva a los suscriptores.</p>
+      </div>
+      <div class="promesa-box">
+        <div class="promesa-num">04</div>
+        <div class="promesa-titulo">Baja cuando quieras</div>
+        <p class="promesa-desc">Sin compromiso. Un clic y te das de baja. Sin preguntas, sin formularios.</p>
+      </div>
+    </div>
+
+    <div class="form-newsletter">
+      <h2>Suscríbete</h2>
+      <p>Únete a los lectores que prefieren el correo al scroll infinito.</p>
+      <input type="text" placeholder="Tu nombre">
+      <input type="email" placeholder="tu@correo.com">
+      <button type="submit">Quiero suscribirme</button>
+      <p class="form-nota">Sin spam. Solo cómic que importa. Baja cuando quieras.</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">El <span>Peso</span> del Trazo</div>
+      <p class="footer-desc">Crítica de cómic europeo y de autor. Leer con los ojos abiertos desde Cantabria.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Secciones</h4>
+      <ul>
+        <li><a href="resenas.html">Reseñas</a></li>
+        <li><a href="ensayos.html">Ensayos</a></li>
+        <li><a href="biblioteca.html">Biblioteca</a></li>
+        <li><a href="sobre.html">Sobre el proyecto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="contacto.html">Escribir</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Redes</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Bluesky</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span>
+    <div class="footer-redes">
+      <a href="#">@elpesodeltrazo</a>
+      <a href="#">elpesodeltrazo.com</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

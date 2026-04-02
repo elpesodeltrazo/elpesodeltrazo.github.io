@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Reseñas de cómic europeo y de autor — El Peso del Trazo">
+<title>Reseñas — El Peso del Trazo</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .resenas-grid { grid-template-columns: repeat(3, 1fr); }
+  @media(max-width:900px){ .resenas-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo"></a>
+  <ul class="nav-links">
+    <li><a href="resenas.html" style="color:var(--acento)">Reseñas</a></li>
+    <li><a href="ensayos.html">Ensayos</a></li>
+    <li><a href="biblioteca.html">Biblioteca</a></li>
+    <li><a href="sobre.html">Sobre el proyecto</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-eyebrow">Todas las reseñas</div>
+  <h1>Reseñas</h1>
+  <p>Lecturas argumentadas de cómic europeo y de autor. Sin puntuaciones vacías — solo criterio y contexto.</p>
+</div>
+
+<div class="main-content">
+
+  <!-- Filtros -->
+  <div class="filtros">
+    <span class="filtro-tag active" onclick="filtrar(this,'todos')">Todos</span>
+    <span class="filtro-tag" onclick="filtrar(this,'españa')">España</span>
+    <span class="filtro-tag" onclick="filtrar(this,'francia')">Francia / Bélgica</span>
+    <span class="filtro-tag" onclick="filtrar(this,'japon')">Japón</span>
+    <span class="filtro-tag" onclick="filtrar(this,'eeuu')">EEUU</span>
+    <span class="filtro-tag" onclick="filtrar(this,'iran')">Oriente Medio</span>
+  </div>
+
+  <!-- Grid de reseñas -->
+  <div class="resenas-grid" id="grid-resenas">
+
+    <a href="resena-arrugas.html" class="resena-card" data-pais="españa">
+      <div class="resena-pais">España · 2007 · Astiberri</div>
+      <h3 class="resena-titulo">Arrugas</h3>
+      <div class="resena-autor">Paco Roca</div>
+      <p class="resena-extracto">Hay cómics que no se leen: se padecen. Paco Roca construye con un trazo aparentemente sencillo una de las miradas más lúcidas sobre el Alzheimer que ha dado el cómic español.</p>
+      <div class="resena-footer">
+        <span class="resena-valoracion">Valoración</span>
+        <span class="resena-stars">★★★★★</span>
+      </div>
+    </a>
+
+    <a href="resena-persepolis.html" class="resena-card" data-pais="iran">
+      <div class="resena-pais">Irán / Francia · 2000 · Norma</div>
+      <h3 class="resena-titulo">Persépolis</h3>
+      <div class="resena-autor">Marjane Satrapi</div>
+      <p class="resena-extracto">El blanco y negro como posición política. La autobiografía de Satrapi demuestra que el cómic puede ser el medio más honesto para contar la historia de un país.</p>
+      <div class="resena-footer">
+        <span class="resena-valoracion">Valoración</span>
+        <span class="resena-stars">★★★★★</span>
+      </div>
+    </a>
+
+    <a href="resena-surcos.html" class="resena-card" data-pais="españa">
+      <div class="resena-pais">España · 2013 · Astiberri</div>
+      <h3 class="resena-titulo">Los surcos del azar</h3>
+      <div class="resena-autor">Paco Roca</div>
+      <p class="resena-extracto">Un ejercicio de memoria histórica que funciona como thriller, road movie y elegía a la vez. Roca en su momento más ambicioso y más necesario.</p>
+      <div class="resena-footer">
+        <span class="resena-valoracion">Valoración</span>
+        <span class="resena-stars">★★★★★</span>
+      </div>
+    </a>
+
+    <a href="resena-almanaque.html" class="resena-card" data-pais="japon">
+      <div class="resena-pais">Japón · 1994 · Ponent Mon</div>
+      <h3 class="resena-titulo">El almanaque de mi padre</h3>
+      <div class="resena-autor">Jiro Taniguchi</div>
+      <p class="resena-extracto">El tiempo como materia narrativa. Taniguchi convierte la memoria familiar en una meditación sobre lo que heredamos sin saberlo, con una delicadeza sin igual.</p>
+      <div class="resena-footer">
+        <span class="resena-valoracion">Valoración</span>
+        <span class="resena-stars">★★★★★</span>
+      </div>
+    </a>
+
+    <a href="resena-maus.html" class="resena-card" data-pais="eeuu">
+      <div class="resena-pais">EEUU · 1991 · Planeta</div>
+      <h3 class="resena-titulo">Maus</h3>
+      <div class="resena-autor">Art Spiegelman</div>
+      <p class="resena-extracto">La obra que cambió la percepción del cómic para siempre. Una historia sobre el Holocausto contada con ratones y gatos que resulta más humana que cualquier tratado histórico.</p>
+      <div class="resena-footer">
+        <span class="resena-valoracion">Valoración</span>
+        <span class="resena-stars">★★★★★</span>
+      </div>
+    </a>
+
+    <a href="resena-blacksad.html" class="resena-card" data-pais="españa">
+      <div class="resena-pais">España · 2000 · Norma</div>
+      <h3 class="resena-titulo">Blacksad</h3>
+      <div class="resena-autor">Díaz Canales / Guarnido</div>
+      <p class="resena-extracto">Noir de animales, América de los 50, ilustración prodigiosa. Guarnido es uno de los mejores dibujantes de su generación y este es el escaparate perfecto para demostrarlo.</p>
+      <div class="resena-footer">
+        <span class="resena-valoracion">Valoración</span>
+        <span class="resena-stars">★★★★★</span>
+      </div>
+    </a>
+
+    <a href="resena-arte-volar.html" class="resena-card" data-pais="españa">
+      <div class="resena-pais">España · 2009 · De Ponent</div>
+      <h3 class="resena-titulo">El arte de volar</h3>
+      <div class="resena-autor">Antonio Altarriba / Kim</div>
+      <p class="resena-extracto">La vida de un hombre, la historia de un país. Altarriba y Kim firman uno de los grandes cómics españoles de todos los tiempos con una economía de medios asombrosa.</p>
+      <div class="resena-footer">
+        <span class="resena-valoracion">Valoración</span>
+        <span class="resena-stars">★★★★★</span>
+      </div>
+    </a>
+
+    <a href="resena-cronicas.html" class="resena-card" data-pais="canada">
+      <div class="resena-pais">Canadá · 2003 · Astiberri</div>
+      <h3 class="resena-titulo">Crónicas de Jerusalén</h3>
+      <div class="resena-autor">Guy Delisle</div>
+      <p class="resena-extracto">Delisle es el gran cronista del cómic documental contemporáneo. Su mirada irónica y empática sobre Jerusalén es la mejor guía posible para entender un lugar imposible.</p>
+      <div class="resena-footer">
+        <span class="resena-valoracion">Valoración</span>
+        <span class="resena-stars">★★★★★</span>
+      </div>
+    </a>
+
+    <a href="resena-from-hell.html" class="resena-card" data-pais="eeuu">
+      <div class="resena-pais">EEUU · 1999 · Planeta</div>
+      <h3 class="resena-titulo">From Hell</h3>
+      <div class="resena-autor">Alan Moore / Eddie Campbell</div>
+      <p class="resena-extracto">El cómic más ambicioso jamás escrito sobre Jack el Destripador es también una disección de la sociedad victoriana y del nacimiento de la modernidad. Moore en estado puro.</p>
+      <div class="resena-footer">
+        <span class="resena-valoracion">Valoración</span>
+        <span class="resena-stars">★★★★★</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">El <span>Peso</span> del Trazo</div>
+      <p class="footer-desc">Crítica de cómic europeo y de autor. Leer con los ojos abiertos desde Cantabria.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Secciones</h4>
+      <ul>
+        <li><a href="resenas.html">Reseñas</a></li>
+        <li><a href="ensayos.html">Ensayos</a></li>
+        <li><a href="biblioteca.html">Biblioteca</a></li>
+        <li><a href="sobre.html">Sobre el proyecto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="contacto.html">Escribir</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Redes</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Bluesky</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span>
+    <div class="footer-redes">
+      <a href="#">@elpesodeltrazo</a>
+      <a href="#">elpesodeltrazo.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function filtrar(el, pais) {
+    document.querySelectorAll('.filtro-tag').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelectorAll('.resena-card').forEach(card => {
+      if (pais === 'todos' || card.dataset.pais === pais) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.resena-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(14px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

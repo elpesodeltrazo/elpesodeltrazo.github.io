@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre el proyecto — El Peso del Trazo</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    max-width: 1100px;
+  }
+  .sobre-texto p {
+    font-size: 20px;
+    line-height: 1.9;
+    color: var(--texto);
+    margin-bottom: 28px;
+  }
+  .sobre-texto p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin: 8px 12px 0 0;
+    color: var(--acento);
+  }
+  .sobre-lateral {}
+  .manifiesto-box {
+    background: var(--fondo-oscuro);
+    padding: 40px;
+    margin-bottom: 32px;
+  }
+  .manifiesto-box h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--acento-claro);
+    margin-bottom: 20px;
+  }
+  .manifiesto-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .manifiesto-box li {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    color: #c8c0b4;
+    line-height: 1.6;
+    padding-left: 20px;
+    border-left: 2px solid var(--acento);
+  }
+  .perfil-box {
+    background: var(--crema);
+    border: 1px solid var(--borde);
+    padding: 32px;
+  }
+  .perfil-box h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    margin-bottom: 16px;
+  }
+  .perfil-nombre {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--texto);
+    margin-bottom: 8px;
+  }
+  .perfil-desc {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--texto-suave);
+  }
+  @media(max-width:900px){ .sobre-grid { grid-template-columns:1fr; gap:48px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo"></a>
+  <ul class="nav-links">
+    <li><a href="resenas.html">Reseñas</a></li>
+    <li><a href="ensayos.html">Ensayos</a></li>
+    <li><a href="biblioteca.html">Biblioteca</a></li>
+    <li><a href="sobre.html" style="color:var(--acento)">Sobre el proyecto</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-eyebrow">El proyecto</div>
+  <h1>Sobre <em>El Peso del Trazo</em></h1>
+  <p>Por qué existe esta publicación y qué la diferencia del resto.</p>
+</div>
+
+<div class="main-content">
+  <div class="sobre-grid">
+
+    <div class="sobre-texto">
+      <p>El Peso del Trazo nace de una convicción: el cómic de autor merece la misma atención crítica que la novela o el cine. No es un blog de novedades, no es una guía de compras, no es un espacio para puntuar del uno al diez. Es una publicación que se toma su tiempo, que argumenta sus juicios y que cree que una buena reseña puede cambiar la manera de leer una página.</p>
+
+      <p>La crítica de cómic en español existe, pero es escasa en el registro que aquí se propone: literario, formal, contextualizado. Hay mucho resumen de argumento y poco análisis del trazo. Hay mucha recomendación y poca disección. Este proyecto quiere llenar ese hueco con rigor y sin pretensión.</p>
+
+      <p>La biblioteca personal que está detrás de este proyecto —más de 300 títulos catalogados y leídos— no es un accidente ni una colección de caprichos. Es el resultado de años de lectura sistemática con un criterio que se ha ido afinando con cada álbum. Ese criterio es el activo principal de esta publicación.</p>
+
+      <p>El cómic europeo y de autor es el territorio. Taniguchi, Satrapi, Roca, Moebius, Delisle, Altarriba, Moore. Autores que usaron el noveno arte para decir algo que no podría haberse dicho de otra manera. Eso es lo que se busca aquí: el cómic que pesa.</p>
+    </div>
+
+    <div class="sobre-lateral">
+      <div class="manifiesto-box">
+        <h3>Lo que creemos</h3>
+        <ul>
+          <li>El cómic es literatura dibujada, no entretenimiento menor</li>
+          <li>Una buena reseña analiza el dibujo tanto como el guion</li>
+          <li>El contexto del autor importa tanto como la obra</li>
+          <li>La honestidad crítica es más valiosa que la amabilidad</li>
+          <li>Leer despacio es un acto político</li>
+        </ul>
+      </div>
+
+      <div class="perfil-box">
+        <h3>Quién escribe</h3>
+        <div class="perfil-nombre">Mikel Castán</div>
+        <p class="perfil-desc">Lector de cómic europeo y de autor desde hace más de veinte años. Coleccionista, catalogador y crítico aficionado desde Santander, Cantabria. El Peso del Trazo es su proyecto de divulgación crítica sobre el noveno arte.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">El <span>Peso</span> del Trazo</div>
+      <p class="footer-desc">Crítica de cómic europeo y de autor. Leer con los ojos abiertos desde Cantabria.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Secciones</h4>
+      <ul>
+        <li><a href="resenas.html">Reseñas</a></li>
+        <li><a href="ensayos.html">Ensayos</a></li>
+        <li><a href="biblioteca.html">Biblioteca</a></li>
+        <li><a href="sobre.html">Sobre el proyecto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="contacto.html">Escribir</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Redes</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Bluesky</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span>
+    <div class="footer-redes">
+      <a href="#">@elpesodeltrazo</a>
+      <a href="#">elpesodeltrazo.com</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

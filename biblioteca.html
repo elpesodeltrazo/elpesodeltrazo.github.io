@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca — El Peso del Trazo</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .biblioteca-intro {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-bottom: 64px;
+  }
+  .biblioteca-texto {
+    font-size: 20px;
+    line-height: 1.9;
+    color: var(--texto-suave);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .stat-box {
+    background: var(--crema);
+    border: 1px solid var(--borde);
+    padding: 32px 28px;
+  }
+  .stat-box.acento { background: var(--acento); border-color: var(--acento); }
+  .stat-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--texto);
+    margin-bottom: 8px;
+  }
+  .stat-box.acento .stat-num { color: var(--crema); }
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+  }
+  .stat-box.acento .stat-label { color: rgba(255,255,255,0.7); }
+  .tabla-biblioteca {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .tabla-biblioteca th {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--borde);
+    background: var(--crema);
+  }
+  .tabla-biblioteca td {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    padding: 16px;
+    border-bottom: 1px solid var(--borde);
+    color: var(--texto);
+  }
+  .tabla-biblioteca tr:hover td { background: var(--azul-palido); }
+  .tabla-biblioteca .titulo-col { font-style: italic; font-weight: 500; }
+  .stars-small { color: var(--acento); font-size: 11px; letter-spacing: 1px; }
+  @media(max-width:900px){
+    .biblioteca-intro { grid-template-columns: 1fr; gap: 40px; }
+    .tabla-biblioteca { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo"></a>
+  <ul class="nav-links">
+    <li><a href="resenas.html">Reseñas</a></li>
+    <li><a href="ensayos.html">Ensayos</a></li>
+    <li><a href="biblioteca.html" style="color:var(--acento)">Biblioteca</a></li>
+    <li><a href="sobre.html">Sobre el proyecto</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-eyebrow">Colección personal</div>
+  <h1>La <em>Biblioteca</em></h1>
+  <p>Más de 300 títulos catalogados, leídos y anotados. No es una base de datos: es un mapa de un lector.</p>
+</div>
+
+<div class="main-content">
+
+  <div class="biblioteca-intro">
+    <p class="biblioteca-texto">
+      Esta biblioteca es el resultado de años de lectura sistemática de cómic europeo y de autor. Cada título tiene su razón de estar aquí. Cada elección es un argumento. Los filtros permiten navegar por país, formato y valoración.
+    </p>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-num">300+</div>
+        <div class="stat-label">Títulos</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Países</div>
+      </div>
+      <div class="stat-box acento">
+        <div class="stat-num">★★★★★</div>
+        <div class="stat-label">Imprescindibles</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Autores</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="filtros">
+    <span class="filtro-tag active">Todos</span>
+    <span class="filtro-tag">España</span>
+    <span class="filtro-tag">Francia / Bélgica</span>
+    <span class="filtro-tag">Japón</span>
+    <span class="filtro-tag">EEUU</span>
+    <span class="filtro-tag">⭐⭐⭐⭐⭐ solo</span>
+  </div>
+
+  <!-- Tabla -->
+  <table class="tabla-biblioteca">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Autor/es</th>
+        <th>País</th>
+        <th>Año</th>
+        <th>Editorial</th>
+        <th>Valoración</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="titulo-col">Arrugas</td>
+        <td>Paco Roca</td>
+        <td>España</td>
+        <td>2007</td>
+        <td>Astiberri</td>
+        <td><span class="stars-small">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="titulo-col">Los surcos del azar</td>
+        <td>Paco Roca</td>
+        <td>España</td>
+        <td>2013</td>
+        <td>Astiberri</td>
+        <td><span class="stars-small">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="titulo-col">Persépolis</td>
+        <td>Marjane Satrapi</td>
+        <td>Irán / Francia</td>
+        <td>2000</td>
+        <td>Norma</td>
+        <td><span class="stars-small">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="titulo-col">El almanaque de mi padre</td>
+        <td>Jiro Taniguchi</td>
+        <td>Japón</td>
+        <td>1994</td>
+        <td>Ponent Mon</td>
+        <td><span class="stars-small">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="titulo-col">Maus</td>
+        <td>Art Spiegelman</td>
+        <td>EEUU</td>
+        <td>1991</td>
+        <td>Planeta</td>
+        <td><span class="stars-small">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="titulo-col">Blacksad</td>
+        <td>Díaz Canales / Guarnido</td>
+        <td>España</td>
+        <td>2000</td>
+        <td>Norma</td>
+        <td><span class="stars-small">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="titulo-col">El arte de volar</td>
+        <td>Altarriba / Kim</td>
+        <td>España</td>
+        <td>2009</td>
+        <td>De Ponent</td>
+        <td><span class="stars-small">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="titulo-col">From Hell</td>
+        <td>Moore / Campbell</td>
+        <td>EEUU</td>
+        <td>1999</td>
+        <td>Planeta</td>
+        <td><span class="stars-small">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="titulo-col">Watchmen</td>
+        <td>Moore / Gibbons</td>
+        <td>EEUU</td>
+        <td>1987</td>
+        <td>Planeta</td>
+        <td><span class="stars-small">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="titulo-col">Crónicas de Jerusalén</td>
+        <td>Guy Delisle</td>
+        <td>Canadá</td>
+        <td>2011</td>
+        <td>Astiberri</td>
+        <td><span class="stars-small">★★★★★</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-family:'Space Mono',monospace; font-size:10px; color:var(--texto-suave); margin-top:24px; letter-spacing:0.1em;">
+    Mostrando 10 de 300+ títulos. Catálogo completo próximamente.
+  </p>
+
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">El <span>Peso</span> del Trazo</div>
+      <p class="footer-desc">Crítica de cómic europeo y de autor. Leer con los ojos abiertos desde Cantabria.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Secciones</h4>
+      <ul>
+        <li><a href="resenas.html">Reseñas</a></li>
+        <li><a href="ensayos.html">Ensayos</a></li>
+        <li><a href="biblioteca.html">Biblioteca</a></li>
+        <li><a href="sobre.html">Sobre el proyecto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="contacto.html">Escribir</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Redes</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Bluesky</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span>
+    <div class="footer-redes">
+      <a href="#">@elpesodeltrazo</a>
+      <a href="#">elpesodeltrazo.com</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
