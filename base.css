@@ -111,7 +111,7 @@ nav {
     display: block;
     line-height: 0;
     font-size: 0;
-    margin: 0;
+    margin: -64px 0 0 0;
     padding: 0;
   }
 
@@ -121,23 +121,12 @@ nav {
     display: block;
     margin: 0;
     padding: 0;
-  }
-
-  body.has-banner {
-    padding-top: 0;
-  }
-
-  body.has-banner nav + .banner-global {
     margin-top: 64px;
-  }
-
-  body.has-banner .page-header {
-    padding-top: 40px;
   }
 
 /* ── PAGE HEADER ── */
 .page-header {
-  padding: 120px 80px 64px;
+  padding: 48px 80px 48px;
   background: var(--fondo-alt);
   border-bottom: 1px solid var(--borde);
 }
