@@ -13,14 +13,14 @@ const RESENAS = [
     pais: 'España',
     pais_key: 'españa',
     imagen: 'https://covers.openlibrary.org/b/isbn/9788496619395-L.jpg',
-    extracto: 'Una de las miradas más lúcidas sobre el Alzheimer en el cómic español. Paco Roca lleva a la máxima expresión el dibujo como medio para crear sensaciones.',
+    extracto: 'Una de las miradas más lúcidas sobre el Alzheimer en el cómic español. Paco Roca desarrolla magistralmente en sus paginas una historia sobre el olvido y la identidad.',
     premio: 'Premio Nacional del Cómic 2008',
     goodreads: '4.32',
-    metricas: { guion: 5, dibujo: 4, lenguaje: 5, relevancia: 5, impacto: 5 },
-    cuerpo: `<p>Hay cómics que no se leen: se padecen. <em>Arrugas</em> es uno de ellos. Paco Roca construye con un trazo aparentemente sencillo una de las miradas más lúcidas y compasivas sobre el Alzheimer que ha dado el cómic español. El dibujo no ilustra la pérdida: la encarna.</p>
+    metricas: { guion: 4, dibujo: 4, lenguaje: 5, relevancia: 5, impacto: 4 },
+    cuerpo: `<p> Hay cómics que te dejan un brochazo en el corazón despues de leerlos, y años despues, los recuerdas por esa sensación que dejaron. <em>Arrugas</em> es uno de ellos. Paco Roca construye con un trazo aparentemente sencillo, casi naif,  una de las miradas más lúcidas y compasivas sobre el Alzheimer que ha dado el cómic español. </p>
     <p>La historia arranca con Emilio, un antiguo bancario que comienza a perder la memoria. Su hijo lo ingresa en una residencia de mayores. Lo que podría ser un melodrama sobre la vejez se convierte en una reflexión sobre la dignidad, la identidad y lo que queda de nosotros cuando el tiempo nos erosiona.</p>
-    <blockquote><p>El gran hallazgo formal es la manera en que Roca utiliza el blanco de la página. A medida que el Alzheimer avanza, las viñetas se vacían. Los fondos desaparecen, los personajes se difuminan.</p></blockquote>
-    <p>Miguel, el compañero de habitación, funciona como contrapunto perfecto: lúcido, pícaro, superviviente. La relación entre ambos es el corazón del libro, gestionada con una economía emocional admirable.</p>
+    <blockquote><p> Roca utiliza el dibujo como medio para olvidar. A medida que el Alzheimer avanza, las viñetas se vacían. Los fondos desaparecen, los personajes se difuminan.</p></blockquote>
+    <p> Miguel, el compañero de habitación, funciona como contrapunto perfecto: lúcido, pícaro, superviviente, lo cual acrecienta nuestra empatia por Emilio.</p>
     <p><em>Arrugas</em> ganó el Premio Nacional del Cómic en 2008 y fue adaptada al cine. Lo que sorprende, relectura tras relectura, es que un libro tan pequeño pueda contener tanto.</p>`
   },
   {
