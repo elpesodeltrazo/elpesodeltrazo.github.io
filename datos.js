@@ -13,7 +13,7 @@ const RESENAS = [
     pais: 'España',
     pais_key: 'españa',
     imagen: 'https://covers.openlibrary.org/b/isbn/9788496619395-L.jpg',
-    extracto: 'Una de las miradas más lúcidas sobre el Alzheimer en el cómic español. El dibujo no ilustra la pérdida: la encarna.',
+    extracto: 'Una de las miradas más lúcidas sobre el Alzheimer en el cómic español. Paco Roca lleva a la máxima expresión el dibujo como medio para crear sensaciones.',
     premio: 'Premio Nacional del Cómic 2008',
     goodreads: '4.32',
     metricas: { guion: 5, dibujo: 4, lenguaje: 5, relevancia: 5, impacto: 5 },
