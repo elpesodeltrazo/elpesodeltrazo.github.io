@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reseña — El Peso del Trazo</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .resena-layout { display: grid; grid-template-columns: 280px 1fr; gap: 64px; padding: 80px; align-items: start; }
+  .resena-lateral { position: sticky; top: 88px; }
+  .resena-portada { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; border: 1px solid var(--borde); margin-bottom: 20px; background: var(--fondo-alt); }
+  .resena-ficha { background: var(--crema); border: 1px solid var(--borde); border-left: 3px solid var(--acento); padding: 20px; margin-bottom: 16px; }
+  .ficha-item { margin-bottom: 12px; }
+  .ficha-item:last-child { margin-bottom: 0; }
+  .ficha-item label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-suave); display: block; margin-bottom: 2px; }
+  .ficha-item span { font-family: 'EB Garamond', serif; font-size: 16px; color: var(--texto); }
+  .metricas-box { background: var(--fondo-oscuro); padding: 20px; }
+  .metricas-titulo { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #7a7268; margin-bottom: 16px; display: block; }
+  .metrica-fila { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; margin-bottom: 12px; }
+  .metrica-nombre { font-family: 'EB Garamond', serif; font-size: 14px; color: var(--fondo-alt); display: block; margin-bottom: 4px; }
+  .metrica-track { height: 4px; background: #3a3730; border-radius: 2px; overflow: hidden; }
+  .metrica-fill { height: 100%; border-radius: 2px; background: var(--acento); }
+  .metrica-valor { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: var(--acento); min-width: 20px; text-align: right; }
+  .metricas-total { margin-top: 16px; padding-top: 14px; border-top: 1px solid #3a3730; display: flex; justify-content: space-between; align-items: center; }
+  .metricas-total-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #7a7268; }
+  .metricas-total-valor { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--acento); }
+  .metricas-total-max { font-family: 'Space Mono', monospace; font-size: 9px; color: #5a5248; margin-left: 3px; }
+  .volver { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-suave); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; transition: color 0.2s; }
+  .volver:hover { color: var(--acento); }
+  .volver::before { content: '←'; }
+  .resena-eyebrow { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acento); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .resena-eyebrow::before { content: ''; display: block; width: 22px; height: 1px; background: var(--acento-claro); }
+  .resena-titulo-principal { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 900; line-height: 1.05; color: var(--texto); margin-bottom: 8px; }
+  .resena-titulo-principal em { font-style: italic; color: var(--acento); }
+  .resena-autor-principal { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 40px; display: block; }
+  .resena-cuerpo p { font-family: 'EB Garamond', serif; font-size: 20px; line-height: 1.9; color: var(--texto); margin-bottom: 28px; }
+  .resena-cuerpo p:first-child::first-letter { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 900; float: left; line-height: 0.78; margin: 10px 12px 0 0; color: var(--acento); }
+  .resena-cuerpo blockquote { border-left: 3px solid var(--acento-claro); padding: 14px 22px; margin: 36px 0; background: var(--crema); }
+  .resena-cuerpo blockquote p { font-style: italic; color: var(--texto-suave); margin-bottom: 0; font-size: 19px; }
+  .resena-cuerpo blockquote p::first-letter { float: none; font-size: inherit; color: inherit; margin: 0; }
+  @media(max-width:900px){ .resena-layout{grid-template-columns:1fr; gap:32px; padding:24px} .resena-lateral{position:static} }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo" onerror="this.style.display='none'"></a>
+  <ul class="nav-links">
+    <li><a href="resenas.html" class="nav-activo">Reseñas</a></li>
+    <li><a href="ensayos.html">Ensayos</a></li>
+    <li><a href="biblioteca.html">Biblioteca</a></li>
+    <li><a href="sobre.html">Sobre el proyecto</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter</a></li>
+  </ul>
+</nav>
+
+<div class="banner-global"><img src="banner.png" alt="El Peso del Trazo"></div>
+<div id="page-header-resena"></div>
+
+<div class="resena-layout">
+  <div class="resena-lateral" id="lateral"></div>
+  <div id="principal"></div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><div class="footer-logo">El <span>Peso</span> del Trazo</div><p class="footer-desc">Crítica de cómic europeo y de autor desde Cantabria.</p></div>
+    <div class="footer-col"><h4>Secciones</h4><ul><li><a href="resenas.html">Reseñas</a></li><li><a href="ensayos.html">Ensayos</a></li><li><a href="biblioteca.html">Biblioteca</a></li><li><a href="sobre.html">Sobre el proyecto</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="contacto.html">Escribir</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+    <div class="footer-col"><h4>Redes</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Bluesky</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span><div class="footer-redes"><a href="#">@elpesodeltrazo</a><a href="#">elpesodeltrazo.com</a></div></div>
+</footer>
+
+<script src="datos.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const r = RESENAS.find(x => x.id === id);
+
+  if (!r) {
+    document.getElementById('principal').innerHTML = '<p>Reseña no encontrada. <a href="resenas.html">Volver a reseñas</a></p>';
+  } else {
+    document.title = r.titulo + ' — El Peso del Trazo';
+    const total = Object.values(r.metricas).reduce((a,b)=>a+b,0);
+
+    document.getElementById('page-header-resena').innerHTML = `
+      <div class="page-header">
+        <div class="page-header-eyebrow">Reseña — ${r.pais} · ${r.año}</div>
+        <h1><em>${r.titulo}</em></h1>
+        <p>${r.autor} · ${r.editorial} · ${r.premio || ''}</p>
+      </div>`;
+
+    const metricas = ['guion','dibujo','lenguaje','relevancia','impacto'];
+    const nombres = ['Guion y narrativa','Dibujo y estilo','Lenguaje del cómic','Relevancia y ambición','Impacto personal'];
+
+    document.getElementById('lateral').innerHTML = `
+      <img class="resena-portada" src="${r.imagen}" alt="Portada de ${r.titulo}" onerror="this.style.background='var(--fondo-alt)'">
+      <div class="resena-ficha">
+        <div class="ficha-item"><label>Autor</label><span>${r.autor}</span></div>
+        <div class="ficha-item"><label>Editorial</label><span>${r.editorial}</span></div>
+        <div class="ficha-item"><label>Año</label><span>${r.año}</span></div>
+        <div class="ficha-item"><label>País</label><span>${r.pais}</span></div>
+        ${r.premio ? `<div class="ficha-item"><label>Premio</label><span>${r.premio}</span></div>` : ''}
+        ${r.goodreads ? `<div class="ficha-item"><label>Goodreads</label><span>${r.goodreads} / 5</span></div>` : ''}
+      </div>
+      <div class="metricas-box">
+        <span class="metricas-titulo">Valoración por criterios</span>
+        ${metricas.map((k,i) => `
+          <div class="metrica-fila">
+            <div><span class="metrica-nombre">${nombres[i]}</span>
+            <div class="metrica-track"><div class="metrica-fill" style="width:${r.metricas[k]*20}%"></div></div></div>
+            <span class="metrica-valor">${r.metricas[k]}</span>
+          </div>`).join('')}
+        <div class="metricas-total">
+          <span class="metricas-total-label">Total</span>
+          <div><span class="metricas-total-valor">${total}</span><span class="metricas-total-max">/ 25</span></div>
+        </div>
+      </div>
+      <a href="resenas.html" class="volver">Volver a reseñas</a>`;
+
+    document.getElementById('principal').innerHTML = `
+      <div class="resena-eyebrow">Reseña — ${r.pais} · ${r.editorial} · ${r.año}</div>
+      <h1 class="resena-titulo-principal"><em>${r.titulo}</em></h1>
+      <span class="resena-autor-principal">Por Mikel Castán</span>
+      <div class="resena-cuerpo">${r.cuerpo}</div>`;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ensayo — El Peso del Trazo</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .ensayo-layout { max-width: 760px; margin: 0 auto; padding: 80px 80px; }
+  .ensayo-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--borde); }
+  .ensayo-tag-badge { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--acento); padding: 5px 12px; border: 1px solid var(--acento-claro); }
+  .ensayo-fecha { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--texto-suave); letter-spacing: 0.1em; }
+  .ensayo-titulo-principal { font-family: 'Playfair Display', serif; font-size: clamp(30px, 4vw, 48px); font-weight: 900; line-height: 1.1; color: var(--texto); margin-bottom: 16px; }
+  .ensayo-subtitulo-principal { font-family: 'EB Garamond', serif; font-size: 22px; font-style: italic; color: var(--texto-suave); line-height: 1.7; margin-bottom: 48px; border-left: 2px solid var(--acento-claro); padding-left: 20px; }
+  .ensayo-cuerpo p { font-family: 'EB Garamond', serif; font-size: 20px; line-height: 1.9; color: var(--texto); margin-bottom: 28px; }
+  .ensayo-cuerpo p:first-child::first-letter { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 900; float: left; line-height: 0.78; margin: 10px 12px 0 0; color: var(--acento); }
+  .ensayo-cuerpo blockquote { border-left: 3px solid var(--acento-claro); padding: 14px 22px; margin: 36px 0; background: var(--crema); }
+  .ensayo-cuerpo blockquote p { font-style: italic; color: var(--texto-suave); margin-bottom: 0; font-size: 19px; }
+  .ensayo-cuerpo blockquote p::first-letter { float: none; font-size: inherit; color: inherit; margin: 0; }
+  .volver { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-suave); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-top: 48px; transition: color 0.2s; }
+  .volver:hover { color: var(--acento); }
+  .volver::before { content: '←'; }
+  @media(max-width:900px){ .ensayo-layout{padding:40px 24px} }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo" onerror="this.style.display='none'"></a>
+  <ul class="nav-links">
+    <li><a href="resenas.html">Reseñas</a></li>
+    <li><a href="ensayos.html" class="nav-activo">Ensayos</a></li>
+    <li><a href="biblioteca.html">Biblioteca</a></li>
+    <li><a href="sobre.html">Sobre el proyecto</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter</a></li>
+  </ul>
+</nav>
+
+<div class="banner-global"><img src="banner.png" alt="El Peso del Trazo"></div>
+<div id="page-header-ensayo"></div>
+
+<div class="ensayo-layout" id="ensayo-contenido"></div>
+
+<footer>
+  <div class="footer-top">
+    <div><div class="footer-logo">El <span>Peso</span> del Trazo</div><p class="footer-desc">Crítica de cómic europeo y de autor desde Cantabria.</p></div>
+    <div class="footer-col"><h4>Secciones</h4><ul><li><a href="resenas.html">Reseñas</a></li><li><a href="ensayos.html">Ensayos</a></li><li><a href="biblioteca.html">Biblioteca</a></li><li><a href="sobre.html">Sobre el proyecto</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="contacto.html">Escribir</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+    <div class="footer-col"><h4>Redes</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Bluesky</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span><div class="footer-redes"><a href="#">@elpesodeltrazo</a><a href="#">elpesodeltrazo.com</a></div></div>
+</footer>
+
+<script src="datos.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const e = ENSAYOS.find(x => x.id === id);
+
+  if (!e) {
+    document.getElementById('ensayo-contenido').innerHTML = '<p>Ensayo no encontrado. <a href="ensayos.html">Volver a ensayos</a></p>';
+  } else {
+    document.title = e.titulo + ' — El Peso del Trazo';
+    document.getElementById('page-header-ensayo').innerHTML = `
+      <div class="page-header">
+        <div class="page-header-eyebrow">${e.tag} · ${e.fecha}</div>
+        <h1>${e.titulo}</h1>
+      </div>`;
+    document.getElementById('ensayo-contenido').innerHTML = `
+      <div class="ensayo-meta">
+        <span class="ensayo-tag-badge">${e.tag}</span>
+        <span class="ensayo-fecha">${e.fecha}</span>
+      </div>
+      <h1 class="ensayo-titulo-principal">${e.titulo}</h1>
+      <p class="ensayo-subtitulo-principal">${e.subtitulo}</p>
+      <div class="ensayo-cuerpo">${e.cuerpo}</div>
+      <a href="ensayos.html" class="volver">Volver a ensayos</a>`;
+  }
+</script>
+</body>
+</html>

@@ -6,78 +6,26 @@
 <title>Ensayos — El Peso del Trazo</title>
 <link rel="stylesheet" href="base.css">
 <style>
-  .ensayos-list { display: flex; flex-direction: column; gap: 2px; }
-  .ensayo-card {
-    background: var(--crema);
-    border: 1px solid var(--borde);
-    padding: 48px;
-    text-decoration: none;
-    color: inherit;
-    display: grid;
-    grid-template-columns: 80px 1fr auto;
-    gap: 0 40px;
-    align-items: start;
-    transition: background 0.2s;
-    position: relative;
-  }
+  .ensayos-contenido { padding: 64px 80px; background: var(--fondo); }
+  .ensayos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+  .ensayo-card { background: var(--crema); text-decoration: none; color: inherit; display: block; border: 1px solid var(--borde); padding: 40px; transition: background 0.2s; position: relative; }
   .ensayo-card:hover { background: var(--azul-palido); }
-  .ensayo-num {
-    font-family: 'Space Mono', monospace;
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--borde-fuerte);
-    line-height: 1;
-  }
-  .ensayo-body {}
-  .ensayo-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--acento);
-    border: 1px solid var(--acento-claro);
-    padding: 5px 10px;
-    display: inline-block;
-    margin-bottom: 16px;
-  }
-  .ensayo-titulo {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--texto);
-    margin-bottom: 12px;
-  }
-  .ensayo-subtitulo {
-    font-family: 'EB Garamond', Georgia, serif;
-    font-size: 18px;
-    font-style: italic;
-    color: var(--texto-suave);
-    line-height: 1.65;
-  }
-  .ensayo-arrow {
-    font-size: 24px;
-    color: var(--acento);
-    opacity: 0;
-    transition: opacity 0.2s, transform 0.2s;
-    transform: translateX(-8px);
-    align-self: center;
-  }
+  .ensayo-num { font-family: 'Space Mono', monospace; font-size: 32px; font-weight: 700; color: var(--borde-fuerte); line-height: 1; margin-bottom: 16px; }
+  .ensayo-tag-badge { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--acento); padding: 4px 10px; border: 1px solid var(--acento-claro); display: inline-block; margin-bottom: 14px; }
+  .ensayo-titulo { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; line-height: 1.2; color: var(--texto); margin-bottom: 12px; }
+  .ensayo-subtitulo { font-family: 'EB Garamond', serif; font-size: 17px; font-style: italic; color: var(--texto-suave); line-height: 1.7; margin-bottom: 20px; }
+  .ensayo-fecha { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--texto-suave); letter-spacing: 0.1em; }
+  .ensayo-arrow { position: absolute; bottom: 40px; right: 40px; font-size: 20px; color: var(--acento); opacity: 0; transition: opacity 0.2s, transform 0.2s; transform: translateX(-6px); }
   .ensayo-card:hover .ensayo-arrow { opacity: 1; transform: translateX(0); }
-  @media(max-width:900px){
-    .ensayo-card { grid-template-columns: 1fr; gap: 16px; }
-    .ensayo-num { font-size: 32px; }
-    .ensayo-arrow { display: none; }
-  }
+  @media(max-width:900px){ .ensayos-contenido{padding:40px 24px} .ensayos-grid{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
-
 <nav>
-  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo"></a>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo" onerror="this.style.display='none'"></a>
   <ul class="nav-links">
     <li><a href="resenas.html">Reseñas</a></li>
-    <li><a href="ensayos.html" style="color:var(--acento)">Ensayos</a></li>
+    <li><a href="ensayos.html" class="nav-activo">Ensayos</a></li>
     <li><a href="biblioteca.html">Biblioteca</a></li>
     <li><a href="sobre.html">Sobre el proyecto</a></li>
     <li><a href="contacto.html">Contacto</a></li>
@@ -85,121 +33,42 @@
   </ul>
 </nav>
 
-<!-- BANNER -->
-<div class="banner-global">
-  <img src="banner.png" alt="El Peso del Trazo">
-</div>
+<div class="banner-global"><img src="banner.png" alt="El Peso del Trazo"></div>
 
 <div class="page-header">
   <div class="page-header-eyebrow">Artículos de fondo</div>
   <h1>Ensayos</h1>
-  <p>Análisis de autores, corrientes estéticas e historia del cómic europeo. El cómic como forma artística seria.</p>
+  <p>Análisis de autores, corrientes estéticas e historia del cómic europeo.</p>
 </div>
 
-<div class="main-content">
-  <div class="ensayos-list">
-
-    <a href="#" class="ensayo-card">
-      <div class="ensayo-num">01</div>
-      <div class="ensayo-body">
-        <span class="ensayo-tag">Análisis de autor</span>
-        <h3 class="ensayo-titulo">El silencio entre viñetas: Taniguchi y la narrativa del espacio vacío</h3>
-        <p class="ensayo-subtitulo">Cómo el maestro japonés convirtió los momentos de pausa en el verdadero motor de sus historias. Una lectura de su obra a través de la teoría del intervalo.</p>
-      </div>
-      <div class="ensayo-arrow">→</div>
-    </a>
-
-    <a href="#" class="ensayo-card">
-      <div class="ensayo-num">02</div>
-      <div class="ensayo-body">
-        <span class="ensayo-tag">Manifiesto</span>
-        <h3 class="ensayo-titulo">Por qué el cómic de autor es la gran literatura del siglo XXI</h3>
-        <p class="ensayo-subtitulo">La imagen dibujada hace lo que la prosa no puede: narrar desde dentro de la percepción. Un argumento a favor del noveno arte como forma mayor.</p>
-      </div>
-      <div class="ensayo-arrow">→</div>
-    </a>
-
-    <a href="#" class="ensayo-card">
-      <div class="ensayo-num">03</div>
-      <div class="ensayo-body">
-        <span class="ensayo-tag">Industria</span>
-        <h3 class="ensayo-titulo">Astiberri y la construcción de un catálogo con criterio</h3>
-        <p class="ensayo-subtitulo">La editorial vasca que cambió el panorama del cómic adulto en España. Un recorrido por sus veinte años de apuestas inteligentes y necesarias.</p>
-      </div>
-      <div class="ensayo-arrow">→</div>
-    </a>
-
-    <a href="#" class="ensayo-card">
-      <div class="ensayo-num">04</div>
-      <div class="ensayo-body">
-        <span class="ensayo-tag">Historia del cómic</span>
-        <h3 class="ensayo-titulo">La línea clara no es solo un estilo: es una ética narrativa</h3>
-        <p class="ensayo-subtitulo">De Hergé a Joost Swarte: lo que la escuela belga enseña sobre la honestidad del dibujo y la responsabilidad del autor ante el lector.</p>
-      </div>
-      <div class="ensayo-arrow">→</div>
-    </a>
-
-    <a href="#" class="ensayo-card">
-      <div class="ensayo-num">05</div>
-      <div class="ensayo-body">
-        <span class="ensayo-tag">Comparativa</span>
-        <h3 class="ensayo-titulo">Satrapi y Spiegelman: dos formas de hacer memoria con viñetas</h3>
-        <p class="ensayo-subtitulo">Persépolis y Maus comparten la autobiografía y el trauma colectivo como materia. Lo que los diferencia revela dos concepciones del cómic como testimonio.</p>
-      </div>
-      <div class="ensayo-arrow">→</div>
-    </a>
-
-    <a href="#" class="ensayo-card">
-      <div class="ensayo-num">06</div>
-      <div class="ensayo-body">
-        <span class="ensayo-tag">Análisis formal</span>
-        <h3 class="ensayo-titulo">El color como narrador: Moebius y la paleta como personaje</h3>
-        <p class="ensayo-subtitulo">En los mejores trabajos de Moebius, el color no decora: informa, guía y anticipa. Un análisis de su uso del color en El Incal y El Garaje Hermético.</p>
-      </div>
-      <div class="ensayo-arrow">→</div>
-    </a>
-
-  </div>
+<div class="ensayos-contenido">
+  <div class="ensayos-grid" id="ensayos-grid"></div>
 </div>
 
 <footer>
   <div class="footer-top">
-    <div>
-      <div class="footer-logo">El <span>Peso</span> del Trazo</div>
-      <p class="footer-desc">Crítica de cómic europeo y de autor. Leer con los ojos abiertos desde Cantabria.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Secciones</h4>
-      <ul>
-        <li><a href="resenas.html">Reseñas</a></li>
-        <li><a href="ensayos.html">Ensayos</a></li>
-        <li><a href="biblioteca.html">Biblioteca</a></li>
-        <li><a href="sobre.html">Sobre el proyecto</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contacto</h4>
-      <ul>
-        <li><a href="contacto.html">Escribir</a></li>
-        <li><a href="newsletter.html">Newsletter</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Redes</h4>
-      <ul>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Bluesky</a></li>
-      </ul>
-    </div>
+    <div><div class="footer-logo">El <span>Peso</span> del Trazo</div><p class="footer-desc">Crítica de cómic europeo y de autor desde Cantabria.</p></div>
+    <div class="footer-col"><h4>Secciones</h4><ul><li><a href="resenas.html">Reseñas</a></li><li><a href="ensayos.html">Ensayos</a></li><li><a href="biblioteca.html">Biblioteca</a></li><li><a href="sobre.html">Sobre el proyecto</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="contacto.html">Escribir</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+    <div class="footer-col"><h4>Redes</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Bluesky</a></li></ul></div>
   </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span>
-    <div class="footer-redes">
-      <a href="#">@elpesodeltrazo</a>
-      <a href="#">elpesodeltrazo.com</a>
-    </div>
-  </div>
+  <div class="footer-bottom"><span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span><div class="footer-redes"><a href="#">@elpesodeltrazo</a><a href="#">elpesodeltrazo.com</a></div></div>
 </footer>
 
+<script src="datos.js"></script>
+<script>
+  const grid = document.getElementById('ensayos-grid');
+  ENSAYOS.forEach((e, i) => {
+    grid.innerHTML += `
+      <a href="ensayo.html?id=${e.id}" class="ensayo-card">
+        <div class="ensayo-num">0${i+1}</div>
+        <span class="ensayo-tag-badge">${e.tag}</span>
+        <h2 class="ensayo-titulo">${e.titulo}</h2>
+        <p class="ensayo-subtitulo">${e.subtitulo}</p>
+        <span class="ensayo-fecha">${e.fecha}</span>
+        <span class="ensayo-arrow">→</span>
+      </a>`;
+  });
+</script>
 </body>
 </html>

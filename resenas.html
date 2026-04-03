@@ -6,190 +6,58 @@
 <title>Reseñas — El Peso del Trazo</title>
 <link rel="stylesheet" href="base.css">
 <style>
-  /* ── CRITERIOS ── */
-  .criterios-bloque {
-    background: var(--fondo-oscuro);
-    padding: 64px 80px;
-  }
+  .criterios-bloque { background: var(--fondo-oscuro); padding: 56px 80px; }
+  .criterios-intro { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: start; }
+  .criterios-intro h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; font-style: italic; color: var(--fondo); margin-bottom: 12px; }
+  .criterios-intro p { font-family: 'EB Garamond', serif; font-size: 16px; color: #9a9288; line-height: 1.75; }
+  .criterios-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; }
+  .criterio-item { background: #1e1c18; padding: 20px 16px; border-top: 3px solid transparent; }
+  .criterio-item:nth-child(1){border-top-color:#c17f4a} .criterio-item:nth-child(2){border-top-color:#8aa4b8} .criterio-item:nth-child(3){border-top-color:#8fa896} .criterio-item:nth-child(4){border-top-color:#b8a0c8} .criterio-item:nth-child(5){border-top-color:#c8a878}
+  .criterio-num { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: #4a4740; display: block; margin-bottom: 8px; }
+  .criterio-nombre { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; color: var(--fondo); margin-bottom: 6px; }
+  .criterio-desc { font-family: 'EB Garamond', serif; font-size: 13px; color: #7a7268; line-height: 1.5; }
+  .criterio-max { font-family: 'Space Mono', monospace; font-size: 9px; color: #4a4740; margin-top: 10px; display: block; }
 
-  .criterios-intro {
-    display: grid;
-    grid-template-columns: 1fr 1.8fr;
-    gap: 80px;
-    align-items: start;
-  }
+  .resenas-contenido { padding: 56px 80px; background: var(--fondo); }
+  .filtros-wrap { display: flex; gap: 32px; margin-bottom: 40px; flex-wrap: wrap; }
+  .filtros-grupo { display: flex; flex-direction: column; gap: 8px; }
+  .filtros-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-suave); }
+  .filtros { display: flex; flex-wrap: wrap; gap: 6px; }
+  .filtro-tag { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 7px 14px; border: 1px solid var(--borde-fuerte); color: var(--texto-suave); cursor: pointer; transition: all 0.2s; background: var(--crema); }
+  .filtro-tag:hover, .filtro-tag.active { background: var(--acento); color: var(--crema); border-color: var(--acento); }
 
-  .criterios-titulo-bloque h2 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 32px;
-    font-weight: 900;
-    font-style: italic;
-    color: var(--fondo);
-    line-height: 1.15;
-    margin-bottom: 16px;
-  }
-
-  .criterios-titulo-bloque p {
-    font-family: 'EB Garamond', Georgia, serif;
-    font-size: 17px;
-    color: #9a9288;
-    line-height: 1.75;
-  }
-
-  .criterios-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2px;
-  }
-
-  .criterio-item {
-    background: #1e1c18;
-    padding: 24px 18px;
-    border-top: 3px solid transparent;
-  }
-
-  .criterio-item:nth-child(1) { border-top-color: #c17f4a; }
-  .criterio-item:nth-child(2) { border-top-color: #8aa4b8; }
-  .criterio-item:nth-child(3) { border-top-color: #8fa896; }
-  .criterio-item:nth-child(4) { border-top-color: #b8a0c8; }
-  .criterio-item:nth-child(5) { border-top-color: #c8a878; }
-
-  .criterio-num { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: #4a4740; margin-bottom: 10px; display: block; }
-  .criterio-nombre { font-family: 'Playfair Display', Georgia, serif; font-size: 15px; font-weight: 700; color: var(--fondo); margin-bottom: 8px; line-height: 1.2; }
-  .criterio-desc { font-family: 'EB Garamond', Georgia, serif; font-size: 13px; color: #7a7268; line-height: 1.6; }
-  .criterio-max { font-family: 'Space Mono', monospace; font-size: 9px; color: #4a4740; letter-spacing: 0.1em; margin-top: 12px; display: block; }
-
-  /* ── CONTENIDO ── */
-  .resenas-contenido { padding: 64px 80px; background: var(--fondo); }
-
-  .filtros-wrap {
-    display: flex;
-    gap: 24px;
-    margin-bottom: 48px;
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-
-  .filtros-grupo {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .filtros-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--texto-suave);
-  }
-
-  .filtros {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .filtro-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 7px 14px;
-    border: 1px solid var(--borde-fuerte);
-    color: var(--texto-suave);
-    cursor: pointer;
-    transition: all 0.2s;
-    background: var(--crema);
-  }
-
-  .filtro-tag:hover, .filtro-tag.active {
-    background: var(--acento);
-    color: var(--crema);
-    border-color: var(--acento);
-  }
-
-  .resenas-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-
-  .resena-card {
-    background: var(--crema);
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    border: 1px solid var(--borde);
-    transition: background 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
+  .resenas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .resena-card { background: var(--crema); text-decoration: none; color: inherit; display: block; border: 1px solid var(--borde); transition: background 0.2s; overflow: hidden; }
   .resena-card:hover { background: var(--azul-palido); }
-
-  .resena-card-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    border-bottom: 1px solid var(--borde);
-    background: var(--fondo-alt);
-  }
-
-  .resena-card-body { padding: 28px 28px 24px; }
-
-  .resena-card::after {
-    content: '→';
-    position: absolute;
-    top: 220px;
-    right: 28px;
-    font-size: 18px;
-    color: var(--acento);
-    opacity: 0;
-    transition: opacity 0.2s, transform 0.2s;
-    transform: translateX(-4px);
-  }
-
-  .resena-card:hover::after { opacity: 1; transform: translateX(0); }
-
-  .resena-pais { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 10px; }
-  .resena-titulo { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 700; font-style: italic; line-height: 1.2; color: var(--texto); margin-bottom: 6px; }
-  .resena-autor { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--acento); text-transform: uppercase; margin-bottom: 14px; }
-  .resena-extracto { font-family: 'EB Garamond', Georgia, serif; font-size: 15px; line-height: 1.7; color: var(--texto-suave); margin-bottom: 20px; }
-
-  .resena-criterios { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
-
-  .criterio-barra { display: grid; grid-template-columns: 80px 1fr 18px; align-items: center; gap: 7px; }
-  .criterio-barra-label { font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--texto-suave); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .resena-card-img { width: 100%; height: 200px; object-fit: cover; object-position: center top; display: block; border-bottom: 1px solid var(--borde); background: var(--fondo-alt); }
+  .resena-card-body { padding: 24px; }
+  .resena-pais { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 8px; }
+  .resena-titulo { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 700; font-style: italic; line-height: 1.2; color: var(--texto); margin-bottom: 6px; }
+  .resena-autor { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--acento); text-transform: uppercase; margin-bottom: 12px; }
+  .resena-extracto { font-family: 'EB Garamond', serif; font-size: 15px; line-height: 1.7; color: var(--texto-suave); margin-bottom: 16px; }
+  .criterio-barra { display: grid; grid-template-columns: 80px 1fr 18px; align-items: center; gap: 7px; margin-bottom: 5px; }
+  .criterio-barra-label { font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--texto-suave); }
   .criterio-barra-track { height: 3px; background: var(--borde); border-radius: 2px; overflow: hidden; }
   .criterio-barra-fill { height: 100%; border-radius: 2px; background: var(--acento); }
   .criterio-barra-valor { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--texto-suave); text-align: right; }
-
-  .resena-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--borde); }
+  .resena-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--borde); margin-top: 14px; }
   .resena-total-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-suave); }
-  .resena-total-valor { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 900; color: var(--acento); }
+  .resena-total-valor { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: var(--acento); }
   .resena-total-max { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--texto-suave); margin-left: 2px; }
-
   .contador { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--texto-suave); letter-spacing: 0.1em; margin-bottom: 16px; }
 
   @media(max-width:900px){
-    .criterios-bloque { padding: 48px 24px; }
-    .criterios-intro { grid-template-columns: 1fr; gap: 40px; }
-    .criterios-grid { grid-template-columns: 1fr 1fr; }
-    .resenas-contenido { padding: 48px 24px; }
-    .resenas-grid { grid-template-columns: 1fr; }
-    .filtros-wrap { flex-direction: column; gap: 16px; }
+    .criterios-bloque{padding:40px 24px} .criterios-intro{grid-template-columns:1fr; gap:32px}
+    .criterios-grid{grid-template-columns:1fr 1fr} .resenas-contenido{padding:40px 24px}
+    .resenas-grid{grid-template-columns:1fr} .filtros-wrap{flex-direction:column; gap:16px}
   }
 </style>
 </head>
-<body class="has-banner">
-
+<body>
 <nav>
-  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo"></a>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo" onerror="this.style.display='none'"></a>
   <ul class="nav-links">
-    <li><a href="resenas.html" style="color:var(--acento)">Reseñas</a></li>
+    <li><a href="resenas.html" class="nav-activo">Reseñas</a></li>
     <li><a href="ensayos.html">Ensayos</a></li>
     <li><a href="biblioteca.html">Biblioteca</a></li>
     <li><a href="sobre.html">Sobre el proyecto</a></li>
@@ -198,284 +66,117 @@
   </ul>
 </nav>
 
-<div class="banner-global">
-  <img src="banner.png" alt="El Peso del Trazo">
-</div>
+<div class="banner-global"><img src="banner.png" alt="El Peso del Trazo"></div>
 
 <div class="page-header">
   <div class="page-header-eyebrow">Todas las reseñas</div>
   <h1>Reseñas</h1>
-  <p>Lecturas argumentadas de cómic europeo y de autor. Cada obra evaluada con cinco criterios independientes.</p>
+  <p>Lecturas argumentadas de cómic europeo y de autor. Cinco criterios, suma máxima de 25.</p>
 </div>
 
-<!-- CRITERIOS -->
 <div class="criterios-bloque">
   <div class="criterios-intro">
-    <div class="criterios-titulo-bloque">
+    <div>
       <h2>Cómo evaluamos</h2>
-      <p>Cinco criterios del 1 al 5. Suma máxima de 25. Cada dimensión tiene su propio peso.</p>
+      <p>Cinco criterios del 1 al 5. Cada dimensión tiene su propio peso.</p>
     </div>
     <div class="criterios-grid">
-      <div class="criterio-item">
-        <span class="criterio-num">01</span>
-        <div class="criterio-nombre">Guion y narrativa</div>
-        <p class="criterio-desc">Solidez de la historia, estructura y ritmo.</p>
-        <span class="criterio-max">Máx. 5 pts</span>
-      </div>
-      <div class="criterio-item">
-        <span class="criterio-num">02</span>
-        <div class="criterio-nombre">Dibujo y estilo</div>
-        <p class="criterio-desc">Calidad del trazo y originalidad visual.</p>
-        <span class="criterio-max">Máx. 5 pts</span>
-      </div>
-      <div class="criterio-item">
-        <span class="criterio-num">03</span>
-        <div class="criterio-nombre">Lenguaje del cómic</div>
-        <p class="criterio-desc">Uso de viñetas, silencios y composición.</p>
-        <span class="criterio-max">Máx. 5 pts</span>
-      </div>
-      <div class="criterio-item">
-        <span class="criterio-num">04</span>
-        <div class="criterio-nombre">Relevancia</div>
-        <p class="criterio-desc">Ambición y aportación al género.</p>
-        <span class="criterio-max">Máx. 5 pts</span>
-      </div>
-      <div class="criterio-item">
-        <span class="criterio-num">05</span>
-        <div class="criterio-nombre">Impacto personal</div>
-        <p class="criterio-desc">La dimensión subjetiva y honesta.</p>
-        <span class="criterio-max">Máx. 5 pts</span>
-      </div>
+      <div class="criterio-item"><span class="criterio-num">01</span><div class="criterio-nombre">Guion y narrativa</div><p class="criterio-desc">Solidez de la historia, estructura y ritmo.</p><span class="criterio-max">Máx. 5 pts</span></div>
+      <div class="criterio-item"><span class="criterio-num">02</span><div class="criterio-nombre">Dibujo y estilo</div><p class="criterio-desc">Calidad del trazo y originalidad visual.</p><span class="criterio-max">Máx. 5 pts</span></div>
+      <div class="criterio-item"><span class="criterio-num">03</span><div class="criterio-nombre">Lenguaje del cómic</div><p class="criterio-desc">Viñetas, silencios y composición.</p><span class="criterio-max">Máx. 5 pts</span></div>
+      <div class="criterio-item"><span class="criterio-num">04</span><div class="criterio-nombre">Relevancia</div><p class="criterio-desc">Ambición y aportación al género.</p><span class="criterio-max">Máx. 5 pts</span></div>
+      <div class="criterio-item"><span class="criterio-num">05</span><div class="criterio-nombre">Impacto personal</div><p class="criterio-desc">La dimensión subjetiva y honesta.</p><span class="criterio-max">Máx. 5 pts</span></div>
     </div>
   </div>
 </div>
 
-<!-- RESEÑAS -->
 <div class="resenas-contenido">
-
   <div class="filtros-wrap">
     <div class="filtros-grupo">
       <span class="filtros-label">País</span>
       <div class="filtros" id="filtros-pais">
         <span class="filtro-tag active" onclick="filtrarPais(this,'todos')">Todos</span>
         <span class="filtro-tag" onclick="filtrarPais(this,'españa')">España</span>
+        <span class="filtro-tag" onclick="filtrarPais(this,'francia')">Francia</span>
         <span class="filtro-tag" onclick="filtrarPais(this,'japon')">Japón</span>
-        <span class="filtro-tag" onclick="filtrarPais(this,'iran')">Francia / Irán</span>
         <span class="filtro-tag" onclick="filtrarPais(this,'eeuu')">EEUU</span>
       </div>
     </div>
     <div class="filtros-grupo">
-      <span class="filtros-label">Puntuación total</span>
+      <span class="filtros-label">Puntuación</span>
       <div class="filtros" id="filtros-nota">
         <span class="filtro-tag active" onclick="filtrarNota(this,0)">Todas</span>
         <span class="filtro-tag" onclick="filtrarNota(this,23)">23 — 25 pts</span>
         <span class="filtro-tag" onclick="filtrarNota(this,20)">20 — 22 pts</span>
-        <span class="filtro-tag" onclick="filtrarNota(this,15)">15 — 19 pts</span>
+        <span class="filtro-tag" onclick="filtrarNota(this,0,19)">Hasta 19 pts</span>
       </div>
     </div>
   </div>
-
-  <div class="contador">Mostrando <span id="num-visible">6</span> reseñas</div>
-
-  <div class="resenas-grid" id="grid-resenas">
-
-    <!-- Arrugas -->
-    <a href="resena-arrugas.html" class="resena-card" data-pais="españa" data-nota="24">
-      <img class="resena-card-img" src="https://covers.openlibrary.org/b/isbn/9788496619395-L.jpg" alt="Arrugas" onerror="this.style.background='var(--fondo-alt)';this.style.height='200px'">
-      <div class="resena-card-body">
-        <div class="resena-pais">España · 2007 · Astiberri</div>
-        <h3 class="resena-titulo">Arrugas</h3>
-        <div class="resena-autor">Paco Roca</div>
-        <p class="resena-extracto">Una de las miradas más lúcidas sobre el Alzheimer en el cómic español. El dibujo no ilustra la pérdida: la encarna.</p>
-        <div class="resena-criterios">
-          <div class="criterio-barra"><span class="criterio-barra-label">Guion</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Dibujo</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:80%"></div></div><span class="criterio-barra-valor">4</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Lenguaje</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Relevancia</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Impacto</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-        </div>
-        <div class="resena-footer">
-          <span class="resena-total-label">Total</span>
-          <div><span class="resena-total-valor">24</span><span class="resena-total-max">/ 25</span></div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Persépolis -->
-    <a href="resena-persepolis.html" class="resena-card" data-pais="iran" data-nota="23">
-      <img class="resena-card-img" src="https://covers.openlibrary.org/b/isbn/9788478338436-L.jpg" alt="Persépolis" onerror="this.style.background='var(--fondo-alt)'">
-      <div class="resena-card-body">
-        <div class="resena-pais">Francia / Irán · 2000 · Reservoir Books</div>
-        <h3 class="resena-titulo">Persépolis</h3>
-        <div class="resena-autor">Marjane Satrapi</div>
-        <p class="resena-extracto">El blanco y negro como posición política. La autobiografía más honesta sobre la historia de un país.</p>
-        <div class="resena-criterios">
-          <div class="criterio-barra"><span class="criterio-barra-label">Guion</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Dibujo</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:80%"></div></div><span class="criterio-barra-valor">4</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Lenguaje</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:80%"></div></div><span class="criterio-barra-valor">4</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Relevancia</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Impacto</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-        </div>
-        <div class="resena-footer">
-          <span class="resena-total-label">Total</span>
-          <div><span class="resena-total-valor">23</span><span class="resena-total-max">/ 25</span></div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Los surcos del azar -->
-    <a href="resena-surcos.html" class="resena-card" data-pais="españa" data-nota="24">
-      <img class="resena-card-img" src="https://covers.openlibrary.org/b/isbn/9788467920260-L.jpg" alt="Los surcos del azar" onerror="this.style.background='var(--fondo-alt)'">
-      <div class="resena-card-body">
-        <div class="resena-pais">España · 2013 · Astiberri</div>
-        <h3 class="resena-titulo">Los surcos del azar</h3>
-        <div class="resena-autor">Paco Roca</div>
-        <p class="resena-extracto">Thriller, road movie y elegía a la vez. Roca en su momento más ambicioso y necesario.</p>
-        <div class="resena-criterios">
-          <div class="criterio-barra"><span class="criterio-barra-label">Guion</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Dibujo</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:80%"></div></div><span class="criterio-barra-valor">4</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Lenguaje</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Relevancia</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Impacto</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-        </div>
-        <div class="resena-footer">
-          <span class="resena-total-label">Total</span>
-          <div><span class="resena-total-valor">24</span><span class="resena-total-max">/ 25</span></div>
-        </div>
-      </div>
-    </a>
-
-    <!-- El almanaque de mi padre -->
-    <a href="resena-almanaque.html" class="resena-card" data-pais="japon" data-nota="24">
-      <img class="resena-card-img" src="https://covers.openlibrary.org/b/isbn/9788491742876-L.jpg" alt="El almanaque de mi padre" onerror="this.style.background='var(--fondo-alt)'">
-      <div class="resena-card-body">
-        <div class="resena-pais">Japón · 1994 · Planeta Cómic</div>
-        <h3 class="resena-titulo">El almanaque de mi padre</h3>
-        <div class="resena-autor">Jiro Taniguchi</div>
-        <p class="resena-extracto">El tiempo como materia narrativa. La memoria familiar convertida en meditación sobre lo que heredamos.</p>
-        <div class="resena-criterios">
-          <div class="criterio-barra"><span class="criterio-barra-label">Guion</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Dibujo</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Lenguaje</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Relevancia</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:80%"></div></div><span class="criterio-barra-valor">4</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Impacto</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-        </div>
-        <div class="resena-footer">
-          <span class="resena-total-label">Total</span>
-          <div><span class="resena-total-valor">24</span><span class="resena-total-max">/ 25</span></div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Maus -->
-    <a href="resena-maus.html" class="resena-card" data-pais="eeuu" data-nota="24">
-      <img class="resena-card-img" src="https://covers.openlibrary.org/b/isbn/9788478338443-L.jpg" alt="Maus" onerror="this.style.background='var(--fondo-alt)'">
-      <div class="resena-card-body">
-        <div class="resena-pais">EEUU · 1991 · Planeta Cómic</div>
-        <h3 class="resena-titulo">Maus</h3>
-        <div class="resena-autor">Art Spiegelman</div>
-        <p class="resena-extracto">La obra que cambió la percepción del cómic para siempre. Más humana que cualquier tratado histórico.</p>
-        <div class="resena-criterios">
-          <div class="criterio-barra"><span class="criterio-barra-label">Guion</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Dibujo</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:80%"></div></div><span class="criterio-barra-valor">4</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Lenguaje</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Relevancia</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Impacto</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-        </div>
-        <div class="resena-footer">
-          <span class="resena-total-label">Total</span>
-          <div><span class="resena-total-valor">24</span><span class="resena-total-max">/ 25</span></div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Blacksad -->
-    <a href="resena-blacksad.html" class="resena-card" data-pais="españa" data-nota="21">
-      <img class="resena-card-img" src="https://covers.openlibrary.org/b/isbn/9788498147070-L.jpg" alt="Blacksad" onerror="this.style.background='var(--fondo-alt)'">
-      <div class="resena-card-body">
-        <div class="resena-pais">España · 2000 · Norma</div>
-        <h3 class="resena-titulo">Blacksad</h3>
-        <div class="resena-autor">Díaz Canales / Guarnido</div>
-        <p class="resena-extracto">Noir de animales, América de los 50. Guarnido es uno de los mejores dibujantes de su generación.</p>
-        <div class="resena-criterios">
-          <div class="criterio-barra"><span class="criterio-barra-label">Guion</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:80%"></div></div><span class="criterio-barra-valor">4</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Dibujo</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:100%"></div></div><span class="criterio-barra-valor">5</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Lenguaje</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:80%"></div></div><span class="criterio-barra-valor">4</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Relevancia</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:80%"></div></div><span class="criterio-barra-valor">4</span></div>
-          <div class="criterio-barra"><span class="criterio-barra-label">Impacto</span><div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:80%"></div></div><span class="criterio-barra-valor">4</span></div>
-        </div>
-        <div class="resena-footer">
-          <span class="resena-total-label">Total</span>
-          <div><span class="resena-total-valor">21</span><span class="resena-total-max">/ 25</span></div>
-        </div>
-      </div>
-    </a>
-
-  </div>
+  <div class="contador">Mostrando <span id="num-visible">0</span> reseñas</div>
+  <div class="resenas-grid" id="grid-resenas"></div>
 </div>
 
 <footer>
   <div class="footer-top">
-    <div>
-      <div class="footer-logo">El <span>Peso</span> del Trazo</div>
-      <p class="footer-desc">Crítica de cómic europeo y de autor. Leer con los ojos abiertos desde Cantabria.</p>
-    </div>
+    <div><div class="footer-logo">El <span>Peso</span> del Trazo</div><p class="footer-desc">Crítica de cómic europeo y de autor desde Cantabria.</p></div>
     <div class="footer-col"><h4>Secciones</h4><ul><li><a href="resenas.html">Reseñas</a></li><li><a href="ensayos.html">Ensayos</a></li><li><a href="biblioteca.html">Biblioteca</a></li><li><a href="sobre.html">Sobre el proyecto</a></li></ul></div>
     <div class="footer-col"><h4>Contacto</h4><ul><li><a href="contacto.html">Escribir</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
     <div class="footer-col"><h4>Redes</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Bluesky</a></li></ul></div>
   </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span>
-    <div class="footer-redes"><a href="#">@elpesodeltrazo</a><a href="#">elpesodeltrazo.com</a></div>
-  </div>
+  <div class="footer-bottom"><span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span><div class="footer-redes"><a href="#">@elpesodeltrazo</a><a href="#">elpesodeltrazo.com</a></div></div>
 </footer>
 
+<script src="datos.js"></script>
 <script>
-  let filtroPais = 'todos';
-  let filtroNota = 0;
+  let filtroPais = 'todos', filtroMin = 0, filtroMax = 999;
 
-  function actualizar() {
-    const cards = document.querySelectorAll('.resena-card');
+  function renderizarBarras(m) {
+    return ['guion','dibujo','lenguaje','relevancia','impacto'].map(k => `
+      <div class="criterio-barra">
+        <span class="criterio-barra-label">${k.charAt(0).toUpperCase()+k.slice(1)}</span>
+        <div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:${m[k]*20}%"></div></div>
+        <span class="criterio-barra-valor">${m[k]}</span>
+      </div>`).join('');
+  }
+
+  function renderizar() {
+    const grid = document.getElementById('grid-resenas');
+    grid.innerHTML = '';
     let visible = 0;
-    cards.forEach(card => {
-      const pais = card.dataset.pais;
-      const nota = parseInt(card.dataset.nota);
-      const coincidePais = filtroPais === 'todos' || pais === filtroPais;
-      const coincideNota = filtroNota === 0 || (nota >= filtroNota && nota < filtroNota + 3);
-      if (coincidePais && coincideNota) { card.style.display = 'block'; visible++; }
-      else { card.style.display = 'none'; }
+    RESENAS.forEach(r => {
+      const total = Object.values(r.metricas).reduce((a,b)=>a+b,0);
+      const ok = (filtroPais==='todos'||r.pais_key===filtroPais) && total>=filtroMin && total<=filtroMax;
+      if (!ok) return;
+      visible++;
+      grid.innerHTML += `
+        <a href="resena.html?id=${r.id}" class="resena-card">
+          <img class="resena-card-img" src="${r.imagen}" alt="${r.titulo}" onerror="this.style.display='none'">
+          <div class="resena-card-body">
+            <div class="resena-pais">${r.pais} · ${r.año} · ${r.editorial}</div>
+            <h3 class="resena-titulo">${r.titulo}</h3>
+            <div class="resena-autor">${r.autor}</div>
+            <p class="resena-extracto">${r.extracto}</p>
+            ${renderizarBarras(r.metricas)}
+            <div class="resena-footer">
+              <span class="resena-total-label">Total</span>
+              <div><span class="resena-total-valor">${total}</span><span class="resena-total-max">/ 25</span></div>
+            </div>
+          </div>
+        </a>`;
     });
     document.getElementById('num-visible').textContent = visible;
   }
 
-  function filtrarPais(el, pais) {
-    document.querySelectorAll('#filtros-pais .filtro-tag').forEach(t => t.classList.remove('active'));
-    el.classList.add('active');
-    filtroPais = pais;
-    actualizar();
+  function filtrarPais(el, p) {
+    document.querySelectorAll('#filtros-pais .filtro-tag').forEach(t=>t.classList.remove('active'));
+    el.classList.add('active'); filtroPais = p; renderizar();
+  }
+  function filtrarNota(el, min, max=999) {
+    document.querySelectorAll('#filtros-nota .filtro-tag').forEach(t=>t.classList.remove('active'));
+    el.classList.add('active'); filtroMin = min; filtroMax = max; renderizar();
   }
 
-  function filtrarNota(el, min) {
-    document.querySelectorAll('#filtros-nota .filtro-tag').forEach(t => t.classList.remove('active'));
-    el.classList.add('active');
-    filtroNota = min;
-    actualizar();
-  }
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
-    });
-  }, { threshold: 0.05 });
-
-  document.querySelectorAll('.resena-card, .criterio-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(14px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-  });
-
-  actualizar();
+  renderizar();
 </script>
 </body>
 </html>

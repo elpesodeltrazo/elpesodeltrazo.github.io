@@ -3,122 +3,165 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Reseñas y ensayos sobre cómic europeo y de autor.">
 <title>El Peso del Trazo — Crítica de cómic europeo y de autor</title>
 <link rel="stylesheet" href="base.css">
 <style>
-  .hero { min-height:100vh; background:var(--fondo-alt); display:grid; grid-template-columns:1.1fr 1fr; padding-top:64px; position:relative; overflow:hidden; }
-  .hero::after { content:''; position:absolute; top:0; right:0; width:50%; height:100%; background:var(--azul-palido); z-index:0; }
-  .hero-left { display:flex; flex-direction:column; justify-content:center; padding:80px 64px 80px 80px; position:relative; z-index:2; }
-  .hero-logo { max-width:480px; width:90%; margin-bottom:40px; display:block; }
-  .hero-tagline { font-family:'EB Garamond',Georgia,serif; font-size:20px; color:var(--texto-suave); max-width:420px; line-height:1.85; border-left:2px solid var(--acento-claro); padding-left:20px; margin-bottom:48px; }
-  .hero-cta { display:flex; gap:14px; flex-wrap:wrap; }
-  .hero-right { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; padding:60px 40px; }
-  .comic-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr 1fr; gap:4px; width:100%; height:100%; max-height:520px; }
-  .panel { background:var(--crema); border:1px solid var(--borde); display:flex; align-items:flex-end; padding:18px; overflow:hidden; }
-  .panel:nth-child(1) { grid-row:span 2; background:var(--azul-claro); display:flex; align-items:center; justify-content:center; }
-  .panel:nth-child(2) { background:#f2e0c8; }
-  .panel:nth-child(3) { background:#d4e4d8; }
-  .panel:nth-child(4) { grid-column:span 2; background:var(--acento); }
-  .panel-label { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--texto-suave); }
-  .panel-quote { font-family:'EB Garamond',serif; font-size:15px; font-style:italic; color:var(--crema); line-height:1.5; }
-  .cover-mockup { width:150px; height:215px; background:var(--crema); border:1px solid var(--borde-fuerte); display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:8px 8px 24px rgba(45,42,37,0.12); transform:rotate(-2deg); }
-  .cover-title-mock { font-family:'Playfair Display',serif; font-size:16px; font-weight:900; font-style:italic; color:var(--texto); text-align:center; padding:12px; line-height:1.2; }
-  .cover-author-mock { font-family:'Space Mono',monospace; font-size:8px; letter-spacing:0.2em; text-transform:uppercase; color:var(--acento); }
-  .ticker { background:var(--acento); padding:10px 0; overflow:hidden; white-space:nowrap; }
-  .ticker-inner { display:inline-flex; animation:ticker 30s linear infinite; }
-  .ticker-item { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--crema); padding:0 40px; opacity:0.92; }
-  .ticker-sep { color:rgba(255,255,255,0.45); padding:0 6px; }
-  @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-  .featured { background:var(--crema); padding:80px; }
-  .section-header { display:flex; align-items:baseline; gap:18px; margin-bottom:48px; border-bottom:1px solid var(--borde); padding-bottom:16px; }
-  .section-title { font-family:'Playfair Display',Georgia,serif; font-size:11px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--texto); }
-  .section-number { font-family:'Space Mono',monospace; font-size:10px; color:var(--acento); }
-  .section-ver-todo { margin-left:auto; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--texto-suave); text-decoration:none; transition:color 0.2s; }
-  .section-ver-todo:hover { color:var(--acento); }
-  .featured-article { display:grid; grid-template-columns:1fr 1.1fr; border:1px solid var(--borde); }
-  .featured-image { background:var(--azul-palido); min-height:440px; display:flex; align-items:center; justify-content:center; border-right:1px solid var(--borde); }
-  .featured-content { padding:56px 48px; display:flex; flex-direction:column; justify-content:center; }
-  .article-category { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--acento); margin-bottom:20px; display:flex; align-items:center; gap:10px; }
-  .article-category::before { content:''; display:block; width:22px; height:1px; background:var(--acento-claro); }
-  .article-title { font-family:'Playfair Display',Georgia,serif; font-size:34px; font-weight:700; line-height:1.15; color:var(--texto); margin-bottom:20px; }
-  .article-title em { font-style:italic; }
-  .article-excerpt { font-family:'EB Garamond',Georgia,serif; font-size:18px; line-height:1.85; color:var(--texto-suave); margin-bottom:32px; }
-  .article-meta { display:flex; align-items:center; gap:20px; padding-top:24px; border-top:1px solid var(--borde); }
-  .article-meta-author { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--texto-suave); }
-  .article-meta-date { font-family:'EB Garamond',Georgia,serif; font-size:15px; font-style:italic; color:var(--texto-suave); }
-  .read-link { margin-left:auto; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--texto); text-decoration:none; display:flex; align-items:center; gap:8px; transition:gap 0.2s,color 0.2s; }
-  .read-link:hover { gap:14px; color:var(--acento); }
-  .read-link::after { content:'→'; }
-  .ultimas { background:var(--fondo); padding:0 80px 80px; }
-  .resenas-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
-  .resena-card { background:var(--crema); padding:36px 32px; text-decoration:none; color:inherit; display:block; border:1px solid var(--borde); transition:background 0.2s; position:relative; }
-  .resena-card:hover { background:var(--azul-palido); }
-  .resena-card::after { content:'→'; position:absolute; top:36px; right:32px; font-size:18px; color:var(--acento); opacity:0; transition:opacity 0.2s,transform 0.2s; transform:translateX(-4px); }
-  .resena-card:hover::after { opacity:1; transform:translateX(0); }
-  .resena-pais { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--texto-suave); margin-bottom:12px; }
-  .resena-titulo { font-family:'Playfair Display',Georgia,serif; font-size:24px; font-weight:700; font-style:italic; line-height:1.2; color:var(--texto); margin-bottom:8px; }
-  .resena-autor { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; color:var(--acento); text-transform:uppercase; margin-bottom:16px; }
-  .resena-extracto { font-family:'EB Garamond',Georgia,serif; font-size:16px; line-height:1.75; color:var(--texto-suave); margin-bottom:24px; }
-  .resena-footer { display:flex; align-items:center; justify-content:space-between; padding-top:20px; border-top:1px solid var(--borde); }
-  .resena-valoracion { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--texto-suave); }
-  .resena-stars { color:var(--acento); font-size:13px; letter-spacing:2px; }
-  .ensayos-home { background:var(--fondo-oscuro); padding:80px; }
-  .ensayos-home .section-title { color:var(--fondo); }
-  .ensayos-home .section-number { color:var(--acento-claro); }
-  .ensayos-home .section-header { border-color:#3a3730; }
-  .ensayos-home .section-ver-todo { color:#6a6260; }
-  .ensayos-home .section-ver-todo:hover { color:var(--acento-claro); }
-  .ensayos-home-list { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
-  .ensayo-home-item { padding-bottom:40px; border-bottom:1px solid #3a3730; text-decoration:none; display:block; transition:border-color 0.2s; }
-  .ensayo-home-item:hover { border-color:var(--acento-claro); }
-  .ensayo-home-num { font-family:'Space Mono',monospace; font-size:40px; font-weight:700; color:#3a3730; line-height:1; margin-bottom:16px; }
-  .ensayo-home-titulo { font-family:'Playfair Display',Georgia,serif; font-size:24px; font-weight:700; line-height:1.2; color:var(--fondo); margin-bottom:12px; }
-  .ensayo-home-subtitulo { font-family:'EB Garamond',Georgia,serif; font-size:16px; font-style:italic; color:#9a9288; line-height:1.65; margin-bottom:16px; }
-  .ensayo-home-tag { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:var(--acento-claro); padding:5px 10px; border:1px solid #5a4a38; display:inline-block; }
-  .biblioteca-home { background:var(--fondo-alt); padding:80px; }
-  .biblioteca-home-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:80px; align-items:start; }
-  .biblioteca-home-texto { font-size:20px; line-height:1.9; color:var(--texto-suave); margin-bottom:32px; }
-  .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
-  .stat-box { background:var(--crema); border:1px solid var(--borde); padding:32px 28px; }
-  .stat-box.acento { background:var(--acento); border-color:var(--acento); }
-  .stat-num { font-family:'Playfair Display',Georgia,serif; font-size:48px; font-weight:900; line-height:1; color:var(--texto); margin-bottom:8px; }
-  .stat-box.acento .stat-num { color:var(--crema); }
-  .stat-label { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--texto-suave); }
-  .stat-box.acento .stat-label { color:rgba(255,255,255,0.7); }
-  .paises-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; }
-  .pais-tag { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:8px 16px; border:1px solid var(--borde-fuerte); color:var(--texto-suave); background:var(--crema); text-decoration:none; transition:all 0.2s; }
-  .pais-tag:hover { background:var(--acento); color:var(--crema); border-color:var(--acento); }
-  .newsletter { background:var(--azul-claro); padding:80px; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:80px; border-top:1px solid var(--borde); }
-  .newsletter-text h2 { font-family:'Playfair Display',Georgia,serif; font-size:38px; font-weight:900; font-style:italic; color:var(--texto); line-height:1.15; margin-bottom:16px; }
-  .newsletter-text p { font-family:'EB Garamond',Georgia,serif; font-size:18px; color:var(--texto-suave); line-height:1.75; }
-  .newsletter-form { display:flex; flex-direction:column; gap:10px; }
-  .newsletter-form input { font-family:'EB Garamond',Georgia,serif; font-size:17px; padding:15px 20px; background:var(--crema); border:1px solid var(--borde-fuerte); color:var(--texto); outline:none; transition:border-color 0.2s; }
-  .newsletter-form input::placeholder { color:var(--texto-suave); }
-  .newsletter-form input:focus { border-color:var(--acento); }
-  .newsletter-form button { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; padding:15px; background:var(--acento); color:var(--crema); border:none; cursor:pointer; transition:background 0.2s; }
-  .newsletter-form button:hover { background:#a86c38; }
-  .newsletter-nota { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.1em; color:var(--texto-suave); }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  .hero-left > * { animation:fadeUp 0.7s ease forwards; opacity:0; }
-  .hero-left > *:nth-child(1) { animation-delay:0.1s; }
-  .hero-left > *:nth-child(2) { animation-delay:0.3s; }
-  .hero-left > *:nth-child(3) { animation-delay:0.5s; }
-  @media(max-width:900px) {
-    .hero{grid-template-columns:1fr} .hero::after{display:none} .hero-right{display:none}
-    .hero-left{padding:60px 24px} .featured{padding:48px 24px}
-    .featured-article{grid-template-columns:1fr} .ultimas{padding:0 24px 64px}
-    .resenas-grid{grid-template-columns:1fr} .ensayos-home{padding:64px 24px}
-    .ensayos-home-list{grid-template-columns:1fr;gap:32px} .biblioteca-home{padding:64px 24px}
-    .biblioteca-home-grid{grid-template-columns:1fr;gap:40px}
-    .newsletter{grid-template-columns:1fr;padding:48px 24px;gap:40px}
+  .hero {
+    background: var(--fondo-alt);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+  }
+  .hero-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--texto);
+    margin-bottom: 8px;
+  }
+  .hero-titulo em { font-style: italic; color: var(--acento); }
+  .hero-subtitulo {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 32px;
+  }
+  .hero-tagline {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    color: var(--texto-suave);
+    max-width: 420px;
+    line-height: 1.85;
+    border-left: 2px solid var(--acento-claro);
+    padding-left: 20px;
+    margin-bottom: 40px;
+  }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-right {
+    background: var(--azul-palido);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    gap: 3px;
+  }
+  .hero-panel {
+    background: var(--crema);
+    border: 1px solid var(--borde);
+    flex: 1;
+    height: 100%;
+    min-height: 320px;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+  }
+  .hero-panel:nth-child(1) { background: #f2e0c8; }
+  .hero-panel:nth-child(2) { background: #d4e4d8; }
+  .hero-panel-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+  }
+
+  .ticker { background: var(--acento); padding: 10px 0; overflow: hidden; white-space: nowrap; }
+  .ticker-inner { display: inline-flex; animation: ticker 30s linear infinite; }
+  .ticker-item { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--crema); padding: 0 40px; opacity: 0.92; }
+  .ticker-sep { color: rgba(255,255,255,0.4); padding: 0 6px; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  .seccion { padding: 80px; }
+  .seccion.oscura { background: var(--fondo-oscuro); }
+  .seccion.clara { background: var(--crema); }
+  .seccion.alt { background: var(--fondo-alt); }
+
+  .seccion-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 16px;
+  }
+  .seccion.oscura .seccion-header { border-color: #3a3730; }
+  .seccion-num { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--acento); }
+  .seccion-titulo { font-family: 'Playfair Display', serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--texto); }
+  .seccion.oscura .seccion-titulo { color: var(--fondo-alt); }
+  .seccion-link { margin-left: auto; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--texto-suave); text-decoration: none; transition: color 0.2s; }
+  .seccion-link:hover { color: var(--acento); }
+  .seccion.oscura .seccion-link { color: #6a6260; }
+  .seccion.oscura .seccion-link:hover { color: var(--acento-claro); }
+
+  /* GRID RESEÑAS */
+  .resenas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+
+  .resena-card {
+    background: var(--crema);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border: 1px solid var(--borde);
+    transition: background 0.2s;
+    overflow: hidden;
+    position: relative;
+  }
+  .resena-card:hover { background: var(--azul-palido); }
+  .resena-card-img { width: 100%; height: 180px; object-fit: cover; object-position: center top; display: block; border-bottom: 1px solid var(--borde); background: var(--fondo-alt); }
+  .resena-card-body { padding: 24px; }
+  .resena-pais { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 8px; }
+  .resena-titulo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; font-style: italic; line-height: 1.2; color: var(--texto); margin-bottom: 6px; }
+  .resena-autor { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--acento); text-transform: uppercase; margin-bottom: 12px; }
+  .resena-extracto { font-family: 'EB Garamond', serif; font-size: 15px; line-height: 1.7; color: var(--texto-suave); margin-bottom: 16px; }
+  .resena-nota { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; color: var(--acento); }
+  .resena-nota small { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--texto-suave); font-weight: 400; }
+
+  /* LISTA ENSAYOS */
+  .ensayos-lista { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .ensayo-item { padding-bottom: 40px; border-bottom: 1px solid #3a3730; text-decoration: none; display: block; transition: border-color 0.2s; }
+  .ensayo-item:hover { border-color: var(--acento-claro); }
+  .ensayo-num { font-family: 'Space Mono', monospace; font-size: 36px; font-weight: 700; color: #3a3730; line-height: 1; margin-bottom: 14px; }
+  .ensayo-titulo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; line-height: 1.2; color: var(--fondo); margin-bottom: 10px; }
+  .ensayo-subtitulo { font-family: 'EB Garamond', serif; font-size: 16px; font-style: italic; color: #9a9288; line-height: 1.65; margin-bottom: 14px; }
+  .ensayo-tag { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--acento-claro); padding: 4px 10px; border: 1px solid #5a4a38; display: inline-block; }
+
+  /* NEWSLETTER */
+  .newsletter { background: var(--azul-claro); padding: 80px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; border-top: 1px solid var(--borde); }
+  .newsletter h2 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; font-style: italic; color: var(--texto); line-height: 1.15; margin-bottom: 16px; }
+  .newsletter p { font-family: 'EB Garamond', serif; font-size: 18px; color: var(--texto-suave); line-height: 1.75; }
+  .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+  .newsletter-form input { font-family: 'EB Garamond', serif; font-size: 17px; padding: 14px 18px; background: var(--crema); border: 1px solid var(--borde-fuerte); color: var(--texto); outline: none; transition: border-color 0.2s; }
+  .newsletter-form input:focus { border-color: var(--acento); }
+  .newsletter-form input::placeholder { color: var(--texto-suave); }
+  .newsletter-form button { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; padding: 14px; background: var(--acento); color: var(--crema); border: none; cursor: pointer; transition: background 0.2s; }
+  .newsletter-form button:hover { background: #a86c38; }
+  .newsletter-nota { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--texto-suave); }
+
+  @media(max-width:900px){
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 48px 24px; }
+    .seccion { padding: 48px 24px; }
+    .resenas-grid { grid-template-columns: 1fr; }
+    .ensayos-lista { grid-template-columns: 1fr; gap: 32px; }
+    .newsletter { grid-template-columns: 1fr; padding: 48px 24px; gap: 40px; }
   }
 </style>
 </head>
 <body>
-
 <nav>
-  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo"></a>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="El Peso del Trazo" onerror="this.parentElement.innerHTML='<span style=\'font-family:Playfair Display,serif;font-size:18px;font-weight:900;color:#2d2a25\'>El <em style=\'color:#c17f4a\'>Peso</em> del Trazo</span>'">
+  </a>
   <ul class="nav-links">
     <li><a href="resenas.html">Reseñas</a></li>
     <li><a href="ensayos.html">Ensayos</a></li>
@@ -129,169 +172,63 @@
   </ul>
 </nav>
 
+<div class="banner-global"><img src="banner.png" alt="El Peso del Trazo"></div>
+
 <section class="hero">
   <div class="hero-left">
-    <img src="logo_fondooscuro.png" alt="El Peso del Trazo" class="hero-logo">
-    <p class="hero-tagline">Una publicación que trata el cómic como lo que es: literatura dibujada. Reseñas, ensayos y una biblioteca de más de 300 títulos curados con criterio.</p>
+    <div class="hero-subtitulo">Crítica de cómic europeo y de autor</div>
+    <h1 class="hero-titulo">El <em>Peso</em><br>del Trazo</h1>
+    <p class="hero-tagline">Una publicación que trata el cómic como lo que es: literatura dibujada. Reseñas, ensayos y una biblioteca de más de 300 títulos.</p>
     <div class="hero-cta">
       <a href="resenas.html" class="btn-primary">Últimas reseñas</a>
       <a href="biblioteca.html" class="btn-secondary">Ver la biblioteca</a>
     </div>
   </div>
   <div class="hero-right">
-    <div class="comic-grid">
-      <div class="panel"><div class="cover-mockup"><div class="cover-title-mock">El paseo</div><div class="cover-author-mock">Taniguchi</div></div></div>
-      <div class="panel"><div class="panel-label">Japón · 1990</div></div>
-      <div class="panel"><div class="panel-label">Reseña destacada</div></div>
-      <div class="panel"><div class="panel-quote">"El dibujo no ilustra el texto. El dibujo es el texto."</div></div>
-    </div>
+    <div class="hero-panel"><div class="hero-panel-label">Reseñas</div></div>
+    <div class="hero-panel"><div class="hero-panel-label">Ensayos</div></div>
   </div>
 </section>
-
-<!-- BANNER PANORÁMICO -->
-<div class="banner-global">
-  <img src="banner.png" alt="El Peso del Trazo — Cómic europeo y de autor">
-</div>
 
 <div class="ticker">
   <div class="ticker-inner">
     <span class="ticker-item">Reseñas <span class="ticker-sep">·</span> Cómic europeo</span>
     <span class="ticker-item">Ensayos <span class="ticker-sep">·</span> Autores de referencia</span>
     <span class="ticker-item">Taniguchi <span class="ticker-sep">·</span> Satrapi <span class="ticker-sep">·</span> Roca <span class="ticker-sep">·</span> Moebius</span>
-    <span class="ticker-item">La biblioteca curada <span class="ticker-sep">·</span> +300 títulos</span>
+    <span class="ticker-item">Biblioteca curada <span class="ticker-sep">·</span> +300 títulos</span>
     <span class="ticker-item">Reseñas <span class="ticker-sep">·</span> Cómic europeo</span>
     <span class="ticker-item">Ensayos <span class="ticker-sep">·</span> Autores de referencia</span>
     <span class="ticker-item">Taniguchi <span class="ticker-sep">·</span> Satrapi <span class="ticker-sep">·</span> Roca <span class="ticker-sep">·</span> Moebius</span>
-    <span class="ticker-item">La biblioteca curada <span class="ticker-sep">·</span> +300 títulos</span>
+    <span class="ticker-item">Biblioteca curada <span class="ticker-sep">·</span> +300 títulos</span>
   </div>
 </div>
 
-<section class="featured">
-  <div class="section-header">
-    <span class="section-number">01</span>
-    <h2 class="section-title">Reseña destacada</h2>
-    <a href="resenas.html" class="section-ver-todo">Ver todas →</a>
+<section class="seccion clara">
+  <div class="seccion-header">
+    <span class="seccion-num">01</span>
+    <h2 class="seccion-titulo">Últimas reseñas</h2>
+    <a href="resenas.html" class="seccion-link">Ver todas →</a>
   </div>
-  <div class="featured-article">
-    <div class="featured-image">
-      <div class="cover-mockup" style="width:180px;height:255px;transform:rotate(-1.5deg)">
-        <div class="cover-title-mock">Arrugas</div>
-        <div class="cover-author-mock">Paco Roca</div>
-      </div>
-    </div>
-    <div class="featured-content">
-      <div class="article-category">Reseña — España · 2007</div>
-      <h2 class="article-title"><em>Arrugas</em>, de Paco Roca:<br>la dignidad del olvido</h2>
-      <p class="article-excerpt">Hay cómics que no se leen: se padecen. <em>Arrugas</em> es uno de ellos. Paco Roca construye con un trazo aparentemente sencillo una de las miradas más lúcidas y compasivas sobre el Alzheimer que ha dado el cómic español. El dibujo no ilustra la pérdida: la encarna.</p>
-      <div class="article-meta">
-        <span class="article-meta-author">Por MK</span>
-        <span class="article-meta-date">Marzo 2025</span>
-        <a href="resena-arrugas.html" class="read-link">Leer reseña</a>
-      </div>
-    </div>
-  </div>
+  <div class="resenas-grid" id="resenas-home"></div>
 </section>
 
-<section class="ultimas">
-  <div class="section-header">
-    <span class="section-number">02</span>
-    <h2 class="section-title">Últimas reseñas</h2>
-    <a href="resenas.html" class="section-ver-todo">Ver todas →</a>
+<section class="seccion oscura">
+  <div class="seccion-header">
+    <span class="seccion-num">02</span>
+    <h2 class="seccion-titulo">Ensayos</h2>
+    <a href="ensayos.html" class="seccion-link">Ver todos →</a>
   </div>
-  <div class="resenas-grid">
-    <a href="resenas.html" class="resena-card">
-      <div class="resena-pais">Japón · 1994</div>
-      <h3 class="resena-titulo">El almanaque de mi padre</h3>
-      <div class="resena-autor">Jiro Taniguchi</div>
-      <p class="resena-extracto">El tiempo como materia narrativa. Taniguchi convierte la memoria familiar en una meditación sobre lo que heredamos sin saberlo.</p>
-      <div class="resena-footer"><span class="resena-valoracion">Valoración</span><span class="resena-stars">★★★★★</span></div>
-    </a>
-    <a href="resenas.html" class="resena-card">
-      <div class="resena-pais">Irán / Francia · 2000</div>
-      <h3 class="resena-titulo">Persépolis</h3>
-      <div class="resena-autor">Marjane Satrapi</div>
-      <p class="resena-extracto">El blanco y negro como posición política. La autobiografía de Satrapi demuestra que el cómic puede ser el medio más honesto para contar la historia de un país.</p>
-      <div class="resena-footer"><span class="resena-valoracion">Valoración</span><span class="resena-stars">★★★★★</span></div>
-    </a>
-    <a href="resenas.html" class="resena-card">
-      <div class="resena-pais">España · 2013</div>
-      <h3 class="resena-titulo">Los surcos del azar</h3>
-      <div class="resena-autor">Paco Roca</div>
-      <p class="resena-extracto">Un ejercicio de memoria histórica que funciona como thriller, road movie y elegía a la vez. Roca en su momento más ambicioso.</p>
-      <div class="resena-footer"><span class="resena-valoracion">Valoración</span><span class="resena-stars">★★★★★</span></div>
-    </a>
-  </div>
-</section>
-
-<section class="ensayos-home">
-  <div class="section-header">
-    <span class="section-number">03</span>
-    <h2 class="section-title">Ensayos</h2>
-    <a href="ensayos.html" class="section-ver-todo">Ver todos →</a>
-  </div>
-  <div class="ensayos-home-list">
-    <a href="ensayos.html" class="ensayo-home-item">
-      <div class="ensayo-home-num">01</div>
-      <h3 class="ensayo-home-titulo">El silencio entre viñetas: Taniguchi y la narrativa del espacio vacío</h3>
-      <p class="ensayo-home-subtitulo">Cómo el maestro japonés convirtió los momentos de pausa en el verdadero motor de sus historias.</p>
-      <span class="ensayo-home-tag">Análisis de autor</span>
-    </a>
-    <a href="ensayos.html" class="ensayo-home-item">
-      <div class="ensayo-home-num">02</div>
-      <h3 class="ensayo-home-titulo">Por qué el cómic de autor es la gran literatura del siglo XXI</h3>
-      <p class="ensayo-home-subtitulo">Un manifiesto. La imagen dibujada hace lo que la prosa no puede: narrar desde dentro de la percepción.</p>
-      <span class="ensayo-home-tag">Manifiesto</span>
-    </a>
-    <a href="ensayos.html" class="ensayo-home-item">
-      <div class="ensayo-home-num">03</div>
-      <h3 class="ensayo-home-titulo">Astiberri y la construcción de un catálogo con criterio</h3>
-      <p class="ensayo-home-subtitulo">La editorial vasca que cambió el panorama del cómic adulto en España.</p>
-      <span class="ensayo-home-tag">Industria</span>
-    </a>
-    <a href="ensayos.html" class="ensayo-home-item">
-      <div class="ensayo-home-num">04</div>
-      <h3 class="ensayo-home-titulo">La línea clara no es solo un estilo: es una ética narrativa</h3>
-      <p class="ensayo-home-subtitulo">De Hergé a Joost Swarte: lo que la escuela belga enseña sobre la honestidad del dibujo.</p>
-      <span class="ensayo-home-tag">Historia del cómic</span>
-    </a>
-  </div>
-</section>
-
-<section class="biblioteca-home">
-  <div class="section-header">
-    <span class="section-number">04</span>
-    <h2 class="section-title">La Biblioteca</h2>
-    <a href="biblioteca.html" class="section-ver-todo">Explorar →</a>
-  </div>
-  <div class="biblioteca-home-grid">
-    <div>
-      <p class="biblioteca-home-texto">Una colección personal de más de 300 títulos catalogados, leídos y anotados a lo largo de años. No es una base de datos: es un mapa de un lector. Cada título tiene contexto, cada elección tiene razón.</p>
-      <div class="paises-list">
-        <a href="biblioteca.html" class="pais-tag">Todos</a>
-        <a href="biblioteca.html" class="pais-tag">España</a>
-        <a href="biblioteca.html" class="pais-tag">Francia / Bélgica</a>
-        <a href="biblioteca.html" class="pais-tag">Japón</a>
-        <a href="biblioteca.html" class="pais-tag">EEUU</a>
-        <a href="biblioteca.html" class="pais-tag">Italia</a>
-      </div>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-box"><div class="stat-num">300+</div><div class="stat-label">Títulos</div></div>
-      <div class="stat-box"><div class="stat-num">12</div><div class="stat-label">Países</div></div>
-      <div class="stat-box acento"><div class="stat-num">★★★★★</div><div class="stat-label">Imprescindibles</div></div>
-      <div class="stat-box"><div class="stat-num">40+</div><div class="stat-label">Autores</div></div>
-    </div>
-  </div>
+  <div class="ensayos-lista" id="ensayos-home"></div>
 </section>
 
 <div class="newsletter">
-  <div class="newsletter-text">
+  <div>
     <h2>Una reseña. Un ensayo. Sin ruido.</h2>
-    <p>El Peso del Trazo en tu correo, cuando hay algo que vale la pena decir. Sin periodicidad forzada. Sin algoritmos.</p>
+    <p>El Peso del Trazo en tu correo, cuando hay algo que vale la pena decir.</p>
   </div>
   <div class="newsletter-form">
     <input type="email" placeholder="tu@correo.com">
-    <button type="submit">Suscribirme</button>
+    <button>Suscribirme</button>
     <span class="newsletter-nota">Sin spam. Solo cómic que importa.</span>
   </div>
 </div>
@@ -300,50 +237,51 @@
   <div class="footer-top">
     <div>
       <div class="footer-logo">El <span>Peso</span> del Trazo</div>
-      <p class="footer-desc">Crítica de cómic europeo y de autor. Leer con los ojos abiertos desde Cantabria.</p>
+      <p class="footer-desc">Crítica de cómic europeo y de autor desde Cantabria.</p>
     </div>
-    <div class="footer-col">
-      <h4>Secciones</h4>
-      <ul>
-        <li><a href="resenas.html">Reseñas</a></li>
-        <li><a href="ensayos.html">Ensayos</a></li>
-        <li><a href="biblioteca.html">Biblioteca</a></li>
-        <li><a href="sobre.html">Sobre el proyecto</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contacto</h4>
-      <ul>
-        <li><a href="contacto.html">Escribir</a></li>
-        <li><a href="newsletter.html">Newsletter</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Redes</h4>
-      <ul>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Bluesky</a></li>
-      </ul>
-    </div>
+    <div class="footer-col"><h4>Secciones</h4><ul><li><a href="resenas.html">Reseñas</a></li><li><a href="ensayos.html">Ensayos</a></li><li><a href="biblioteca.html">Biblioteca</a></li><li><a href="sobre.html">Sobre el proyecto</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="contacto.html">Escribir</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+    <div class="footer-col"><h4>Redes</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Bluesky</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span>
-    <div class="footer-redes">
-      <a href="#">@elpesodeltrazo</a>
-      <a href="#">elpesodeltrazo.com</a>
-    </div>
+    <div class="footer-redes"><a href="#">@elpesodeltrazo</a><a href="#">elpesodeltrazo.com</a></div>
   </div>
 </footer>
 
+<script src="datos.js"></script>
 <script>
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';} });
-  }, {threshold:0.1});
-  document.querySelectorAll('.resena-card,.ensayo-home-item,.stat-box').forEach(el => {
-    el.style.opacity='0'; el.style.transform='translateY(14px)';
-    el.style.transition='opacity 0.5s ease,transform 0.5s ease';
-    obs.observe(el);
-  });
+  // Renderizar las 3 primeras reseñas en home
+  const totalHome = () => {
+    const grid = document.getElementById('resenas-home');
+    RESENAS.slice(0, 3).forEach(r => {
+      const total = Object.values(r.metricas).reduce((a,b) => a+b, 0);
+      grid.innerHTML += `
+        <a href="resena.html?id=${r.id}" class="resena-card">
+          <img class="resena-card-img" src="${r.imagen}" alt="${r.titulo}" onerror="this.style.display='none'">
+          <div class="resena-card-body">
+            <div class="resena-pais">${r.pais} · ${r.año} · ${r.editorial}</div>
+            <h3 class="resena-titulo">${r.titulo}</h3>
+            <div class="resena-autor">${r.autor}</div>
+            <p class="resena-extracto">${r.extracto}</p>
+            <div class="resena-nota">${total}<small> / 25</small></div>
+          </div>
+        </a>`;
+    });
+
+    // Renderizar los 4 primeros ensayos en home
+    const lista = document.getElementById('ensayos-home');
+    ENSAYOS.slice(0, 4).forEach((e, i) => {
+      lista.innerHTML += `
+        <a href="ensayo.html?id=${e.id}" class="ensayo-item">
+          <div class="ensayo-num">0${i+1}</div>
+          <h3 class="ensayo-titulo">${e.titulo}</h3>
+          <p class="ensayo-subtitulo">${e.subtitulo}</p>
+          <span class="ensayo-tag">${e.tag}</span>
+        </a>`;
+    });
+  };
+  totalHome();
 </script>
 </body>
 </html>
