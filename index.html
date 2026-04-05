@@ -178,6 +178,10 @@
     <li><a href="contacto.html">Contacto</a></li>
     <li><a href="newsletter.html" class="nav-cta">Newsletter</a></li>
   </ul>
+
+    <button class="nav-hamburguesa" id="hamburguesa" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="banner-global"><img src="banner.png" alt="El Peso del Trazo"></div>
@@ -290,6 +294,19 @@
     });
   };
   totalHome();
+</script>
+
+  <script>
+  const btn = document.getElementById('hamburguesa');
+  const links = document.querySelector('.nav-links');
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('abierto');
+    links.classList.toggle('abierto');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    btn.classList.remove('abierto');
+    links.classList.remove('abierto');
+  }));
 </script>
 </body>
 </html>
