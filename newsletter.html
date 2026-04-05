@@ -2,6 +2,26 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="Suscríbete a la newsletter de El Peso del Trazo. Reseñas y ensayos sobre cómic europeo en tu correo, cuando hay algo que vale la pena decir.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Mikel Castán">
+<meta name="language" content="es">
+<link rel="canonical" href="https://elpesodeltrazo.com/newsletter.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://elpesodeltrazo.com/newsletter.html">
+<meta property="og:title" content="Newsletter — El Peso del Trazo">
+<meta property="og:description" content="Suscríbete a la newsletter de El Peso del Trazo. Reseñas y ensayos sobre cómic europeo en tu correo, cuando hay algo que vale la pena decir.">
+<meta property="og:image" content="https://elpesodeltrazo.com/banner.png">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="El Peso del Trazo">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Newsletter — El Peso del Trazo">
+<meta name="twitter:description" content="Suscríbete a la newsletter de El Peso del Trazo. Reseñas y ensayos sobre cómic europeo en tu correo, cuando hay algo que vale la pena decir.">
+<meta name="twitter:image" content="https://elpesodeltrazo.com/banner.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Newsletter — El Peso del Trazo</title>
 <link rel="stylesheet" href="base.css">
@@ -216,6 +236,37 @@
     margin-bottom: 16px !important;
   }
 
+  .brevo-input-wrap { margin-bottom: 12px; }
+  .brevo-input {
+    font-family: 'EB Garamond', Georgia, serif !important;
+    font-size: 18px !important;
+    padding: 14px 18px !important;
+    background: var(--crema) !important;
+    border: 1px solid var(--borde-fuerte) !important;
+    color: var(--texto) !important;
+    width: 100% !important;
+    outline: none !important;
+    transition: border-color 0.2s !important;
+    display: block;
+    margin-top: 8px;
+  }
+  .brevo-input:focus { border-color: var(--acento) !important; }
+  .brevo-btn {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 10px !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    padding: 16px 32px !important;
+    background: var(--acento) !important;
+    color: var(--crema) !important;
+    border: none !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    transition: background 0.2s !important;
+    margin-top: 10px !important;
+  }
+  .brevo-btn:hover { background: #a86c38 !important; }
+
   .newsletter-nota {
     font-family: 'Space Mono', monospace;
     font-size: 9px;
@@ -292,6 +343,14 @@
     .anteriores-grid { grid-template-columns: 1fr; }
   }
 </style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3R37JP1G54"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag("js", new Date());
+  gtag("config", "G-3R37JP1G54");
+</script>
 </head>
 <body>
 
@@ -337,61 +396,38 @@
     <h3 class="formulario-titulo">Suscríbete</h3>
     <p class="formulario-subtitulo">Gratis. Sin compromiso. Solo cómic que importa.</p>
 
-    <!-- FORMULARIO BREVO -->
-    <div class="sib-form">
-      <div id="sib-form-container" class="sib-form-container">
-        <div id="error-message" class="sib-form-message-panel" style="display:none;">
-          <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-            <span class="sib-form-message-panel__inner-text">No hemos podido validar tu suscripción. Inténtalo de nuevo.</span>
-          </div>
-        </div>
-        <div id="success-message" class="sib-form-message-panel" style="display:none;">
-          <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-            <span class="sib-form-message-panel__inner-text">✓ Suscripción realizada. Revisa tu correo para confirmar.</span>
-          </div>
-        </div>
-        <div id="sib-container" class="sib-container--large sib-container--vertical">
-          <form id="sib-form" method="POST" action="https://5d6a82d1.sibforms.com/serve/MUIFAHx17vV-muy39xNpaDrK36rK47s0FcNnWgUrcKA4Fm6drW6DO6ynkE3LulB_5r15zWSkYSqPOaPiSa_jCC_W-8mKZUeMcwJtGHtGNvMt4c-xjzC8v1sviI9OsGvqKwAYdg7m_vfM4NlT_gOlGGNgwgY_lUtgAhJrfvgQPjUbgp5m2NQA3Am7faEoYFL2ScrZ0q2XlG0NwYJyqQ==" data-type="subscription">
-
-            <div style="padding: 8px 0;">
-              <div class="sib-input sib-form-block">
-                <div class="form__entry entry_block">
-                  <div class="form__label-row">
-                    <label class="entry__label" for="EMAIL">Tu dirección de correo electrónico</label>
-                    <div class="entry__field">
-                      <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="tu@correo.com" data-required="true" required />
-                    </div>
-                  </div>
-                  <label class="entry__error entry__error--primary" style="display:none;"></label>
-                  <label class="entry__specification">Recibirás un email de confirmación. Solo tienes que hacer clic en el enlace.</label>
-                </div>
-              </div>
-            </div>
-
-            <div style="padding: 8px 0;">
-              <div class="sib-form-block" style="display:block !important; text-align:left">
-                <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
-                  <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" style="width:16px; height:16px; margin-right:8px; vertical-align:middle;">
-                    <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
-                  </svg>
-                  Suscribirme gratis
-                </button>
-              </div>
-            </div>
-
-            <input type="text" name="email_address_check" value="" class="input--hidden" style="display:none;">
-            <input type="hidden" name="locale" value="es">
-          </form>
-        </div>
-      </div>
+    <div style="margin-bottom:12px;">
+      <label style="font-family:Space Mono,monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--texto-suave);display:block;margin-bottom:8px;">Tu dirección de correo electrónico</label>
+      <input type="email" id="nl-email" placeholder="tu@correo.com"
+        style="font-family:EB Garamond,Georgia,serif;font-size:18px;padding:14px 18px;background:var(--crema);border:1px solid var(--borde-fuerte);color:var(--texto);width:100%;outline:none;box-sizing:border-box;display:block;">
+      <span style="font-family:Space Mono,monospace;font-size:9px;color:var(--texto-suave);margin-top:6px;display:block;">Recibirás un email de confirmación. Solo tienes que hacer clic en el enlace.</span>
     </div>
 
-    <span class="newsletter-nota">Sin spam · Cancelación en un clic · RGPD cumplido</span>
+    <button onclick="nlSuscribirse()"
+      style="font-family:Space Mono,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;padding:16px;background:var(--acento);color:var(--crema);border:none;cursor:pointer;width:100%;transition:background 0.2s;">
+      Suscribirme gratis
+    </button>
+
+    <div id="nl-success" style="display:none;background:#e7faf0;border:1px solid #13ce66;padding:16px;margin-top:16px;font-family:EB Garamond,serif;font-size:17px;color:#085229;">
+      ✓ Revisa tu correo para confirmar la suscripción.
+    </div>
+    <div id="nl-error" style="display:none;background:#ffeded;border:1px solid #ff4949;padding:16px;margin-top:16px;font-family:EB Garamond,serif;font-size:17px;color:#661d1d;">
+      Por favor introduce un email válido.
+    </div>
+
+    <form id="nl-form" method="POST" action="https://5d6a82d1.sibforms.com/serve/MUIFAHx17vV-muy39xNpaDrK36rK47s0FcNnWgUrcKA4Fm6drW6DO6ynkE3LulB_5r15zWSkYSqPOaPiSa_jCC_W-8mKZUeMcwJtGHtGNvMt4c-xjzC8v1sviI9OsGvqKwAYdg7m_vfM4NlT_gOlGGNgwgY_lUtgAhJrfvgQPjUbgp5m2NQA3Am7faEoYFL2ScrZ0q2XlG0NwYJyqQ==" target="nl-iframe" style="display:none;">
+      <input type="text" name="EMAIL" id="nl-hidden-email">
+      <input type="text" name="email_address_check" value="">
+      <input type="hidden" name="locale" value="es">
+    </form>
+    <iframe name="nl-iframe" style="display:none;"></iframe>
+
+    <span class="newsletter-nota" style="margin-top:16px;">Sin spam · Cancelación en un clic · RGPD cumplido</span>
   </div>
 
 </div>
 
-<!-- ANTERIORES NÚMEROS (placeholder) -->
+<!-- ANTERIORESr) -->
 <div class="anteriores">
   <div class="section-header">
     <span class="section-num">01</span>
@@ -424,6 +460,7 @@
     </div>
     <div class="footer-col"><h4>Secciones</h4><ul><li><a href="resenas.html">Reseñas</a></li><li><a href="ensayos.html">Ensayos</a></li><li><a href="biblioteca.html">Biblioteca</a></li><li><a href="sobre.html">Sobre el proyecto</a></li></ul></div>
     <div class="footer-col"><h4>Contacto</h4><ul><li><a href="contacto.html">Escribir</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="privacidad.html">Política de privacidad</a></li><li><a href="privacidad.html#cookies">Cookies</a></li></ul></div>
     <div class="footer-col"><h4>Redes</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Bluesky</a></li></ul></div>
   </div>
   <div class="footer-bottom">
@@ -431,6 +468,33 @@
     <div class="footer-redes"><a href="#">@elpesodeltrazo</a><a href="#">elpesodeltrazo.com</a></div>
   </div>
 </footer>
+
+<script>
+function suscribirse() {
+  const email = document.getElementById('brevo-email').value;
+  const errorEl = document.getElementById('brevo-error');
+  const successEl = document.getElementById('brevo-success');
+
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    errorEl.style.display = 'block';
+    successEl.style.display = 'none';
+    return;
+  }
+
+  errorEl.style.display = 'none';
+  document.getElementById('brevo-hidden-email').value = email;
+  document.getElementById('brevo-hidden-form').submit();
+
+  setTimeout(() => {
+    successEl.style.display = 'block';
+    document.getElementById('brevo-email').value = '';
+  }, 800);
+}
+
+document.getElementById('brevo-email').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') suscribirse();
+});
+</script>
 
 <!-- Scripts Brevo (necesarios para validación y envío) -->
 <script>
@@ -451,5 +515,37 @@
 </script>
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
+
+<script>
+function nlSuscribirse() {
+  const email = document.getElementById('nl-email').value.trim();
+  const success = document.getElementById('nl-success');
+  const error = document.getElementById('nl-error');
+
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    error.style.display = 'block';
+    success.style.display = 'none';
+    return;
+  }
+
+  error.style.display = 'none';
+  document.getElementById('nl-hidden-email').value = email;
+  document.getElementById('nl-form').submit();
+
+  setTimeout(() => {
+    success.style.display = 'block';
+    document.getElementById('nl-email').value = '';
+  }, 500);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const input = document.getElementById('nl-email');
+  if (input) {
+    input.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') nlSuscribirse();
+    });
+  }
+});
+</script>
 </body>
 </html>
