@@ -5,169 +5,414 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Newsletter — El Peso del Trazo</title>
 <link rel="stylesheet" href="base.css">
+
+<!-- Brevo styles (necesarios para que funcione el formulario) -->
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+
 <style>
-  .newsletter-contenido {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 80px 0;
-  }
-  .newsletter-intro {
-    font-size: 20px;
-    line-height: 1.9;
-    color: var(--texto-suave);
-    margin-bottom: 56px;
-  }
-  .newsletter-promesas {
+  /* Ocultar todos los estilos por defecto de Brevo */
+  .sib-form { background: none !important; padding: 0 !important; }
+  .sib-container--large { background: none !important; border: none !important; border-radius: 0 !important; max-width: 100% !important; padding: 0 !important; }
+  .sib-form-block { display: none !important; } /* Ocultamos títulos y textos de Brevo */
+
+  /* ── LAYOUT NEWSLETTER ── */
+  .newsletter-page {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    margin-bottom: 56px;
+    min-height: 60vh;
   }
-  .promesa-box {
-    background: var(--crema);
-    border: 1px solid var(--borde);
-    padding: 32px;
-  }
-  .promesa-num {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--acento);
-    margin-bottom: 12px;
-  }
-  .promesa-titulo {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--texto);
-    margin-bottom: 8px;
-  }
-  .promesa-desc {
-    font-family: 'EB Garamond', Georgia, serif;
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--texto-suave);
-  }
-  .form-newsletter {
+
+  .newsletter-izquierda {
     background: var(--fondo-oscuro);
-    padding: 48px;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  .form-newsletter h2 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 32px;
-    font-weight: 900;
-    font-style: italic;
-    color: var(--fondo);
-    margin-bottom: 8px;
-  }
-  .form-newsletter p {
-    font-family: 'EB Garamond', Georgia, serif;
-    font-size: 17px;
-    color: #9a9288;
-    margin-bottom: 32px;
-    line-height: 1.7;
-  }
-  .form-newsletter input {
-    font-family: 'EB Garamond', Georgia, serif;
-    font-size: 17px;
-    padding: 15px 20px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid #3a3730;
-    color: var(--fondo);
-    outline: none;
-    width: 100%;
-    margin-bottom: 12px;
-    transition: border-color 0.2s;
-  }
-  .form-newsletter input::placeholder { color: #6a6260; }
-  .form-newsletter input:focus { border-color: var(--acento); }
-  .form-newsletter button {
+
+  .newsletter-eyebrow {
     font-family: 'Space Mono', monospace;
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    padding: 15px;
-    background: var(--acento);
-    color: var(--crema);
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.2s;
+    color: var(--acento);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
-  .form-newsletter button:hover { background: #a86c38; }
-  .form-nota {
+
+  .newsletter-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--acento);
+  }
+
+  .newsletter-titulo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 900;
+    font-style: italic;
+    color: var(--crema);
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .newsletter-titulo em { color: var(--acento); }
+
+  .newsletter-descripcion {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 20px;
+    color: #9a9288;
+    line-height: 1.85;
+    margin-bottom: 40px;
+    max-width: 420px;
+  }
+
+  .newsletter-promesas {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .promesa {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    color: #7a7268;
+  }
+
+  .promesa::before {
+    content: '→';
+    color: var(--acento);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ── FORMULARIO DERECHA ── */
+  .newsletter-derecha {
+    background: var(--fondo-alt);
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .formulario-titulo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--texto);
+    margin-bottom: 8px;
+  }
+
+  .formulario-subtitulo {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    color: var(--texto-suave);
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  /* Estilos del formulario Brevo adaptados */
+  #sib-container {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  #sib-form .sib-form-block:first-child,
+  #sib-form .sib-form-block:nth-child(2) {
+    display: none !important;
+  }
+
+  .entry__label {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 9px !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    color: var(--texto-suave) !important;
+    font-weight: 400 !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+  }
+
+  .input {
+    font-family: 'EB Garamond', Georgia, serif !important;
+    font-size: 18px !important;
+    padding: 14px 18px !important;
+    background: var(--crema) !important;
+    border: 1px solid var(--borde-fuerte) !important;
+    border-radius: 0 !important;
+    color: var(--texto) !important;
+    width: 100% !important;
+    outline: none !important;
+    transition: border-color 0.2s !important;
+    box-shadow: none !important;
+  }
+
+  .input:focus {
+    border-color: var(--acento) !important;
+  }
+
+  .input::placeholder {
+    color: var(--texto-suave) !important;
+    font-style: italic !important;
+  }
+
+  .sib-form-block__button {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 10px !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    padding: 16px 32px !important;
+    background: var(--acento) !important;
+    color: var(--crema) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    transition: background 0.2s !important;
+    margin-top: 4px !important;
+  }
+
+  .sib-form-block__button:hover {
+    background: #a86c38 !important;
+  }
+
+  .entry__specification {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 9px !important;
+    color: var(--texto-suave) !important;
+    margin-top: 6px !important;
+    display: block !important;
+  }
+
+  /* Mensajes de éxito y error */
+  #success-message {
+    font-family: 'EB Garamond', Georgia, serif !important;
+    font-size: 17px !important;
+    background: #e7faf0 !important;
+    border: 1px solid #13ce66 !important;
+    color: #085229 !important;
+    padding: 16px 20px !important;
+    border-radius: 0 !important;
+    margin-bottom: 16px !important;
+  }
+
+  #error-message {
+    font-family: 'EB Garamond', Georgia, serif !important;
+    font-size: 17px !important;
+    background: #ffeded !important;
+    border: 1px solid #ff4949 !important;
+    color: #661d1d !important;
+    padding: 16px 20px !important;
+    border-radius: 0 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .newsletter-nota {
     font-family: 'Space Mono', monospace;
     font-size: 9px;
     letter-spacing: 0.1em;
-    color: #4a4740;
-    margin-top: 12px;
+    color: var(--texto-suave);
+    margin-top: 16px;
+    display: block;
+    text-align: center;
+  }
+
+  /* ── SECCIÓN ANTERIOR NÚMEROS ── */
+  .anteriores {
+    background: var(--crema);
+    padding: 80px;
+    border-top: 1px solid var(--borde);
+  }
+
+  .anteriores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .anterior-item {
+    background: var(--fondo-alt);
+    padding: 32px;
+    border: 1px solid var(--borde);
+  }
+
+  .anterior-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .anterior-titulo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--texto);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .anterior-desc {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 15px;
+    color: var(--texto-suave);
+    line-height: 1.65;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 16px;
+  }
+
+  .section-num { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--acento); }
+  .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--texto); }
+
+  @media(max-width:900px){
+    .newsletter-page { grid-template-columns: 1fr; }
+    .newsletter-izquierda { padding: 48px 24px; }
+    .newsletter-derecha { padding: 48px 24px; }
+    .anteriores { padding: 48px 24px; }
+    .anteriores-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo"></a>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="El Peso del Trazo" onerror="this.style.display='none'"></a>
   <ul class="nav-links">
     <li><a href="resenas.html">Reseñas</a></li>
     <li><a href="ensayos.html">Ensayos</a></li>
     <li><a href="biblioteca.html">Biblioteca</a></li>
     <li><a href="sobre.html">Sobre el proyecto</a></li>
     <li><a href="contacto.html">Contacto</a></li>
-    <li><a href="newsletter.html" class="nav-cta" style="background:#a86c38">Newsletter</a></li>
+    <li><a href="newsletter.html" class="nav-cta">Newsletter</a></li>
   </ul>
 </nav>
 
-<!-- BANNER -->
-<div class="banner-global">
-  <img src="banner.png" alt="El Peso del Trazo">
-</div>
+<div class="banner-global"><img src="banner.png" alt="El Peso del Trazo"></div>
 
 <div class="page-header">
-  <div class="page-header-eyebrow">Sin algoritmos</div>
+  <div class="page-header-eyebrow">Suscripción gratuita</div>
   <h1>Newsletter</h1>
-  <p>Una reseña. Un ensayo. Cuando hay algo que vale la pena decir.</p>
+  <p>Una reseña, un ensayo, sin ruido. Cuando hay algo que vale la pena decir.</p>
 </div>
 
-<div class="main-content">
-  <div class="newsletter-contenido">
+<div class="newsletter-page">
 
-    <p class="newsletter-intro">
-      El Peso del Trazo en tu correo. Sin periodicidad forzada — cuando una lectura lo merezca. Sin resúmenes de novedades, sin listas de los más vendidos. Solo cómic que importa, explicado con el espacio que merece.
+  <!-- IZQUIERDA: texto -->
+  <div class="newsletter-izquierda">
+    <div class="newsletter-eyebrow">El Peso del Trazo</div>
+    <h2 class="newsletter-titulo">Cómic que<br><em>importa</em>,<br>en tu correo</h2>
+    <p class="newsletter-descripcion">
+      Sin periodicidad forzada. Sin algoritmos. Solo cuando hay algo que vale la pena leer, analizar o discutir sobre cómic europeo y de autor.
     </p>
-
     <div class="newsletter-promesas">
-      <div class="promesa-box">
-        <div class="promesa-num">01</div>
-        <div class="promesa-titulo">Sin spam</div>
-        <p class="promesa-desc">No hay calendario de publicación forzado. Cuando haya algo bueno que contar, llega. No antes.</p>
-      </div>
-      <div class="promesa-box">
-        <div class="promesa-num">02</div>
-        <div class="promesa-titulo">Sin algoritmos</div>
-        <p class="promesa-desc">El correo llega a tu bandeja de entrada, no a un feed curado por una plataforma.</p>
-      </div>
-      <div class="promesa-box">
-        <div class="promesa-num">03</div>
-        <div class="promesa-titulo">Contenido exclusivo</div>
-        <p class="promesa-desc">Algunas reseñas y ensayos llegarán antes o en exclusiva a los suscriptores.</p>
-      </div>
-      <div class="promesa-box">
-        <div class="promesa-num">04</div>
-        <div class="promesa-titulo">Baja cuando quieras</div>
-        <p class="promesa-desc">Sin compromiso. Un clic y te das de baja. Sin preguntas, sin formularios.</p>
+      <div class="promesa">Reseñas argumentadas con cinco criterios</div>
+      <div class="promesa">Ensayos sobre autores y corrientes estéticas</div>
+      <div class="promesa">Novedades editoriales curadas con criterio</div>
+      <div class="promesa">Sin spam. Cancelación en un clic.</div>
+    </div>
+  </div>
+
+  <!-- DERECHA: formulario Brevo -->
+  <div class="newsletter-derecha">
+    <h3 class="formulario-titulo">Suscríbete</h3>
+    <p class="formulario-subtitulo">Gratis. Sin compromiso. Solo cómic que importa.</p>
+
+    <!-- FORMULARIO BREVO -->
+    <div class="sib-form">
+      <div id="sib-form-container" class="sib-form-container">
+        <div id="error-message" class="sib-form-message-panel" style="display:none;">
+          <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+            <span class="sib-form-message-panel__inner-text">No hemos podido validar tu suscripción. Inténtalo de nuevo.</span>
+          </div>
+        </div>
+        <div id="success-message" class="sib-form-message-panel" style="display:none;">
+          <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+            <span class="sib-form-message-panel__inner-text">✓ Suscripción realizada. Revisa tu correo para confirmar.</span>
+          </div>
+        </div>
+        <div id="sib-container" class="sib-container--large sib-container--vertical">
+          <form id="sib-form" method="POST" action="https://5d6a82d1.sibforms.com/serve/MUIFAHx17vV-muy39xNpaDrK36rK47s0FcNnWgUrcKA4Fm6drW6DO6ynkE3LulB_5r15zWSkYSqPOaPiSa_jCC_W-8mKZUeMcwJtGHtGNvMt4c-xjzC8v1sviI9OsGvqKwAYdg7m_vfM4NlT_gOlGGNgwgY_lUtgAhJrfvgQPjUbgp5m2NQA3Am7faEoYFL2ScrZ0q2XlG0NwYJyqQ==" data-type="subscription">
+
+            <div style="padding: 8px 0;">
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row">
+                    <label class="entry__label" for="EMAIL">Tu dirección de correo electrónico</label>
+                    <div class="entry__field">
+                      <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="tu@correo.com" data-required="true" required />
+                    </div>
+                  </div>
+                  <label class="entry__error entry__error--primary" style="display:none;"></label>
+                  <label class="entry__specification">Recibirás un email de confirmación. Solo tienes que hacer clic en el enlace.</label>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding: 8px 0;">
+              <div class="sib-form-block" style="display:block !important; text-align:left">
+                <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                  <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" style="width:16px; height:16px; margin-right:8px; vertical-align:middle;">
+                    <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                  </svg>
+                  Suscribirme gratis
+                </button>
+              </div>
+            </div>
+
+            <input type="text" name="email_address_check" value="" class="input--hidden" style="display:none;">
+            <input type="hidden" name="locale" value="es">
+          </form>
+        </div>
       </div>
     </div>
 
-    <div class="form-newsletter">
-      <h2>Suscríbete</h2>
-      <p>Únete a los lectores que prefieren el correo al scroll infinito.</p>
-      <input type="text" placeholder="Tu nombre">
-      <input type="email" placeholder="tu@correo.com">
-      <button type="submit">Quiero suscribirme</button>
-      <p class="form-nota">Sin spam. Solo cómic que importa. Baja cuando quieras.</p>
-    </div>
+    <span class="newsletter-nota">Sin spam · Cancelación en un clic · RGPD cumplido</span>
+  </div>
 
+</div>
+
+<!-- ANTERIORES NÚMEROS (placeholder) -->
+<div class="anteriores">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Números anteriores</h2>
+  </div>
+  <div class="anteriores-grid">
+    <div class="anterior-item">
+      <span class="anterior-num">Próximamente</span>
+      <h3 class="anterior-titulo">El primer número</h3>
+      <p class="anterior-desc">Aquí aparecerán los números anteriores de la newsletter cuando empieces a publicar.</p>
+    </div>
+    <div class="anterior-item">
+      <span class="anterior-num">Próximamente</span>
+      <h3 class="anterior-titulo">Sobre Taniguchi</h3>
+      <p class="anterior-desc">El silencio como narrativa. Una introducción al maestro japonés del tiempo quieto.</p>
+    </div>
+    <div class="anterior-item">
+      <span class="anterior-num">Próximamente</span>
+      <h3 class="anterior-titulo">Astiberri a fondo</h3>
+      <p class="anterior-desc">Veinte años de la editorial que cambió el cómic adulto en España.</p>
+    </div>
   </div>
 </div>
 
@@ -175,39 +420,36 @@
   <div class="footer-top">
     <div>
       <div class="footer-logo">El <span>Peso</span> del Trazo</div>
-      <p class="footer-desc">Crítica de cómic europeo y de autor. Leer con los ojos abiertos desde Cantabria.</p>
+      <p class="footer-desc">Crítica de cómic europeo y de autor desde Cantabria.</p>
     </div>
-    <div class="footer-col">
-      <h4>Secciones</h4>
-      <ul>
-        <li><a href="resenas.html">Reseñas</a></li>
-        <li><a href="ensayos.html">Ensayos</a></li>
-        <li><a href="biblioteca.html">Biblioteca</a></li>
-        <li><a href="sobre.html">Sobre el proyecto</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contacto</h4>
-      <ul>
-        <li><a href="contacto.html">Escribir</a></li>
-        <li><a href="newsletter.html">Newsletter</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Redes</h4>
-      <ul>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Bluesky</a></li>
-      </ul>
-    </div>
+    <div class="footer-col"><h4>Secciones</h4><ul><li><a href="resenas.html">Reseñas</a></li><li><a href="ensayos.html">Ensayos</a></li><li><a href="biblioteca.html">Biblioteca</a></li><li><a href="sobre.html">Sobre el proyecto</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="contacto.html">Escribir</a></li><li><a href="newsletter.html">Newsletter</a></li></ul></div>
+    <div class="footer-col"><h4>Redes</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Bluesky</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2025 El Peso del Trazo — Mikel Castán</span>
-    <div class="footer-redes">
-      <a href="#">@elpesodeltrazo</a>
-      <a href="#">elpesodeltrazo.com</a>
-    </div>
+    <div class="footer-redes"><a href="#">@elpesodeltrazo</a><a href="#">elpesodeltrazo.com</a></div>
   </div>
 </footer>
+
+<!-- Scripts Brevo (necesarios para validación y envío) -->
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Elija un código de país';
+  window.LOCALE = 'es';
+  window.EMAIL_INVALID_MESSAGE = "Dirección de correo no válida. Comprueba el formato e inténtalo de nuevo.";
+  window.REQUIRED_ERROR_MESSAGE = "Este campo no puede estar vacío.";
+  window.GENERIC_INVALID_MESSAGE = "La información no es válida. Comprueba el formato e inténtalo de nuevo.";
+  window.translation = {
+    common: {
+      selectedList: '{quantity} lista seleccionada',
+      selectedLists: '{quantity} listas seleccionadas',
+      selectedOption: '{quantity} seleccionado',
+      selectedOptions: '{quantity} seleccionados',
+    }
+  };
+  var AUTOHIDE = Boolean(0);
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
 </body>
 </html>
