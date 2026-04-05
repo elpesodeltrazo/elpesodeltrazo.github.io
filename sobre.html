@@ -105,6 +105,11 @@
     <li><a href="contacto.html">Contacto</a></li>
     <li><a href="newsletter.html" class="nav-cta">Newsletter</a></li>
   </ul>
+
+  <button class="nav-hamburguesa" id="hamburguesa" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  
 </nav>
 <!-- BANNER -->
 <div class="banner-global">
@@ -112,8 +117,7 @@
 </div>
 
 
-<!-- BANNER -->
-<div class="site-banner"><img src="banner.png" alt="El Peso del Trazo"></div>
+
 <div class="page-header">
   <div class="page-header-eyebrow">El proyecto</div>
   <h1>Sobre <em>El Peso del Trazo</em></h1>
@@ -193,5 +197,18 @@
     </div>
   </div>
 </footer>
+
+  <script>
+  const btn = document.getElementById('hamburguesa');
+  const links = document.querySelector('.nav-links');
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('abierto');
+    links.classList.toggle('abierto');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    btn.classList.remove('abierto');
+    links.classList.remove('abierto');
+  }));
+</script>
 </body>
 </html>
