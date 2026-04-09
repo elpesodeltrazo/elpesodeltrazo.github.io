@@ -14,7 +14,7 @@ const RESENAS = [
     pais_key: 'españa',
     imagen: 'img/arrugas.jpg',
     vinetas: [
-      // 'img/arrugas-vineta1.jpg',
+       'img/arrugas-vineta.jpg',
       // 'img/arrugas-vineta2.jpg'
     ],
     extracto: 'Una de las miradas más lúcidas sobre el Alzheimer en el cómic español. Paco Roca desarrolla magistralmente en sus paginas una historia sobre el olvido y la identidad.',
