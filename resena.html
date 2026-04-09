@@ -39,33 +39,32 @@
   .resena-cuerpo blockquote p { font-style: italic; color: var(--texto-suave); margin-bottom: 0; font-size: 19px; }
   .resena-cuerpo blockquote p::first-letter { float: none; font-size: inherit; color: inherit; margin: 0; }
 
-  /* ── VIÑETAS ── */
-  .vinetas-bloque {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 48px 0 32px;
-    padding: 24px;
-    background: var(--crema);
-    border: 1px solid var(--borde);
-  }
-  .vineta-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border: 1px solid var(--borde);
-  }
-  .vineta-credito {
-    grid-column: 1 / -1;
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--texto-suave);
-    text-align: right;
-    padding-top: 8px;
-    border-top: 1px solid var(--borde);
-  }
+ /* ── VIÑETAS ── */
+.vinetas-bloque {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 48px auto 32px;
+  max-width: 560px;
+}
+.vineta-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.vineta-credito {
+  grid-column: 1 / -1;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  text-align: right;
+}
+
+@media(max-width:768px) {
+  .vinetas-bloque { grid-template-columns: 1fr; max-width: 100%; }
+}
 
   @media(max-width:900px){
     .resena-layout{grid-template-columns:1fr; gap:32px; padding:24px}
