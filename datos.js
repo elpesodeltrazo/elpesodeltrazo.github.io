@@ -22,7 +22,7 @@ const RESENAS = [
     goodreads: '4.32',
     metricas: { guion: 4, dibujo: 4, lenguaje: 5, relevancia: 5, impacto: 4 },
     cuerpo: `<p> Hay cómics que te dejan un brochazo en el corazón despues de leerlos, y años despues, los recuerdas por esa sensación que dejaron. <em>Arrugas</em> es uno de ellos. Paco Roca construye con un trazo aparentemente sencillo, casi naif,  una de las miradas más lúcidas y compasivas sobre el Alzheimer que ha dado el cómic español. </p>
-    <p>La historia arranca con Emilio, un antiguo bancario que comienza a perder la memoria. Su hijo lo ingresa en una residencia de mayores. Lo que podría ser un melodrama sobre la vejez se convierte en una reflexión sobre la dignidad, la identidad y lo que queda de nosotros cuando el tiempo nos erosiona.</p>
+    <p>La historia arranca con Emilio, un antiguo banquero que comienza a perder la memoria. Su hijo lo ingresa en una residencia de mayores. Lo que podría ser un melodrama sobre la vejez se convierte en una reflexión sobre la dignidad, la identidad y lo que queda de nosotros cuando el tiempo nos erosiona.</p>
     <blockquote><p> Roca utiliza el dibujo como medio para olvidar. A medida que el Alzheimer avanza, las viñetas se vacían. Los fondos desaparecen, los personajes se difuminan.</p></blockquote>
     <p> Miguel, el compañero de habitación, funciona como contrapunto perfecto: lúcido, pícaro, superviviente, lo cual acrecienta nuestra empatia por Emilio.</p>
     <p><em>Arrugas</em> ganó el Premio Nacional del Cómic en 2008 y fue adaptada al cine. Lo que sorprende, relectura tras relectura, es que un libro tan pequeño pueda contener tanto.</p>`
