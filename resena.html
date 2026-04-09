@@ -38,7 +38,40 @@
   .resena-cuerpo blockquote { border-left: 3px solid var(--acento-claro); padding: 14px 22px; margin: 36px 0; background: var(--crema); }
   .resena-cuerpo blockquote p { font-style: italic; color: var(--texto-suave); margin-bottom: 0; font-size: 19px; }
   .resena-cuerpo blockquote p::first-letter { float: none; font-size: inherit; color: inherit; margin: 0; }
-  @media(max-width:900px){ .resena-layout{grid-template-columns:1fr; gap:32px; padding:24px} .resena-lateral{position:static} }
+
+  /* ── VIÑETAS ── */
+  .vinetas-bloque {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 48px 0 32px;
+    padding: 24px;
+    background: var(--crema);
+    border: 1px solid var(--borde);
+  }
+  .vineta-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--borde);
+  }
+  .vineta-credito {
+    grid-column: 1 / -1;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    text-align: right;
+    padding-top: 8px;
+    border-top: 1px solid var(--borde);
+  }
+
+  @media(max-width:900px){
+    .resena-layout{grid-template-columns:1fr; gap:32px; padding:24px}
+    .resena-lateral{position:static}
+    .vinetas-bloque { grid-template-columns: 1fr; }
+  }
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3R37JP1G54"></script>
@@ -60,11 +93,9 @@
     <li><a href="contacto.html">Contacto</a></li>
     <li><a href="newsletter.html" class="nav-cta">Newsletter</a></li>
   </ul>
-<button class="nav-hamburguesa" id="hamburguesa" aria-label="Menú">
+  <button class="nav-hamburguesa" id="hamburguesa" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
-
-  
 </nav>
 
 <div class="banner-global"><img src="banner.png" alt="El Peso del Trazo"></div>
@@ -132,15 +163,22 @@
       </div>
       <a href="resenas.html" class="volver">Volver a reseñas</a>`;
 
+    const vinetasHtml = (r.vinetas && r.vinetas.length > 0) ? `
+      <div class="vinetas-bloque">
+        ${r.vinetas.map(v => `<img src="${v}" alt="Viñeta de ${r.titulo}" class="vineta-img">`).join('')}
+        <span class="vineta-credito">© ${r.autor} / ${r.editorial}</span>
+      </div>` : '';
+
     document.getElementById('principal').innerHTML = `
       <div class="resena-eyebrow">Reseña — ${r.pais} · ${r.editorial} · ${r.año}</div>
       <h1 class="resena-titulo-principal"><em>${r.titulo}</em></h1>
       <span class="resena-autor-principal">Por Mikel Castán</span>
-      <div class="resena-cuerpo">${r.cuerpo}</div>`;
+      <div class="resena-cuerpo">${r.cuerpo}</div>
+      ${vinetasHtml}`;
   }
 </script>
 
-  <script>
+<script>
   const btn = document.getElementById('hamburguesa');
   const links = document.querySelector('.nav-links');
   btn.addEventListener('click', () => {

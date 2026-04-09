@@ -13,6 +13,10 @@ const RESENAS = [
     pais: 'España',
     pais_key: 'españa',
     imagen: 'img/arrugas.jpg',
+    vinetas: [
+      // 'img/arrugas-vineta1.jpg',
+      // 'img/arrugas-vineta2.jpg'
+    ],
     extracto: 'Una de las miradas más lúcidas sobre el Alzheimer en el cómic español. Paco Roca desarrolla magistralmente en sus paginas una historia sobre el olvido y la identidad.',
     premio: 'Premio Nacional del Cómic 2008',
     goodreads: '4.32',
@@ -32,6 +36,10 @@ const RESENAS = [
     pais: 'Francia / Irán',
     pais_key: 'francia',
     imagen: 'img/escena-interior-libro-persepolis.jpg',
+    vinetas: [
+      // 'img/persepolis-vineta1.jpg',
+      // 'img/persepolis-vineta2.jpg'
+    ],
     extracto: 'El blanco y negro como posición política. La autobiografía más honesta sobre la historia de un país.',
     premio: 'Prix du Lion Fnac 2000',
     goodreads: '4.32',
@@ -50,6 +58,10 @@ const RESENAS = [
     pais: 'España',
     pais_key: 'españa',
     imagen: 'https://covers.openlibrary.org/b/isbn/9788467920260-L.jpg',
+    vinetas: [
+      // 'img/surcos-vineta1.jpg',
+      // 'img/surcos-vineta2.jpg'
+    ],
     extracto: 'Thriller, road movie y elegía a la vez. Roca en su momento más ambicioso y necesario.',
     premio: 'Premio Nacional del Cómic 2014',
     goodreads: '4.38',
@@ -68,6 +80,10 @@ const RESENAS = [
     pais: 'Japón',
     pais_key: 'japon',
     imagen: 'https://covers.openlibrary.org/b/isbn/9788491742876-L.jpg',
+    vinetas: [
+      // 'img/almanaque-vineta1.jpg',
+      // 'img/almanaque-vineta2.jpg'
+    ],
     extracto: 'El tiempo como materia narrativa. La memoria familiar convertida en meditación sobre lo que heredamos.',
     premio: 'Premio Manga Shōgakukan 1994',
     goodreads: '4.36',
@@ -86,11 +102,15 @@ const RESENAS = [
     pais: 'EEUU',
     pais_key: 'eeuu',
     imagen: 'https://covers.openlibrary.org/b/isbn/9788478338443-L.jpg',
+    vinetas: [
+      // 'img/maus-vineta1.jpg',
+      // 'img/maus-vineta2.jpg'
+    ],
     extracto: 'La obra que cambió la percepción del cómic para siempre. Más humana que cualquier tratado histórico.',
     premio: 'Premio Pulitzer 1992',
     goodreads: '4.55',
     metricas: { guion: 5, dibujo: 4, lenguaje: 5, relevancia: 5, impacto: 5 },
-    cuerpo: `<p>En 1992, <em>Maus</em> ganó el Premio Pulitzer. Era la primera vez que lo ganaba un cómic. Para muchos fue una revelación; para otros, la confirmación de algo que ya sabían: que el cómic podía hacer lo que ningún otro medio podía.</p>
+    cuerpo: `<p>Art Spiegelman eligió representar a los judíos como ratones y a los nazis como gatos. Esa decisión, tomada décadas antes de que el libro existiera, es la que hace de <em>Maus</em> algo único en la historia de la literatura.</p>
     <p>Art Spiegelman lleva años entrevistando a su padre Vladek sobre su supervivencia al Holocausto. Esas entrevistas forman la columna vertebral del libro, pero <em>Maus</em> es también la historia de la relación entre padre e hijo.</p>
     <blockquote><p>La decisión de representar a los judíos como ratones y a los nazis como gatos no es un capricho formal. Es una manera de hablar sobre cómo los perpetradores deshumanizaron a sus víctimas, apropiándose de esa lógica para subvertirla.</p></blockquote>
     <p>Treinta años después, <em>Maus</em> sigue siendo la obra que más claramente demuestra por qué el cómic importa. No a pesar de ser cómic, sino precisamente porque lo es.</p>`
@@ -104,6 +124,10 @@ const RESENAS = [
     pais: 'España',
     pais_key: 'españa',
     imagen: 'https://covers.openlibrary.org/b/isbn/9788498147070-L.jpg',
+    vinetas: [
+      // 'img/blacksad-vineta1.jpg',
+      // 'img/blacksad-vineta2.jpg'
+    ],
     extracto: 'Noir de animales, América de los 50. Guarnido es uno de los mejores dibujantes de su generación.',
     premio: 'Premio Eisner 2006',
     goodreads: '4.20',
