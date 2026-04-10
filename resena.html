@@ -169,17 +169,28 @@
       </div>
       <a href="resenas.html" class="volver">Volver a reseñas</a>`;
 
-    const vinetasHtml = (r.vinetas && r.vinetas.length > 0) ? `
+  const vinetasHtml = (r.vinetas && r.vinetas.length > 0) ? `
       <div class="vinetas-bloque">
         ${r.vinetas.map(v => `<img src="${v}" alt="Viñeta de ${r.titulo}" class="vineta-img">`).join('')}
         <span class="vineta-credito">© ${r.autor} / ${r.editorial}</span>
       </div>` : '';
 
+    // Insertar viñetas después del segundo párrafo del cuerpo
+    let cuerpoConVinetas = r.cuerpo;
+    if (vinetasHtml) {
+      const parrafos = r.cuerpo.split('</p>');
+      if (parrafos.length > 2) {
+        cuerpoConVinetas = parrafos[0] + '</p>' + parrafos[1] + '</p>' + vinetasHtml + parrafos.slice(2).join('</p>');
+      } else {
+        cuerpoConVinetas = r.cuerpo + vinetasHtml;
+      }
+    }
+
     document.getElementById('principal').innerHTML = `
       <div class="resena-eyebrow">Reseña — ${r.pais} · ${r.editorial} · ${r.año}</div>
       <h1 class="resena-titulo-principal"><em>${r.titulo}</em></h1>
       <span class="resena-autor-principal">Por Mikel Castán</span>
-      <div class="resena-cuerpo">${vinetasHtml}${r.cuerpo}</div>`;
+      <div class="resena-cuerpo">${cuerpoConVinetas}</div>`;
   }
 </script>
 
