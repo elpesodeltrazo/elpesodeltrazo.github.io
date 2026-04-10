@@ -35,7 +35,7 @@
   .resena-autor-principal { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 40px; display: block; }
   .resena-cuerpo p { font-family: 'EB Garamond', serif; font-size: 20px; line-height: 1.9; color: var(--texto); margin-bottom: 28px; }
   .resena-cuerpo p:first-child::first-letter { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 900; float: left; line-height: 0.78; margin: 10px 12px 0 0; color: var(--acento); }
-  .resena-cuerpo blockquote { border-left: 3px solid var(--acento-claro); padding: 14px 22px; margin: 36px 0; background: var(--crema); }
+  .resena-cuerpo blockquote { border-left: 3px solid var(--acento-claro); padding: 14px 22px; margin: 36px 0; background: var(--crema); overflow: hidden; }
   .resena-cuerpo blockquote p { font-style: italic; color: var(--texto-suave); margin-bottom: 0; font-size: 19px; }
   .resena-cuerpo blockquote p::first-letter { float: none; font-size: inherit; color: inherit; margin: 0; }
 
@@ -178,14 +178,8 @@
     let cuerpoConVinetas = r.cuerpo;
     if (vinetasHtml) {
       const parrafos = r.cuerpo.split('</p>');
-      if (parrafos.length > 2) {
-cuerpoConVinetas = parrafos[0] + '</p>' + vinetasHtml + parrafos.slice(1).join('</p>');
+     cuerpoConVinetas = vinetasHtml + r.cuerpo;
 
-        
-      } else {
-        cuerpoConVinetas = r.cuerpo + vinetasHtml;
-      }
-    }
 
     document.getElementById('principal').innerHTML = `
       <div class="resena-eyebrow">Reseña — ${r.pais} · ${r.editorial} · ${r.año}</div>
