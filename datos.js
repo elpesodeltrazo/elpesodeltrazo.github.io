@@ -14,17 +14,19 @@ const RESENAS = [
     pais_key: 'españa',
     imagen: 'img/arrugas.jpg',
     vinetas: [
-       'img/arrugas-vineta.jpg',
+      'img/arrugas-vineta.jpg',
       // 'img/arrugas-vineta2.jpg'
     ],
-    extracto: 'Una de las miradas más lúcidas sobre el Alzheimer en el cómic español. Paco Roca desarrolla magistralmente en sus paginas una historia sobre el olvido y la identidad.',
+    etiquetas: ['indispensable'],
+    te_gustara: 'Si te interesan las historias sobre memoria, vejez y dignidad. Si disfrutaste de películas como Amour o El hijo de Saúl.',
+    extracto: 'Una de las miradas más lúcidas sobre el Alzheimer en el cómic español. Paco Roca desarrolla magistralmente en sus páginas una historia sobre el olvido y la identidad.',
     premio: 'Premio Nacional del Cómic 2008',
     goodreads: '4.32',
-    metricas: { guion: 4, dibujo: 4, lenguaje: 5, relevancia: 5, impacto: 4 },
-    cuerpo: `<p> Hay cómics que te dejan un brochazo en el corazón despues de leerlos, y años despues, los recuerdas por esa sensación que dejaron. <em>Arrugas</em> es uno de ellos. Paco Roca construye con un trazo aparentemente sencillo, casi naif,  una de las miradas más lúcidas y compasivas sobre el Alzheimer que ha dado el cómic español. </p>
+    metricas: { guion: 4, dibujo: 4, lenguaje: 5, originalidad: 5, impacto: 4 },
+    cuerpo: `<p> Hay cómics que te dejan un brochazo en el corazón despues de leerlos, y años despues, los recuerdas por esa sensación que dejaron. <em>Arrugas</em> es uno de ellos. Paco Roca construye con un trazo aparentemente sencillo, casi naif, una de las miradas más lúcidas y compasivas sobre el Alzheimer que ha dado el cómic español. </p>
     <p>La historia arranca con Emilio, un antiguo banquero que comienza a perder la memoria. Su hijo lo ingresa en una residencia de mayores. Lo que podría ser un melodrama sobre la vejez se convierte en una reflexión sobre la dignidad, la identidad y lo que queda de nosotros cuando el tiempo nos erosiona.</p>
-    <blockquote><p> Dicen que cuando te miras en el espejo y empiezas a parecerte a tu padre es que ya te estás haciendo mayor. </p></blockquote>
-    <p> Miguel, el compañero de habitación, funciona como contrapunto perfecto: lúcido, pícaro, superviviente, lo cual acrecienta nuestra empatia por Emilio.</p>
+    <blockquote><p>Dicen que cuando te miras en el espejo y empiezas a parecerte a tu padre es que ya te estás haciendo mayor.</p></blockquote>
+    <p>Miguel, el compañero de habitación, funciona como contrapunto perfecto: lúcido, pícaro, superviviente, lo cual acrecienta nuestra empatia por Emilio.</p>
     <p><em>Arrugas</em> ganó el Premio Nacional del Cómic en 2008 y fue adaptada al cine. Lo que sorprende, relectura tras relectura, es que un libro tan pequeño pueda contener tanto.</p>`
   },
   {
@@ -40,10 +42,12 @@ const RESENAS = [
       // 'img/persepolis-vineta1.jpg',
       // 'img/persepolis-vineta2.jpg'
     ],
-    extracto: 'Un desgarrador relato de la evolución de Irán. Marjane Satrapi realiza una autobiografía donde explica la evolucion de su pais, que nos lleva a plantearnos temas como la identidad y el progresismo.',
-    premio: 'Prix du Lion Fnac 2000','Premio autor revelación, Angoulême 2001', 'Premio al mejor guion, Angoulême 2002'
+    etiquetas: ['indispensable', 'para_regalar'],
+    te_gustara: 'Si te apasiona la historia del siglo XX contada desde dentro. Si buscas una autobiografía que mezcle humor y tragedia con honestidad brutal.',
+    extracto: 'Un desgarrador relato de la evolución de Irán. Satrapi realiza una autobiografía donde explica la evolución de su país, que nos lleva a plantearnos temas como la identidad y el progresismo.',
+    premio: 'Prix du Lion Fnac 2000 · Premio autor revelación Angoulême 2001',
     goodreads: '4.32',
-    metricas: { guion: 5, dibujo: 4, lenguaje: 4, relevancia: 5, impacto: 5 },
+    metricas: { guion: 5, dibujo: 4, lenguaje: 4, originalidad: 5, impacto: 5 },
     cuerpo: `<p>Hay libros que solo pueden existir en forma de cómic. <em>Persépolis</em> es uno de ellos. Marjane Satrapi eligió el blanco y negro más radical para contar su infancia en el Irán de la Revolución Islámica. Esa decisión formal es también política: las cosas son o no son.</p>
     <p>Lo que convierte <em>Persépolis</em> en una obra mayor no es solo el testimonio histórico sino la mirada de la niña que lo cuenta. Satrapi nunca sentencia desde fuera; todo lo vive desde dentro, con la confusión, el humor y la contradicción que eso implica.</p>
     <blockquote><p>El trazo grueso y elemental de Satrapi no es una limitación técnica: es la herramienta exacta para una historia que necesita ser directa, sin ornamentos, sin excusas.</p></blockquote>
@@ -62,10 +66,12 @@ const RESENAS = [
       // 'img/surcos-vineta1.jpg',
       // 'img/surcos-vineta2.jpg'
     ],
+    etiquetas: ['indispensable'],
+    te_gustara: 'Si te interesa la memoria histórica española y la Guerra Civil. Si disfrutas de narrativas que mezclan pasado y presente con precisión periodística.',
     extracto: 'Thriller, road movie y elegía a la vez. Roca en su momento más ambicioso y necesario.',
     premio: 'Premio Nacional del Cómic 2014',
     goodreads: '4.38',
-    metricas: { guion: 5, dibujo: 4, lenguaje: 5, relevancia: 5, impacto: 5 },
+    metricas: { guion: 5, dibujo: 4, lenguaje: 5, originalidad: 5, impacto: 5 },
     cuerpo: `<p>Existe una generación de españoles que liberó París y que España olvidó. Paco Roca fue a buscarlos. <em>Los surcos del azar</em> nace de un viaje real para entrevistar a los supervivientes de La Nueve, la compañía de republicanos españoles que entró primera en París en agosto de 1944.</p>
     <p>Roca construye un artefacto narrativo preciso: un periodista que entrevista a un anciano, y dentro de esa entrevista, la guerra, el exilio, la resistencia. La estructura en capas permite que pasado y presente dialoguen sin que ninguno aplaste al otro.</p>
     <blockquote><p>El dibujo de Roca en este libro es más contenido que en <em>Arrugas</em>, más documental. Hay una deliberada austeridad que conviene a la historia: no se puede ser exuberante cuando se habla de los muertos.</p></blockquote>
@@ -84,10 +90,12 @@ const RESENAS = [
       // 'img/almanaque-vineta1.jpg',
       // 'img/almanaque-vineta2.jpg'
     ],
+    etiquetas: ['indispensable', 'para_regalar'],
+    te_gustara: 'Si valoras el silencio y la contemplación en la narrativa. Si te interesan las relaciones entre padres e hijos y lo que queda sin decir.',
     extracto: 'El tiempo como materia narrativa. La memoria familiar convertida en meditación sobre lo que heredamos.',
     premio: 'Premio Manga Shōgakukan 1994',
     goodreads: '4.36',
-    metricas: { guion: 5, dibujo: 5, lenguaje: 5, relevancia: 4, impacto: 5 },
+    metricas: { guion: 5, dibujo: 5, lenguaje: 5, originalidad: 4, impacto: 5 },
     cuerpo: `<p>Jiro Taniguchi es el maestro del tiempo quieto. En <em>El almanaque de mi padre</em>, un hombre regresa a su ciudad natal para el funeral de su padre, con quien tuvo una relación distante. Lo que encontrará no es solo un muerto, sino toda una vida que desconocía.</p>
     <p>Taniguchi convierte ese recorrido en una meditación sobre la paternidad, la herencia y los silencios entre generaciones.</p>
     <blockquote><p>El dibujo de Taniguchi alcanza una perfección casi insoportable. Cada tejado, cada árbol sin hojas está dibujado con una precisión que no es exhibicionismo técnico sino necesidad narrativa: el lugar importa tanto como las personas.</p></blockquote>
@@ -106,10 +114,12 @@ const RESENAS = [
       // 'img/maus-vineta1.jpg',
       // 'img/maus-vineta2.jpg'
     ],
+    etiquetas: ['indispensable'],
+    te_gustara: 'Si quieres entender qué puede hacer el cómic que ningún otro medio puede. Si te interesa el Holocausto contado desde la intimidad familiar.',
     extracto: 'La obra que cambió la percepción del cómic para siempre. Más humana que cualquier tratado histórico.',
     premio: 'Premio Pulitzer 1992',
     goodreads: '4.55',
-    metricas: { guion: 5, dibujo: 4, lenguaje: 5, relevancia: 5, impacto: 5 },
+    metricas: { guion: 5, dibujo: 4, lenguaje: 5, originalidad: 5, impacto: 5 },
     cuerpo: `<p>Art Spiegelman eligió representar a los judíos como ratones y a los nazis como gatos. Esa decisión, tomada décadas antes de que el libro existiera, es la que hace de <em>Maus</em> algo único en la historia de la literatura.</p>
     <p>Art Spiegelman lleva años entrevistando a su padre Vladek sobre su supervivencia al Holocausto. Esas entrevistas forman la columna vertebral del libro, pero <em>Maus</em> es también la historia de la relación entre padre e hijo.</p>
     <blockquote><p>La decisión de representar a los judíos como ratones y a los nazis como gatos no es un capricho formal. Es una manera de hablar sobre cómo los perpetradores deshumanizaron a sus víctimas, apropiándose de esa lógica para subvertirla.</p></blockquote>
@@ -128,10 +138,12 @@ const RESENAS = [
       // 'img/blacksad-vineta1.jpg',
       // 'img/blacksad-vineta2.jpg'
     ],
+    etiquetas: ['para_regalar'],
+    te_gustara: 'Si eres fan del género negro y quieres ver hasta dónde puede llegar el dibujo en un cómic. Un regalo perfecto para cualquier amante del cine de los años 50.',
     extracto: 'Noir de animales, América de los 50. Guarnido es uno de los mejores dibujantes de su generación.',
     premio: 'Premio Eisner 2006',
     goodreads: '4.20',
-    metricas: { guion: 4, dibujo: 5, lenguaje: 4, relevancia: 4, impacto: 4 },
+    metricas: { guion: 4, dibujo: 5, lenguaje: 4, originalidad: 4, impacto: 4 },
     cuerpo: `<p>Hay cómics que son, ante todo, un acontecimiento visual. <em>Blacksad</em> es uno de ellos. Juanjo Guarnido volcó en estas páginas todo lo que sabe sobre el movimiento, la expresión y la luz. El resultado es posiblemente el trabajo de ilustración más impresionante del cómic español contemporáneo.</p>
     <p>La historia es noir clásico: John Blacksad, detective felino, investiga crímenes en una América de los años 50 habitada por animales. Díaz Canales escribe con respeto al género sin obsesionarse con el pastiche.</p>
     <blockquote><p>La elección de animales no es arbitraria. Cada especie dice algo del personaje: los depredadores en el poder, las presas como víctimas, los carroñeros como oportunistas.</p></blockquote>

@@ -46,6 +46,12 @@
   .resena-total-max { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--texto-suave); margin-left: 2px; }
   .contador { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--texto-suave); letter-spacing: 0.1em; margin-bottom: 16px; }
 
+  /* Etiquetas */
+  .resena-etiquetas { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .etiqueta { font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .etiqueta-indispensable { background: var(--acento); color: var(--crema); }
+  .etiqueta-para_regalar { background: var(--azul-claro); color: var(--texto); border: 1px solid var(--azul-claro); }
+
   @media(max-width:900px){
     .criterios-bloque{padding:40px 24px} .criterios-intro{grid-template-columns:1fr; gap:32px}
     .criterios-grid{grid-template-columns:1fr 1fr} .resenas-contenido{padding:40px 24px}
@@ -72,8 +78,7 @@
     <li><a href="contacto.html">Contacto</a></li>
     <li><a href="newsletter.html" class="nav-cta">Newsletter</a></li>
   </ul>
-
-   <button class="nav-hamburguesa" id="hamburguesa" aria-label="Menú">
+  <button class="nav-hamburguesa" id="hamburguesa" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -96,7 +101,7 @@
       <div class="criterio-item"><span class="criterio-num">01</span><div class="criterio-nombre">Guion y narrativa</div><p class="criterio-desc">Solidez de la historia, estructura y ritmo.</p><span class="criterio-max">Máx. 5 pts</span></div>
       <div class="criterio-item"><span class="criterio-num">02</span><div class="criterio-nombre">Dibujo y estilo</div><p class="criterio-desc">Calidad del trazo y originalidad visual.</p><span class="criterio-max">Máx. 5 pts</span></div>
       <div class="criterio-item"><span class="criterio-num">03</span><div class="criterio-nombre">Lenguaje del cómic</div><p class="criterio-desc">Viñetas, silencios y composición.</p><span class="criterio-max">Máx. 5 pts</span></div>
-      <div class="criterio-item"><span class="criterio-num">04</span><div class="criterio-nombre">Relevancia</div><p class="criterio-desc">Ambición y aportación al género.</p><span class="criterio-max">Máx. 5 pts</span></div>
+      <div class="criterio-item"><span class="criterio-num">04</span><div class="criterio-nombre">Originalidad</div><p class="criterio-desc">Ambición, riesgo y aportación al género.</p><span class="criterio-max">Máx. 5 pts</span></div>
       <div class="criterio-item"><span class="criterio-num">05</span><div class="criterio-nombre">Impacto personal</div><p class="criterio-desc">La dimensión subjetiva y honesta.</p><span class="criterio-max">Máx. 5 pts</span></div>
     </div>
   </div>
@@ -115,12 +120,21 @@
       </div>
     </div>
     <div class="filtros-grupo">
-      <span class="filtros-label">Puntuación</span>
-      <div class="filtros" id="filtros-nota">
-        <span class="filtro-tag active" onclick="filtrarNota(this,0)">Todas</span>
-        <span class="filtro-tag" onclick="filtrarNota(this,23)">23 — 25 pts</span>
-        <span class="filtro-tag" onclick="filtrarNota(this,20)">20 — 22 pts</span>
-        <span class="filtro-tag" onclick="filtrarNota(this,0,19)">Hasta 19 pts</span>
+      <span class="filtros-label">Selección</span>
+      <div class="filtros" id="filtros-etiqueta">
+        <span class="filtro-tag active" onclick="filtrarEtiqueta(this,'todos')">Todas</span>
+        <span class="filtro-tag" onclick="filtrarEtiqueta(this,'indispensable')">⭐ Indispensables</span>
+        <span class="filtro-tag" onclick="filtrarEtiqueta(this,'para_regalar')">🎁 Para regalar</span>
+      </div>
+    </div>
+    <div class="filtros-grupo">
+      <span class="filtros-label">Ordenar por</span>
+      <div class="filtros" id="filtros-orden">
+        <span class="filtro-tag active" onclick="ordenarPor(this,'ninguno')">Por defecto</span>
+        <span class="filtro-tag" onclick="ordenarPor(this,'nota_desc')">Mi nota ↓</span>
+        <span class="filtro-tag" onclick="ordenarPor(this,'nota_asc')">Mi nota ↑</span>
+        <span class="filtro-tag" onclick="ordenarPor(this,'goodreads_desc')">Goodreads ↓</span>
+        <span class="filtro-tag" onclick="ordenarPor(this,'goodreads_asc')">Goodreads ↑</span>
       </div>
     </div>
   </div>
@@ -140,30 +154,57 @@
 
 <script src="datos.js"></script>
 <script>
-  let filtroPais = 'todos', filtroMin = 0, filtroMax = 999;
+  let filtroPais = 'todos';
+  let filtroEtiqueta = 'todos';
+  let ordenActual = 'ninguno';
 
   function renderizarBarras(m) {
-    return ['guion','dibujo','lenguaje','relevancia','impacto'].map(k => `
-      <div class="criterio-barra">
-        <span class="criterio-barra-label">${k.charAt(0).toUpperCase()+k.slice(1)}</span>
+    return ['guion','dibujo','lenguaje','originalidad','impacto'].map((k,i) => {
+      const nombres = ['Guion','Dibujo','Lenguaje','Originalidad','Impacto'];
+      return `<div class="criterio-barra">
+        <span class="criterio-barra-label">${nombres[i]}</span>
         <div class="criterio-barra-track"><div class="criterio-barra-fill" style="width:${m[k]*20}%"></div></div>
         <span class="criterio-barra-valor">${m[k]}</span>
-      </div>`).join('');
+      </div>`;
+    }).join('');
+  }
+
+  function renderizarEtiquetas(etiquetas) {
+    if (!etiquetas || etiquetas.length === 0) return '';
+    const labels = { indispensable: '⭐ Indispensable', para_regalar: '🎁 Para regalar' };
+    return `<div class="resena-etiquetas">${etiquetas.map(e => `<span class="etiqueta etiqueta-${e}">${labels[e] || e}</span>`).join('')}</div>`;
   }
 
   function renderizar() {
+    let lista = [...RESENAS];
+
+    // Filtrar
+    lista = lista.filter(r => {
+      const okPais = filtroPais === 'todos' || r.pais_key === filtroPais;
+      const okEtiqueta = filtroEtiqueta === 'todos' || (r.etiquetas && r.etiquetas.includes(filtroEtiqueta));
+      return okPais && okEtiqueta;
+    });
+
+    // Ordenar
+    if (ordenActual === 'nota_desc') {
+      lista.sort((a,b) => Object.values(b.metricas).reduce((x,y)=>x+y,0) - Object.values(a.metricas).reduce((x,y)=>x+y,0));
+    } else if (ordenActual === 'nota_asc') {
+      lista.sort((a,b) => Object.values(a.metricas).reduce((x,y)=>x+y,0) - Object.values(b.metricas).reduce((x,y)=>x+y,0));
+    } else if (ordenActual === 'goodreads_desc') {
+      lista.sort((a,b) => parseFloat(b.goodreads||0) - parseFloat(a.goodreads||0));
+    } else if (ordenActual === 'goodreads_asc') {
+      lista.sort((a,b) => parseFloat(a.goodreads||0) - parseFloat(b.goodreads||0));
+    }
+
     const grid = document.getElementById('grid-resenas');
     grid.innerHTML = '';
-    let visible = 0;
-    RESENAS.forEach(r => {
+    lista.forEach(r => {
       const total = Object.values(r.metricas).reduce((a,b)=>a+b,0);
-      const ok = (filtroPais==='todos'||r.pais_key===filtroPais) && total>=filtroMin && total<=filtroMax;
-      if (!ok) return;
-      visible++;
       grid.innerHTML += `
         <a href="resena.html?id=${r.id}" class="resena-card">
           <img class="resena-card-img" src="${r.imagen}" alt="${r.titulo}" onerror="this.style.display='none'">
           <div class="resena-card-body">
+            ${renderizarEtiquetas(r.etiquetas)}
             <div class="resena-pais">${r.pais} · ${r.año} · ${r.editorial}</div>
             <h3 class="resena-titulo">${r.titulo}</h3>
             <div class="resena-autor">${r.autor}</div>
@@ -176,22 +217,26 @@
           </div>
         </a>`;
     });
-    document.getElementById('num-visible').textContent = visible;
+    document.getElementById('num-visible').textContent = lista.length;
   }
 
   function filtrarPais(el, p) {
     document.querySelectorAll('#filtros-pais .filtro-tag').forEach(t=>t.classList.remove('active'));
     el.classList.add('active'); filtroPais = p; renderizar();
   }
-  function filtrarNota(el, min, max=999) {
-    document.querySelectorAll('#filtros-nota .filtro-tag').forEach(t=>t.classList.remove('active'));
-    el.classList.add('active'); filtroMin = min; filtroMax = max; renderizar();
+  function filtrarEtiqueta(el, e) {
+    document.querySelectorAll('#filtros-etiqueta .filtro-tag').forEach(t=>t.classList.remove('active'));
+    el.classList.add('active'); filtroEtiqueta = e; renderizar();
+  }
+  function ordenarPor(el, orden) {
+    document.querySelectorAll('#filtros-orden .filtro-tag').forEach(t=>t.classList.remove('active'));
+    el.classList.add('active'); ordenActual = orden; renderizar();
   }
 
   renderizar();
 </script>
 
-  <script>
+<script>
   const btn = document.getElementById('hamburguesa');
   const links = document.querySelector('.nav-links');
   btn.addEventListener('click', () => {
@@ -203,6 +248,5 @@
     links.classList.remove('abierto');
   }));
 </script>
-  
 </body>
 </html>
