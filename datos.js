@@ -40,8 +40,8 @@ const RESENAS = [
       // 'img/persepolis-vineta1.jpg',
       // 'img/persepolis-vineta2.jpg'
     ],
-    extracto: 'El blanco y negro como posición política. La autobiografía más honesta sobre la historia de un país.',
-    premio: 'Prix du Lion Fnac 2000',
+    extracto: 'Un desgarrador relato de la evolución de Irán. Marjane Satrapi realiza una autobiografía donde explica la evolucion de su pais, que nos lleva a plantearnos temas como la identidad y el progresismo.',
+    premio: 'Prix du Lion Fnac 2000','Premio autor revelación, Angoulême 2001', 'Premio al mejor guion, Angoulême 2002'
     goodreads: '4.32',
     metricas: { guion: 5, dibujo: 4, lenguaje: 4, relevancia: 5, impacto: 5 },
     cuerpo: `<p>Hay libros que solo pueden existir en forma de cómic. <em>Persépolis</em> es uno de ellos. Marjane Satrapi eligió el blanco y negro más radical para contar su infancia en el Irán de la Revolución Islámica. Esa decisión formal es también política: las cosas son o no son.</p>
