@@ -39,15 +39,14 @@
   .resena-cuerpo blockquote p { font-style: italic; color: var(--texto-suave); margin-bottom: 0; font-size: 19px; }
   .resena-cuerpo blockquote p::first-letter { float: none; font-size: inherit; color: inherit; margin: 0; }
 
- /* ── VIÑETAS ── */
+/* ── VIÑETAS ── */
 .vinetas-bloque {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 12px;
   float: right;
-  width: 70%;
-  margin: 0 0 24px 40px;
-  clear: right;
+  width: 52%;
+  margin: 4px 0 24px 32px;
 }
 .vineta-img {
   width: 100%;
@@ -61,9 +60,8 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--texto-suave);
-  text-align: right;
-  margin-top: 6px;
-
+  text-align: left;
+  margin-top: 4px;
 }
 
 @media(max-width:768px) {
@@ -71,7 +69,6 @@
     float: none;
     width: 100%;
     margin: 24px 0;
-    grid-template-columns: 1fr 1fr;
   }
 }
 
