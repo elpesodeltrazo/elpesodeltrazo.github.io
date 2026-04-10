@@ -18,7 +18,7 @@ const RESENAS = [
       // 'img/arrugas-vineta2.jpg'
     ],
     etiquetas: ['indispensable'],
-    te_gustara: 'Si te interesan las historias sobre memoria, vejez y dignidad. Si disfrutaste de películas como Amour o El hijo de Saúl.',
+    te_gustara: 'Si te interesan las historias sobre memoria, vejez y dignidad. Te llegará especialmente si tienes relación cercana con la enfermedad.',
     extracto: 'Una de las miradas más lúcidas sobre el Alzheimer en el cómic español. Paco Roca desarrolla magistralmente en sus páginas una historia sobre el olvido y la identidad.',
     premio: 'Premio Nacional del Cómic 2008',
     goodreads: '4.32',
