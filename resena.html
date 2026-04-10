@@ -109,7 +109,11 @@
   .resena-cuerpo blockquote p::first-letter { float: none; font-size: inherit; color: inherit; margin: 0; }
 
   /* ── COLUMNA DERECHA: métricas + viñetas ── */
-  .resena-sidebar { position: sticky; top: 88px; }
+ .resena-sidebar {
+  position: sticky;
+  top: 88px;
+  padding: 0;
+}
 
   .metricas-box {
     background: var(--fondo-oscuro);
@@ -136,12 +140,13 @@
   .metricas-total-max { font-family: 'Space Mono', monospace; font-size: 9px; color: #5a5248; margin-left: 3px; }
 
   /* ── VIÑETAS: mismo ancho que columna derecha ── */
-  .vinetas-bloque {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    width: 100%;
-  }
+.vinetas-bloque {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+}
   .vineta-img {
     width: 100%;
     height: auto;
