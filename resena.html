@@ -35,47 +35,38 @@
   .resena-autor-principal { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 40px; display: block; }
   .resena-cuerpo p { font-family: 'EB Garamond', serif; font-size: 20px; line-height: 1.9; color: var(--texto); margin-bottom: 28px; }
   .resena-cuerpo p:first-child::first-letter { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 900; float: left; line-height: 0.78; margin: 10px 12px 0 0; color: var(--acento); }
-  .resena-cuerpo blockquote { border-left: 3px solid var(--acento-claro); padding: 14px 22px; margin: 36px 0; background: var(--crema); overflow: hidden; }
+  .resena-cuerpo blockquote { border-left: 3px solid var(--acento-claro); padding: 14px 22px; margin: 36px 0; background: var(--crema); }
   .resena-cuerpo blockquote p { font-style: italic; color: var(--texto-suave); margin-bottom: 0; font-size: 19px; }
   .resena-cuerpo blockquote p::first-letter { float: none; font-size: inherit; color: inherit; margin: 0; }
 
-/* ── VIÑETAS ── */
-.vinetas-bloque {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  float: right;
-  width: 52%;
-  margin: 4px 0 24px 32px;
-}
-.vineta-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.vineta-credito {
-  grid-column: 1 / -1;
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--texto-suave);
-  text-align: left;
-  margin-top: 4px;
-}
-
-@media(max-width:768px) {
+  /* ── VIÑETAS ── */
   .vinetas-bloque {
-    float: none;
-    width: 100%;
-    margin: 24px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 20px;
   }
-}
+  .vineta-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--borde);
+  }
+  .vineta-credito {
+    grid-column: 1 / -1;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    text-align: left;
+    margin-top: 4px;
+  }
 
   @media(max-width:900px){
-    .resena-layout{grid-template-columns:1fr; gap:32px; padding:24px}
-    .resena-lateral{position:static}
-    .vinetas-bloque { grid-template-columns: 1fr; }
+    .resena-layout { grid-template-columns: 1fr; gap: 32px; padding: 24px; }
+    .resena-lateral { position: static; }
+    .vinetas-bloque { grid-template-columns: 1fr 1fr; }
   }
 </style>
 <!-- Google Analytics -->
@@ -143,6 +134,12 @@
     const metricas = ['guion','dibujo','lenguaje','relevancia','impacto'];
     const nombres = ['Guion y narrativa','Dibujo y estilo','Lenguaje del cómic','Relevancia y ambición','Impacto personal'];
 
+    const vinetasHtml = (r.vinetas && r.vinetas.length > 0) ? `
+      <div class="vinetas-bloque">
+        ${r.vinetas.map(v => `<img src="${v}" alt="Viñeta de ${r.titulo}" class="vineta-img">`).join('')}
+        <span class="vineta-credito">© ${r.autor} / ${r.editorial}</span>
+      </div>` : '';
+
     document.getElementById('lateral').innerHTML = `
       <img class="resena-portada" src="${r.imagen}" alt="Portada de ${r.titulo}" onerror="this.style.background='var(--fondo-alt)'">
       <div class="resena-ficha">
@@ -166,26 +163,14 @@
           <div><span class="metricas-total-valor">${total}</span><span class="metricas-total-max">/ 25</span></div>
         </div>
       </div>
+      ${vinetasHtml}
       <a href="resenas.html" class="volver">Volver a reseñas</a>`;
-
-  const vinetasHtml = (r.vinetas && r.vinetas.length > 0) ? `
-      <div class="vinetas-bloque">
-        ${r.vinetas.map(v => `<img src="${v}" alt="Viñeta de ${r.titulo}" class="vineta-img">`).join('')}
-        <span class="vineta-credito">© ${r.autor} / ${r.editorial}</span>
-      </div>` : '';
-
-    // Insertar viñetas después del segundo párrafo del cuerpo
-    let cuerpoConVinetas = r.cuerpo;
-    if (vinetasHtml) {
-      const parrafos = r.cuerpo.split('</p>');
-     cuerpoConVinetas = vinetasHtml + r.cuerpo;
-
 
     document.getElementById('principal').innerHTML = `
       <div class="resena-eyebrow">Reseña — ${r.pais} · ${r.editorial} · ${r.año}</div>
       <h1 class="resena-titulo-principal"><em>${r.titulo}</em></h1>
       <span class="resena-autor-principal">Por Mikel Castán</span>
-      <div class="resena-cuerpo">${cuerpoConVinetas}</div>`;
+      <div class="resena-cuerpo">${r.cuerpo}</div>`;
   }
 </script>
 
