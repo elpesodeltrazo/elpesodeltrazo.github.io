@@ -67,17 +67,32 @@
     margin: 10px 12px 0 0;
     color: var(--acento);
   }
+
+  /* Blockquote con letra capital centrada */
   .resena-cuerpo blockquote {
     border-left: 3px solid var(--acento-claro);
-    padding: 14px 22px;
+    padding: 20px 24px;
     margin: 36px 0;
     background: var(--crema);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .resena-cuerpo blockquote .blockquote-letra {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--acento);
+    line-height: 1;
+    flex-shrink: 0;
+    align-self: center;
   }
   .resena-cuerpo blockquote p {
     font-style: italic;
     color: var(--texto-suave);
     margin-bottom: 0;
     font-size: 19px;
+    line-height: 1.7;
   }
   .resena-cuerpo blockquote p::first-letter {
     float: none !important;
@@ -223,6 +238,7 @@
   @media(max-width:900px){
     .resena-layout { grid-template-columns: 1fr; gap: 32px; padding: 24px; }
     .resena-lateral, .resena-sidebar { position: static; }
+    .resena-cuerpo blockquote { flex-direction: column; gap: 8px; }
   }
 </style>
 <!-- Google Analytics -->
@@ -308,6 +324,19 @@
         <p class="te-gustara-texto">${r.te_gustara}</p>
       </div>` : '';
 
+    // Procesar el cuerpo: transformar <blockquote> para añadir letra capital centrada
+    const cuerpoProcessado = r.cuerpo.replace(
+      /<blockquote>\s*<p>([\s\S]*?)<\/p>\s*<\/blockquote>/g,
+      (match, contenido) => {
+        const primeraLetra = contenido.trimStart().charAt(0);
+        const resto = contenido.trimStart().slice(1);
+        return `<blockquote>
+          <span class="blockquote-letra">${primeraLetra}</span>
+          <p>${resto}</p>
+        </blockquote>`;
+      }
+    );
+
     // Columna izquierda: portada clicable + ficha
     document.getElementById('lateral').innerHTML = `
       <img class="resena-portada" src="${r.imagen}" alt="Portada de ${r.titulo}"
@@ -322,9 +351,9 @@
         ${r.goodreads ? `<div class="ficha-item"><label>Goodreads</label><span>${r.goodreads} / 5</span></div>` : ''}
       </div>`;
 
-    // Columna central: cuerpo + te gustará + firma + volver
+    // Columna central: cuerpo procesado + te gustará + firma + volver
     document.getElementById('principal').innerHTML = `
-      <div class="resena-cuerpo">${r.cuerpo}</div>
+      <div class="resena-cuerpo">${cuerpoProcessado}</div>
       ${teGustaraHtml}
       <span class="resena-firma">Por Mikel Castán</span>
       <a href="resenas.html" class="volver">Volver a reseñas</a>`;
