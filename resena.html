@@ -43,9 +43,11 @@
 .vinetas-bloque {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin: 48px auto 32px;
-  max-width: 560px;
+  gap: 16px;
+  float: right;
+  width: 45%;
+  margin: 0 0 24px 40px;
+  clear: right;
 }
 .vineta-img {
   width: 100%;
@@ -63,7 +65,12 @@
 }
 
 @media(max-width:768px) {
-  .vinetas-bloque { grid-template-columns: 1fr; max-width: 100%; }
+  .vinetas-bloque {
+    float: none;
+    width: 100%;
+    margin: 24px 0;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
   @media(max-width:900px){
