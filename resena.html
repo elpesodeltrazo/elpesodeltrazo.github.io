@@ -26,7 +26,10 @@
     border: 1px solid var(--borde);
     margin-bottom: 20px;
     background: var(--fondo-alt);
+    cursor: zoom-in;
+    transition: opacity 0.2s;
   }
+  .resena-portada:hover { opacity: 0.88; }
 
   .resena-ficha {
     background: var(--crema);
@@ -48,39 +51,6 @@
   .ficha-item span { font-family: 'EB Garamond', serif; font-size: 16px; color: var(--texto); }
 
   /* ── COLUMNA CENTRAL: texto ── */
-  .resena-eyebrow {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--acento);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .resena-eyebrow::before { content: ''; display: block; width: 22px; height: 1px; background: var(--acento-claro); }
-
-  .resena-titulo-principal {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 3vw, 46px);
-    font-weight: 900;
-    line-height: 1.05;
-    color: var(--texto);
-    margin-bottom: 8px;
-  }
-  .resena-titulo-principal em { font-style: italic; color: var(--acento); }
-
-  .resena-autor-principal {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--texto-suave);
-    margin-bottom: 40px;
-    display: block;
-  }
-
   .resena-cuerpo p {
     font-family: 'EB Garamond', serif;
     font-size: 20px;
@@ -103,8 +73,19 @@
     margin: 36px 0;
     background: var(--crema);
   }
-  .resena-cuerpo blockquote p { font-style: italic; color: var(--texto-suave); margin-bottom: 0; font-size: 19px; }
-  .resena-cuerpo blockquote p::first-letter { float: none; font-size: inherit; color: inherit; margin: 0; }
+  .resena-cuerpo blockquote p {
+    font-style: italic;
+    color: var(--texto-suave);
+    margin-bottom: 0;
+    font-size: 19px;
+  }
+  .resena-cuerpo blockquote p::first-letter {
+    float: none !important;
+    font-size: inherit !important;
+    color: inherit !important;
+    margin: 0 !important;
+    font-weight: inherit !important;
+  }
 
   /* Te gustará si */
   .te-gustara {
@@ -200,6 +181,26 @@
   .volver:hover { color: var(--acento); }
   .volver::before { content: '←'; }
 
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.88);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+  .lightbox.activo { display: flex; }
+  .lightbox img {
+    max-width: 80vw;
+    max-height: 88vh;
+    object-fit: contain;
+    box-shadow: 0 0 60px rgba(0,0,0,0.6);
+  }
+
   @media(max-width:1200px){
     .resena-layout { grid-template-columns: 240px 1fr 300px; gap: 32px; padding: 48px; }
   }
@@ -240,6 +241,11 @@
   <div class="resena-lateral" id="lateral"></div>
   <div id="principal"></div>
   <div class="resena-sidebar" id="sidebar"></div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
+  <img id="lightbox-img" src="" alt="">
 </div>
 
 <footer>
@@ -286,9 +292,11 @@
         <p class="te-gustara-texto">${r.te_gustara}</p>
       </div>` : '';
 
-    // Columna izquierda: portada + ficha
+    // Columna izquierda: portada clicable + ficha
     document.getElementById('lateral').innerHTML = `
-      <img class="resena-portada" src="${r.imagen}" alt="Portada de ${r.titulo}" onerror="this.style.background='var(--fondo-alt)'">
+      <img class="resena-portada" src="${r.imagen}" alt="Portada de ${r.titulo}"
+        onerror="this.style.background='var(--fondo-alt)'"
+        onclick="abrirLightbox(this.src)">
       <div class="resena-ficha">
         <div class="ficha-item"><label>Autor</label><span>${r.autor}</span></div>
         <div class="ficha-item"><label>Editorial</label><span>${r.editorial}</span></div>
@@ -298,11 +306,8 @@
         ${r.goodreads ? `<div class="ficha-item"><label>Goodreads</label><span>${r.goodreads} / 5</span></div>` : ''}
       </div>`;
 
-    // Columna central: texto + te gustará si
+    // Columna central: solo el cuerpo + te gustará
     document.getElementById('principal').innerHTML = `
-      <div class="resena-eyebrow">Reseña — ${r.pais} · ${r.editorial} · ${r.año}</div>
-      <h1 class="resena-titulo-principal"><em>${r.titulo}</em></h1>
-      <span class="resena-autor-principal">Por Mikel Castán</span>
       <div class="resena-cuerpo">${r.cuerpo}</div>
       ${teGustaraHtml}
       <a href="resenas.html" class="volver">Volver a reseñas</a>`;
@@ -324,6 +329,17 @@
       </div>
       ${vinetasHtml}`;
   }
+
+  function abrirLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('activo');
+  }
+  function cerrarLightbox() {
+    document.getElementById('lightbox').classList.remove('activo');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') cerrarLightbox();
+  });
 </script>
 
 <script>
