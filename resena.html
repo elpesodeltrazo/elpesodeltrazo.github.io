@@ -110,6 +110,35 @@
     line-height: 1.7;
   }
 
+  /* Firma autor */
+  .resena-firma {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--borde);
+    display: block;
+  }
+
+  .volver {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    transition: color 0.2s;
+  }
+  .volver:hover { color: var(--acento); }
+  .volver::before { content: '←'; }
+
   /* ── COLUMNA DERECHA: métricas + viñetas ── */
   .resena-sidebar {
     position: sticky;
@@ -141,7 +170,7 @@
   .metricas-total-valor { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--acento); }
   .metricas-total-max { font-family: 'Space Mono', monospace; font-size: 9px; color: #5a5248; margin-left: 3px; }
 
-  /* ── VIÑETAS ── */
+  /* ── VIÑETAS clicables ── */
   .vinetas-bloque {
     display: grid;
     grid-template-columns: 1fr;
@@ -154,7 +183,10 @@
     height: auto;
     display: block;
     border: 1px solid var(--borde);
+    cursor: zoom-in;
+    transition: opacity 0.2s;
   }
+  .vineta-img:hover { opacity: 0.88; }
   .vineta-credito {
     font-family: 'Space Mono', monospace;
     font-size: 9px;
@@ -164,22 +196,6 @@
     text-align: left;
     margin-top: 4px;
   }
-
-  .volver {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--texto-suave);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 32px;
-    transition: color 0.2s;
-  }
-  .volver:hover { color: var(--acento); }
-  .volver::before { content: '←'; }
 
   /* ── LIGHTBOX ── */
   .lightbox {
@@ -282,7 +298,7 @@
 
     const vinetasHtml = (r.vinetas && r.vinetas.length > 0) ? `
       <div class="vinetas-bloque">
-        ${r.vinetas.map(v => `<img src="${v}" alt="Viñeta de ${r.titulo}" class="vineta-img">`).join('')}
+        ${r.vinetas.map(v => `<img src="${v}" alt="Viñeta de ${r.titulo}" class="vineta-img" onclick="abrirLightbox(this.src)">`).join('')}
         <span class="vineta-credito">© ${r.autor} / ${r.editorial}</span>
       </div>` : '';
 
@@ -306,10 +322,11 @@
         ${r.goodreads ? `<div class="ficha-item"><label>Goodreads</label><span>${r.goodreads} / 5</span></div>` : ''}
       </div>`;
 
-    // Columna central: solo el cuerpo + te gustará
+    // Columna central: cuerpo + te gustará + firma + volver
     document.getElementById('principal').innerHTML = `
       <div class="resena-cuerpo">${r.cuerpo}</div>
       ${teGustaraHtml}
+      <span class="resena-firma">Por Mikel Castán</span>
       <a href="resenas.html" class="volver">Volver a reseñas</a>`;
 
     // Columna derecha: métricas + viñetas
