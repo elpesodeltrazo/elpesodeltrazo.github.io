@@ -27,7 +27,7 @@ const RESENAS = [
     <p>La historia arranca con Emilio, un antiguo banquero que comienza a perder la memoria. Su hijo lo ingresa en una residencia de mayores. Lo que podría ser un melodrama sobre la vejez se convierte en una reflexión sobre la dignidad, la identidad y lo que queda de nosotros cuando el tiempo nos erosiona.</p>
     <blockquote><p>Dicen que cuando te miras en el espejo y empiezas a parecerte a tu padre es que ya te estás haciendo mayor.</p></blockquote>
     <p>Miguel, el compañero de habitación, funciona como contrapunto perfecto: lúcido, pícaro, superviviente, lo cual acrecienta nuestra empatia por Emilio.</p>
-    <p><em>Arrugas</em> ganó el Premio Nacional del Cómic en 2008 y fue adaptada al cine. Lo que sorprende, relectura tras relectura, es que un libro tan pequeño pueda contener tanto.</p>`
+    <p><em>Arrugas</em> ganó el Premio Nacional del Cómic en 2008 y fue adaptada al cine. Arrugas fue el comic que dio a conocer a nuestro dibujante más reconocido y que sería la antesala de una gran carrera.</p>`
   },
   {
     id: 'persepolis',
