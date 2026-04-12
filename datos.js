@@ -45,7 +45,7 @@ const RESENAS = [
       // 'img/persepolis-vineta2.jpg'
     ],
     etiquetas: ['indispensable', 'para_regalar'],
-    te_gustara: 'Si quieres saber más sobre la Revolución islámica de 1979 en Irán. También si te apasionan las historias internsas, conocer conflictos internacional con un maravilloso humor que nos hace disfrutar la narración a pesar de la gravedad de lo acontecido.',
+    te_gustara: 'Si quieres saber más sobre la Revolución islámica de 1979 en Irán. También si te apasionan las historias intensas, conocer conflictos internacionales con un maravilloso humor que nos hace disfrutar la narración a pesar de la gravedad de lo acontecido.',
     extracto: 'Un desgarrador relato de la evolución de Irán. Satrapi realiza una autobiografía donde explica la evolución de su país, que nos lleva a plantearnos temas como la identidad, el progresismo y la fragilidad de los derechos obtenidos con el tiempo.',
     premio: 'Prix du Lion Fnac 2000 · Premio autor revelación Angoulême 2001',
     goodreads: '4.32',
