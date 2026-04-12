@@ -13,6 +13,7 @@ const RESENAS = [
     pais: 'España',
     pais_key: 'españa',
     imagen: 'img/arrugas.jpg',
+    imagen_posicion: 'center top',
     vinetas: [
       'img/arrugas-vineta.jpg',
       // 'img/arrugas-vineta2.jpg'
@@ -38,6 +39,7 @@ const RESENAS = [
     pais: 'Francia / Irán',
     pais_key: 'francia',
     imagen: 'img/persepolis-portada.jpg',
+    imagen_posicion: 'center center',
     vinetas: [
       'img/Sartrapi- Persepolis.jpg',
       // 'img/persepolis-vineta2.jpg'
@@ -65,6 +67,7 @@ const RESENAS = [
     pais: 'España',
     pais_key: 'españa',
     imagen: 'https://covers.openlibrary.org/b/isbn/9788467920260-L.jpg',
+    imagen_posicion: 'center center',
     vinetas: [
       // 'img/surcos-vineta1.jpg',
       // 'img/surcos-vineta2.jpg'
@@ -89,6 +92,7 @@ const RESENAS = [
     pais: 'Japón',
     pais_key: 'japon',
     imagen: 'https://covers.openlibrary.org/b/isbn/9788491742876-L.jpg',
+    imagen_posicion: 'center center',
     vinetas: [
       // 'img/almanaque-vineta1.jpg',
       // 'img/almanaque-vineta2.jpg'
@@ -113,6 +117,7 @@ const RESENAS = [
     pais: 'EEUU',
     pais_key: 'eeuu',
     imagen: 'https://covers.openlibrary.org/b/isbn/9788478338443-L.jpg',
+    imagen_posicion: 'center center',
     vinetas: [
       // 'img/maus-vineta1.jpg',
       // 'img/maus-vineta2.jpg'
