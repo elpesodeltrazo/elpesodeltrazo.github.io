@@ -37,7 +37,7 @@ const RESENAS = [
     año: 2000,
     pais: 'Francia / Irán',
     pais_key: 'francia',
-    imagen: 'img/perpepolis-portada.jpg',
+    imagen: 'img/persepolis-portada.jpg',
     vinetas: [
       'img/persepolis-vineta1',
       // 'img/persepolis-vineta2.jpg'
