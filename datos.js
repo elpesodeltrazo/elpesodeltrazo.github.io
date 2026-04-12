@@ -37,7 +37,7 @@ const RESENAS = [
     año: 2000,
     pais: 'Francia / Irán',
     pais_key: 'francia',
-    imagen: 'img/escena-interior-libro-persepolis.jpg',
+    imagen: 'img/perpepolis-portada.jpg',
     vinetas: [
       'img/persepolis-vineta1.jpg',
       // 'img/persepolis-vineta2.jpg'
@@ -48,12 +48,13 @@ const RESENAS = [
     premio: 'Prix du Lion Fnac 2000 · Premio autor revelación Angoulême 2001',
     goodreads: '4.32',
     metricas: { guion: 5, dibujo: 3, lenguaje: 4, originalidad: 5, impacto: 5 },
-    cuerpo: `<em>Persépolis</em> es una de las grandes obras del comic mundial 
-    <p> La obra es un maravilloso recorrido sobre la Revolución islámica en Irán, donde la dictadura de es uno de ellos. Marjane Satrapi eligió el blanco y negro más radical para contar su infancia en el Irán de la Revolución Islámica. Esa decisión formal es también política: las cosas son o no son.</p>
-    <p>Lo que convierte <em>Persépolis</em> en una obra mayor no es solo el testimonio histórico sino la mirada de la niña que lo cuenta. Satrapi nunca sentencia desde fuera; todo lo vive desde dentro, con la confusión, el humor y la contradicción que eso implica.</p>
-    <blockquote><p>El trazo grueso y elemental de Satrapi no es una limitación técnica: es la herramienta exacta para una historia que necesita ser directa, sin ornamentos, sin excusas.</p></blockquote>
-    <p>El libro demuestra que el cómic puede ser el medio más honesto para contar la historia de un país. No porque simplifique, sino porque personaliza: detrás de cada viñeta hay un cuerpo, una cara, un miedo concreto.</p>
-     <em>Persépolis</em>  fue la obra que posicionó a Marjane Satrapi como una de las grandes dibujantes de comics a nivel mundial. Ganó diversos premios, entre otros el premio Principe de Asturias de 2024.`
+    cuerpo: `<em>Persépolis</em> es una de las grandes obras del comic mundial.
+    <p> La obra es un maravilloso recorrido sobre la Revolución islámica en Irán, a traves de una Marjane Sa Marjane Satrapi. Un relato crudo, pero con cierto humor, que nos presenta el derrocamiento del Sha y la imposición de la dictadura Islámica. <em>Satrapi</em> elige el uso del blanco y negro como arma política para ejemplificar la realidad del paises. No existen otros colores, ni los grises. O eres parte del sistema, o eres parte del enemigo</p>
+    <p>Lo que convierte <em>Persépolis</em> en una obra mayor no es solo el testimonio histórico sino la mirada de la niña que lo cuenta. Satrapi nunca sentencia desde fuera; todo lo vive desde dentro, con la confusión, el humor y las contradicciones.</p>
+    <blockquote><p>    </p></blockquote>
+    <p> Podríamos dividir el comic en tres partes diferenciadas. En una primera, <em>Satrapi</em> muestra su infancia y su percepcion en medio de la revolucion. En la segunda parte, la protagonista por recomendacion de sus padres, es trasladada a Francia donde estudia sus estudios superiores y se enfrenta sola al reto de ser una mujer. Posteriormente, vuelve a Irán donde encontrará un pais completamente diferente al que ella recordaba cuando era niña. 
+    <p>El libro demuestra que el cómic puede r el medio más honesto para contar la historia de un país. No porque simplifique, sino porque personaliza: detrás de cada viñeta hay un cuerpo, una cara, un miedo concreto.</p>
+     <em>Persépolis</em>  fue la obra que posicionó a Marjane Satrapi como una de las grandes dibujantes de comics a nivel mundial. Ganó diversos premios, entre otros elPremio autor revelación de Angoulême 2001, el Premio al mejor guion de Angoulême 2002 o el premio Principe de Asturias de 2024.`
   },
   {
     id: 'surcos',
