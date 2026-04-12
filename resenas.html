@@ -200,7 +200,7 @@
       const total = Object.values(r.metricas).reduce((a,b)=>a+b,0);
       grid.innerHTML += `
         <a href="resena.html?id=${r.id}" class="resena-card">
-          <img class="resena-card-img" src="${r.imagen}" alt="${r.titulo}" onerror="this.style.display='none'">
+        <img class="resena-card-img" src="${r.imagen}" alt="${r.titulo}" style="object-position:${r.imagen_posicion||'center top'}" onerror="this.style.display='none'">
           <div class="resena-card-body">
             ${renderizarEtiquetas(r.etiquetas)}
             <div class="resena-pais">${r.pais} · ${r.año} · ${r.editorial}</div>
