@@ -39,7 +39,7 @@ const RESENAS = [
     pais: 'Francia / Irán',
     pais_key: 'francia',
     imagen: 'img/persepolis-portada.jpg',
-    imagen_posicion: 'center center',
+    imagen_posicion: 'center 70%',
     vinetas: [
       'img/Sartrapi- Persepolis.jpg',
       // 'img/persepolis-vineta2.jpg'
