@@ -13,7 +13,7 @@ const RESENAS = [
     pais: 'España',
     pais_key: 'españa',
     imagen: 'img/arrugas.jpg',
-    imagen_posicion: 'center 50%',
+    imagen_posicion: 'center 45%',
     vinetas: [
       'img/arrugas-vineta.jpg',
       // 'img/arrugas-vineta2.jpg'
