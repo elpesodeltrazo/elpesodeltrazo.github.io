@@ -39,7 +39,7 @@ const RESENAS = [
     pais_key: 'francia',
     imagen: 'img/persepolis-portada.jpg',
     vinetas: [
-      'img/persepolis-vineta1',
+      'Sartrapi- Persepolis.jpg,
       // 'img/persepolis-vineta2.jpg'
     ],
     etiquetas: ['indispensable', 'para_regalar'],
