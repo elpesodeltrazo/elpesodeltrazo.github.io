@@ -178,10 +178,11 @@
 
     // Filtrar
     lista = lista.filter(r => {
-      const okPais = filtroPais === 'todos' || r.pais_key === filtroPais;
-      const okEtiqueta = filtroEtiqueta === 'todos' || (r.etiquetas && r.etiquetas.includes(filtroEtiqueta));
-      return okPais && okEtiqueta;
-    });
+  if (r.oculto) return false;
+  const okPais = filtroPais === 'todos' || r.pais_key === filtroPais;
+  const okEtiqueta = filtroEtiqueta === 'todos' || (r.etiquetas && r.etiquetas.includes(filtroEtiqueta));
+  return okPais && okEtiqueta;
+});
 
     // Ordenar
     if (ordenActual === 'nota_desc') {
