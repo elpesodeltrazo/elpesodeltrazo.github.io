@@ -67,7 +67,7 @@ const RESENAS = [
     pais: 'Japón',
     pais_key: 'japon',
     imagen: 'img/Portada-almanaque.jpg',
-    imagen_posicion: 'center bottom',
+    imagen_posicion: 'center 30%',
     vinetas: [
        'img/El-almanaque-taniguchi-escena.jpg',
       // 'img/almanaque-vineta2.jpg'
