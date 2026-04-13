@@ -69,19 +69,19 @@ const RESENAS = [
     imagen: 'img/portada-almanaque.jpg',
     imagen_posicion: 'center 20%',
     vinetas: [
-      // 'img/almanaque-vineta1.jpg',
+       'img/persepolis-portada.jpg',
       // 'img/almanaque-vineta2.jpg'
     ],
-    etiquetas: ['indispensable', 'para_regalar'],
-    te_gustara: 'Si valoras el silencio y la contemplación en la narrativa. Si te interesan las relaciones entre padres e hijos y lo que queda sin decir.',
-    extracto: 'El tiempo como materia narrativa. La memoria familiar convertida en meditación sobre lo que heredamos.',
+    etiquetas: ['indispensable'],
+    te_gustara: 'Si valoras el silencio y la contemplación en la narrativa. Si te interesan las relaciones entre padres e hijos y lo que significa volver a los orígenes.',
+    extracto: 'El tiempo como materia narrativa. La memoria familiar convertida en meditación sobre lo que heredamos y lo que dejamos atrás, a veces sin darnos cuenta.',
     premio: 'Premio Manga Shōgakukan 1994',
     goodreads: '4.36',
-    metricas: { guion: 5, dibujo: 5, lenguaje: 5, originalidad: 4, impacto: 5 },
-    cuerpo: `<p>Jiro Taniguchi es el maestro del tiempo quieto. En <em>El almanaque de mi padre</em>, un hombre regresa a su ciudad natal para el funeral de su padre, con quien tuvo una relación distante. Lo que encontrará no es solo un muerto, sino toda una vida que desconocía.</p>
-    <p>Taniguchi convierte ese recorrido en una meditación sobre la paternidad, la herencia y los silencios entre generaciones.</p>
-    <blockquote><p>El dibujo de Taniguchi alcanza una perfección casi insoportable. Cada tejado, cada árbol sin hojas está dibujado con una precisión que no es exhibicionismo técnico sino necesidad narrativa: el lugar importa tanto como las personas.</p></blockquote>
-    <p>Lo que hace único a este libro es su capacidad para convertir lo pequeño en universal. No hay épica aquí, no hay giros dramáticos. Solo la verdad de que no conocemos del todo a las personas que amamos.</p>`
+    metricas: { guion: 5, dibujo: 5, lenguaje: 4, originalidad: 4, impacto: 5 },
+    cuerpo: `<p> Jiro Taniguchi es el maestro entre maestros. Un artista de los que quitan el aliento — y cuyas páginas, años después, siguen sintiéndose como casa. En <em>El almanaque de mi padre</em>, un hombre regresa a su ciudad natal para el funeral de su padre, con quién tuvo una relación distante. La vuelta a casa supone una vuelta a sus origenes, donde aprende quien era su padre, y los motivos que les hicieron distanciarse. </p>
+    <p>Taniguchi convierte ese recorrido en una meditación sobre la paternidad, la herencia y la distancia entre generaciones, donde lo que no se habla, queda en el olvido.</p>
+    <blockquote><p> Mi tierra estaba allí en todo momento, en cualquier situación, sin cambiar. Y se me ocurre que uno no vuelve a su tierra sino que es la propia tierra la que, un día, regresa a los corazones de cada uno de nosotros.     </p></blockquote>
+    <p> El dibujo de Taniguchi alcanza la percepción, inspirando melancolía en cada viñeta; en cada mirada, cada tejado, cada árbol sin hojas... Toda escena es un viaje a la memoria. Lo que hace único a esta novela gráfica (y en general la obra de Taniguchi) es su capacidad para convertir la cotidianidad en una historia digna de ser contada. No hay épica aquí, no hay giros dramáticos. Solo la verdad de la propia vida.</p>`
   },
 
    {
