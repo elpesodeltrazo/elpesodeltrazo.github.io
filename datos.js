@@ -66,7 +66,7 @@ const RESENAS = [
     año: 1994,
     pais: 'Japón',
     pais_key: 'japon',
-    imagen: 'img/portada-almanaque.jpg',
+    imagen: 'img/Portada-almanaque.jpg',
     imagen_posicion: 'center 20%',
     vinetas: [
        'img/El almanaque- taniguchi-escena.jpg',
