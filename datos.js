@@ -69,7 +69,7 @@ const RESENAS = [
     imagen: 'img/portada-almanaque.jpg',
     imagen_posicion: 'center 20%',
     vinetas: [
-       'img/persepolis-portada.jpg',
+       'img/El almanaque- taniguchi-escena.jpg',
       // 'img/almanaque-vineta2.jpg'
     ],
     etiquetas: ['indispensable'],
