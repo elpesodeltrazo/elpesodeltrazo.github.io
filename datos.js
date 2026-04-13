@@ -66,8 +66,8 @@ const RESENAS = [
     año: 1994,
     pais: 'Japón',
     pais_key: 'japon',
-    imagen: 'https://covers.openlibrary.org/b/isbn/9788491742876-L.jpg',
-    imagen_posicion: 'center center',
+    imagen: 'img/portada-almanaque.jpg',
+    imagen_posicion: 'center 20%',
     vinetas: [
       // 'img/almanaque-vineta1.jpg',
       // 'img/almanaque-vineta2.jpg'
