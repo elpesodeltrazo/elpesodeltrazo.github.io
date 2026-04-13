@@ -57,31 +57,7 @@ const RESENAS = [
     <p>El libro demuestra que el cómic puede ser el medio más honesto para contar la historia de un país. No porque simplifique, sino porque personaliza: detrás de cada viñeta hay un cuerpo, una cara, un miedo concreto.</p>
      <em>Persépolis</em>  fue la obra que posicionó a Marjane Satrapi como una de las grandes dibujantes de cómics a nivel mundial. Ganó diversos premios, entre otros el Premio autor revelación de Angoulême 2001, el Premio al mejor guion de Angoulême 2002 o el premio Príncipe de Asturias de 2024.`
   },
-  {
-    id: 'surcos',
-    titulo: 'Los surcos del azar',
-    autor: 'Paco Roca',
-    editorial: 'Astiberri',
-    año: 2013,
-    pais: 'España',
-    pais_key: 'españa',
-    imagen: 'https://covers.openlibrary.org/b/isbn/9788467920260-L.jpg',
-    imagen_posicion: 'center center',
-    vinetas: [
-      // 'img/surcos-vineta1.jpg',
-      // 'img/surcos-vineta2.jpg'
-    ],
-    etiquetas: ['indispensable'],
-    te_gustara: 'Si te interesa la memoria histórica española y la Guerra Civil. Si disfrutas de narrativas que mezclan pasado y presente con precisión periodística.',
-    extracto: 'Thriller, road movie y elegía a la vez. Roca en su momento más ambicioso y necesario.',
-    premio: 'Premio Nacional del Cómic 2014',
-    goodreads: '4.38',
-    metricas: { guion: 5, dibujo: 4, lenguaje: 5, originalidad: 5, impacto: 5 },
-    cuerpo: `<p>Existe una generación de españoles que liberó París y que España olvidó. Paco Roca fue a buscarlos. <em>Los surcos del azar</em> nace de un viaje real para entrevistar a los supervivientes de La Nueve, la compañía de republicanos españoles que entró primera en París en agosto de 1944.</p>
-    <p>Roca construye un artefacto narrativo preciso: un periodista que entrevista a un anciano, y dentro de esa entrevista, la guerra, el exilio, la resistencia. La estructura en capas permite que pasado y presente dialoguen sin que ninguno aplaste al otro.</p>
-    <blockquote><p>El dibujo de Roca en este libro es más contenido que en <em>Arrugas</em>, más documental. Hay una deliberada austeridad que conviene a la historia: no se puede ser exuberante cuando se habla de los muertos.</p></blockquote>
-    <p>Pero <em>Los surcos del azar</em> es también una reflexión sobre lo que significa contar una historia, sobre quién tiene derecho a recordar y cómo se transmite el trauma de generación en generación.</p>`
-  },
+ 
   {
     id: 'almanaque',
     titulo: 'El almanaque de mi padre',
@@ -107,6 +83,33 @@ const RESENAS = [
     <blockquote><p>El dibujo de Taniguchi alcanza una perfección casi insoportable. Cada tejado, cada árbol sin hojas está dibujado con una precisión que no es exhibicionismo técnico sino necesidad narrativa: el lugar importa tanto como las personas.</p></blockquote>
     <p>Lo que hace único a este libro es su capacidad para convertir lo pequeño en universal. No hay épica aquí, no hay giros dramáticos. Solo la verdad de que no conocemos del todo a las personas que amamos.</p>`
   },
+
+   {
+    id: 'surcos',
+    titulo: 'Los surcos del azar',
+    autor: 'Paco Roca',
+    editorial: 'Astiberri',
+    año: 2013,
+    pais: 'España',
+    pais_key: 'españa',
+    imagen: 'https://covers.openlibrary.org/b/isbn/9788467920260-L.jpg',
+    imagen_posicion: 'center center',
+    vinetas: [
+      // 'img/surcos-vineta1.jpg',
+      // 'img/surcos-vineta2.jpg'
+    ],
+    etiquetas: ['indispensable'],
+    te_gustara: 'Si te interesa la memoria histórica española y la Guerra Civil. Si disfrutas de narrativas que mezclan pasado y presente con precisión periodística.',
+    extracto: 'Thriller, road movie y elegía a la vez. Roca en su momento más ambicioso y necesario.',
+    premio: 'Premio Nacional del Cómic 2014',
+    goodreads: '4.38',
+    metricas: { guion: 5, dibujo: 4, lenguaje: 5, originalidad: 5, impacto: 5 },
+    cuerpo: `<p>Existe una generación de españoles que liberó París y que España olvidó. Paco Roca fue a buscarlos. <em>Los surcos del azar</em> nace de un viaje real para entrevistar a los supervivientes de La Nueve, la compañía de republicanos españoles que entró primera en París en agosto de 1944.</p>
+    <p>Roca construye un artefacto narrativo preciso: un periodista que entrevista a un anciano, y dentro de esa entrevista, la guerra, el exilio, la resistencia. La estructura en capas permite que pasado y presente dialoguen sin que ninguno aplaste al otro.</p>
+    <blockquote><p>El dibujo de Roca en este libro es más contenido que en <em>Arrugas</em>, más documental. Hay una deliberada austeridad que conviene a la historia: no se puede ser exuberante cuando se habla de los muertos.</p></blockquote>
+    <p>Pero <em>Los surcos del azar</em> es también una reflexión sobre lo que significa contar una historia, sobre quién tiene derecho a recordar y cómo se transmite el trauma de generación en generación.</p>`
+  },
+  
   {
     id: 'maus',
     titulo: 'Maus',
