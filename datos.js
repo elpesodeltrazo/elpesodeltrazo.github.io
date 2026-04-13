@@ -60,7 +60,6 @@ const RESENAS = [
  
   {
     id: 'almanaque',
-    oculto: true
     titulo: 'El almanaque de mi padre',
     autor: 'Jiro Taniguchi',
     editorial: 'Planeta Cómic',
@@ -87,7 +86,7 @@ const RESENAS = [
 
    {
     id: 'surcos',
-     oculto: true
+     oculto: true,
     titulo: 'Los surcos del azar',
     autor: 'Paco Roca',
     editorial: 'Astiberri',
@@ -114,7 +113,7 @@ const RESENAS = [
   
   {
     id: 'maus',
-    oculto: true
+    oculto: true,
     titulo: 'Maus',
     autor: 'Art Spiegelman',
     editorial: 'Planeta Cómic',
@@ -140,7 +139,7 @@ const RESENAS = [
   },
   {
     id: 'blacksad',
-    oculto: true
+    oculto: true,
     titulo: 'Blacksad',
     autor: 'Díaz Canales / Guarnido',
     editorial: 'Norma',
