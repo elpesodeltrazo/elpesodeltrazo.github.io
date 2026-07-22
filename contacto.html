@@ -136,11 +136,11 @@
       <p>También estamos abiertos a colaboraciones puntuales y a recibir material de prensa de editoriales.</p>
 
       <div class="contacto-opciones">
-        <a href="mailto:hola@elpesodeltrazo.com" class="contacto-opcion">
+        <a href="/cdn-cgi/l/email-protection#abc3c4c7caebcec7dbced8c4cfcec7dfd9cad1c485c8c4c6" class="contacto-opcion">
           <div class="contacto-opcion-icon">✉</div>
           <div class="contacto-opcion-info">
             <span class="contacto-opcion-label">Email</span>
-            <span class="contacto-opcion-value">hola@elpesodeltrazo.com</span>
+            <span class="contacto-opcion-value"><span class="__cf_email__" data-cfemail="afc7c0c3ceefcac3dfcadcc0cbcac3dbddced5c081ccc0c2">[email&#160;protected]</span></span>
           </div>
         </a>
         <a href="#" class="contacto-opcion">
@@ -160,25 +160,28 @@
       </div>
     </div>
 
-    <div>
+    <form action="https://formsubmit.co/hola@elpesodeltrazo.com" method="POST">
       <div class="form-grupo">
         <label>Nombre</label>
-        <input type="text" placeholder="Tu nombre">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
       </div>
       <div class="form-grupo">
         <label>Email</label>
-        <input type="email" placeholder="tu@correo.com">
+        <input type="email" name="email" placeholder="tu@correo.com" required>
       </div>
       <div class="form-grupo">
         <label>Asunto</label>
-        <input type="text" placeholder="¿De qué quieres hablar?">
+        <input type="text" name="asunto" placeholder="¿De qué quieres hablar?" required>
       </div>
       <div class="form-grupo">
         <label>Mensaje</label>
-        <textarea rows="6" placeholder="Tu mensaje..."></textarea>
+        <textarea name="mensaje" rows="6" placeholder="Tu mensaje..." required></textarea>
       </div>
-      <a href="#" class="btn-primary">Enviar mensaje</a>
-    </div>
+      <button type="submit" class="btn-primary" style="cursor: pointer; border: none; font-family: 'Space Mono', monospace;">Enviar mensaje</button>
+      <!-- FormSubmit anti-spam (oculto) -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://elpesodeltrazo.com/contacto.html?mensaje=gracias">
+    </form>
 
   </div>
 </div>
