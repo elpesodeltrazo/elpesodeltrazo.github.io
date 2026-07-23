@@ -1,0 +1,13 @@
+# robots.txt para elpesodeltrazo.com
+# Crítica de cómic europeo y de autor
+
+# Todos los buscadores tienen permiso para rastrear todo el sitio
+User-agent: *
+Allow: /
+
+# Bloquear archivos técnicos que no aportan valor SEO
+Disallow: /CNAME
+Disallow: /README.md
+
+# Ubicación del sitemap
+Sitemap: https://elpesodeltrazo.com/sitemap.xml
