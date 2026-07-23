@@ -3,6 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags (base, se actualizan con JS) -->
+<meta name="description" id="meta-desc" content="Ensayo sobre cómic europeo y de autor en El Peso del Trazo.">
+<meta name="author" content="Mikel Castán">
+<meta name="robots" content="index, follow">
+<meta name="language" content="es">
+<link rel="canonical" id="meta-canonical" href="https://elpesodeltrazo.com/ensayo.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" id="meta-og-url" content="https://elpesodeltrazo.com/ensayo.html">
+<meta property="og:title" id="meta-og-title" content="Ensayo — El Peso del Trazo">
+<meta property="og:description" id="meta-og-desc" content="Análisis de autor, corriente estética o historia del cómic europeo.">
+<meta property="og:image" id="meta-og-image" content="https://elpesodeltrazo.com/banner.png">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="El Peso del Trazo">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" id="meta-tw-title" content="Ensayo — El Peso del Trazo">
+<meta name="twitter:description" id="meta-tw-desc" content="Análisis de fondo sobre el noveno arte.">
+<meta name="twitter:image" id="meta-tw-image" content="https://elpesodeltrazo.com/banner.png">
+  
 <title>Ensayo — El Peso del Trazo</title>
 <link rel="stylesheet" href="base.css">
 <style>
@@ -74,6 +97,21 @@
     document.getElementById('ensayo-contenido').innerHTML = '<p>Ensayo no encontrado. <a href="ensayos.html">Volver a ensayos</a></p>';
   } else {
     document.title = e.titulo + ' — El Peso del Trazo';
+
+    // ── Actualizar meta tags dinámicamente para SEO y redes sociales ──
+    const urlAbsoluta = `https://elpesodeltrazo.com/ensayo.html?id=${e.id}`;
+    const descripcionMeta = e.subtitulo || `Ensayo sobre ${e.titulo} en El Peso del Trazo. ${e.tag}.`;
+    const tituloMeta = `${e.titulo} | El Peso del Trazo`;
+
+    document.getElementById('meta-desc').setAttribute('content', descripcionMeta);
+    document.getElementById('meta-canonical').setAttribute('href', urlAbsoluta);
+    document.getElementById('meta-og-url').setAttribute('content', urlAbsoluta);
+    document.getElementById('meta-og-title').setAttribute('content', tituloMeta);
+    document.getElementById('meta-og-desc').setAttribute('content', descripcionMeta);
+    document.getElementById('meta-tw-title').setAttribute('content', tituloMeta);
+    document.getElementById('meta-tw-desc').setAttribute('content', descripcionMeta);
+
+  
     document.getElementById('page-header-ensayo').innerHTML = `
       <div class="page-header">
         <div class="page-header-eyebrow">${e.tag} · ${e.fecha}</div>
