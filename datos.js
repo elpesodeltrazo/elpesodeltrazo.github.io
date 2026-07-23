@@ -167,6 +167,7 @@ const RESENAS = [
 const ENSAYOS = [
   {
     id: 'taniguchi-silencio',
+    oculto: true, 
     titulo: 'El silencio entre viñetas: Taniguchi y la narrativa del espacio vacío',
     subtitulo: 'Cómo el maestro japonés convirtió los momentos de pausa en el verdadero motor de sus historias.',
     tag: 'Análisis de autor',
@@ -189,6 +190,7 @@ const ENSAYOS = [
   },
   {
     id: 'astiberri-catalogo',
+    oculto: true, 
     titulo: 'Astiberri y la construcción de un catálogo con criterio',
     subtitulo: 'La editorial vasca que cambió el panorama del cómic adulto en España. Un recorrido por sus veinte años.',
     tag: 'Industria',
@@ -200,6 +202,7 @@ const ENSAYOS = [
   },
   {
     id: 'linea-clara',
+    oculto: true, 
     titulo: 'La línea clara no es solo un estilo: es una ética narrativa',
     subtitulo: 'De Hergé a Joost Swarte: lo que la escuela belga enseña sobre la honestidad del dibujo.',
     tag: 'Historia del cómic',
@@ -211,6 +214,7 @@ const ENSAYOS = [
   },
   {
     id: 'satrapi-spiegelman',
+    oculto: true, 
     titulo: 'Satrapi y Spiegelman: dos formas de hacer memoria con viñetas',
     subtitulo: 'Persépolis y Maus comparten la autobiografía y el trauma colectivo pero revelan dos concepciones del cómic como testimonio.',
     tag: 'Comparativa',
@@ -222,6 +226,7 @@ const ENSAYOS = [
   },
   {
     id: 'moebius-color',
+    oculto: true, 
     titulo: 'El color como narrador: Moebius y la paleta como personaje',
     subtitulo: 'En los mejores trabajos de Moebius, el color no decora: informa, guía y anticipa.',
     tag: 'Análisis formal',
