@@ -321,6 +321,23 @@
     document.getElementById('principal').innerHTML = '<p>Reseña no encontrada. <a href="resenas.html">Volver a reseñas</a></p>';
   } else {
     document.title = r.titulo + ' — El Peso del Trazo';
+
+    // ── Actualizar meta tags dinámicamente para SEO y redes sociales ──
+    const urlAbsoluta = `https://elpesodeltrazo.com/resena.html?id=${r.id}`;
+    const imagenAbsoluta = r.imagen.startsWith('http') ? r.imagen : `https://elpesodeltrazo.com/${r.imagen}`;
+    const totalPuntos = Object.values(r.metricas).reduce((a,b)=>a+b,0);
+    const descripcionMeta = `Reseña de ${r.titulo} por ${r.autor} (${r.editorial}, ${r.año}). ${r.extracto.substring(0, 120)}... Puntuación: ${totalPuntos}/25.`;
+    const tituloMeta = `Reseña de ${r.titulo} — ${r.autor} | El Peso del Trazo`;
+
+    document.getElementById('meta-desc').setAttribute('content', descripcionMeta);
+    document.getElementById('meta-canonical').setAttribute('href', urlAbsoluta);
+    document.getElementById('meta-og-url').setAttribute('content', urlAbsoluta);
+    document.getElementById('meta-og-title').setAttribute('content', tituloMeta);
+    document.getElementById('meta-og-desc').setAttribute('content', descripcionMeta);
+    document.getElementById('meta-og-image').setAttribute('content', imagenAbsoluta);
+    document.getElementById('meta-tw-title').setAttribute('content', tituloMeta);
+    document.getElementById('meta-tw-desc').setAttribute('content', descripcionMeta);
+    document.getElementById('meta-tw-image').setAttribute('content', imagenAbsoluta);
     const total = Object.values(r.metricas).reduce((a,b)=>a+b,0);
 
     document.getElementById('page-header-resena').innerHTML = `
