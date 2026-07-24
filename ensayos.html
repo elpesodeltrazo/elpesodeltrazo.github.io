@@ -94,8 +94,8 @@
 <script src="datos.js"></script>
 <script>
   const grid = document.getElementById('ensayos-grid');
-  ENSAYOS.forEach((e, i) => {
-    grid.innerHTML += `
+ENSAYOS.filter(e => !e.oculto).forEach((e, i) => {
+  grid.innerHTML += `
       <a href="ensayo.html?id=${e.id}" class="ensayo-card">
         <div class="ensayo-num">0${i+1}</div>
         <span class="ensayo-tag-badge">${e.tag}</span>
