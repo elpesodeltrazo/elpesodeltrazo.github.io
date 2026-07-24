@@ -179,6 +179,8 @@ const ENSAYOS = [
   },
   {
     id: 'comic-literatura-siglo-xxi',
+    oculto: true,
+
     titulo: 'Por qué el cómic de autor es la gran literatura del siglo XXI',
     subtitulo: 'Un manifiesto. La imagen dibujada hace lo que la prosa no puede: narrar desde dentro de la percepción.',
     tag: 'Manifiesto',
